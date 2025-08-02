@@ -5,16 +5,22 @@ const menuitems = [
     path: "/#home",
   },
   {
-    title: "关于我们",
-    path: "/about",
+    title: "服务中心",
+    path: "javascript:void(0)",
+    children: [
+      { title: "关于我们", path: "/about" },
+      { title: "热门产品", path: "/Product" },
+      { title: "在线领卡", path: "/card" },
+      { title: "联系我们", path: "/contact" },
+      { title: "新闻资讯", path: "/blog" },
+      { title: "注册页面", path: "/signup" },
+      { title: "订单查询", path: "/OrderInquiry" },
+      { title: "飞利猫", path: "/caict" },
+    ],
   },
   {
-    title: "产品",
-    path: "/Product",
-  },
-  {
-    title: "团队",
-    path: "/team",
+    title: "APP下载",
+    path: "/app",
   },
   {
     title: "联系我们",
@@ -27,22 +33,23 @@ const menuitems = [
     ]
   },
   {
-    title: "博客",
+    title: "新闻资讯",
     path: "/blog",
   },
+ {
+    title: "关于我们",
+    path: "/about",
+  }, 
   {
-    title: "页面",
+    title: "产品推荐",
     path: "javascript:void(0)",
     children: [
-      { title: "关于页面", path: "/about" },
-      { title: "热门产品", path: "/Product" },
-      { title: "在线领卡", path: "/card" },
-      { title: "联系页面", path: "/contact" },
-      { title: "新闻资讯", path: "/blog" },
-      { title: "注册页面", path: "/signup" },
-      { title: "登录页面", path: "/signin" },
-      { title: "404页面", path: "/404" },
-    ],
+      { title: "艺创官网", path: "https://urlnet.cn" },
+      { title: "数字分身", path: "https://v.cnai.art" },
+      { title: "艺创AI", path: "https://www.cnai.art" },
+      { title: "优刻云", path: "/product-price" },
+      { title: "知识库", path: "/product-price" },
+    ]
   },
 ];
 ---
