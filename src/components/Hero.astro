@@ -30,28 +30,23 @@ import Qrcode from "./Qrcode.astro";
           <div class="grid grid-cols-2 gap-4 mb-12 max-w-[500px]">
             <a
               href="#"
-              class="inline-flex items-center justify-center rounded-md bg-white py-3 px-6 text-center text-base font-medium text-blue-900 shadow-md transition duration-300 ease-in-out hover:bg-gray-100 hover:shadow-lg"
+              class="inline-flex items-center justify-center w-full h-14 rounded-md bg-blue-600 px-6 text-center text-base font-bold text-white border border-white transition duration-300 ease-in-out hover:bg-blue-700"
             >
               免费领卡
             </a>
             <a
               href="#"
-              class="inline-flex items-center justify-center rounded-md bg-blue-600 py-3 px-6 text-center text-base font-medium text-white border border-white transition duration-300 ease-in-out hover:bg-blue-700"
+              class="inline-flex items-center justify-center w-full h-14 rounded-md bg-blue-600 px-6 text-center text-base font-bold text-white border border-white transition duration-300 ease-in-out hover:bg-blue-700"
             >
               代理申请
             </a>
             <a
               href="#"
-              class="inline-flex items-center justify-center rounded-md bg-blue-600 py-3 px-6 text-center text-base font-medium text-white border border-white transition duration-300 ease-in-out hover:bg-blue-700"
+              class="inline-flex items-center justify-center w-full h-14 rounded-md bg-blue-600 px-6 text-center text-base font-bold text-white border border-white transition duration-300 ease-in-out hover:bg-blue-700"
             >
               登入系统
             </a>
-            <a
-              href="#"
-              class="inline-flex items-center justify-center rounded-md bg-white py-3 px-6 text-center text-base font-medium text-black transition duration-300 ease-in-out hover:bg-gray-100"
-            >
-              APP下载
-            </a>
+            
             <!-- 使用二维码组件替换原联系客服按钮 -->
             <Qrcode
               imagePath="/assets/team/CrAlaLEc.png"
@@ -59,7 +54,7 @@ import Qrcode from "./Qrcode.astro";
               buttonText="联系客服"
               title="扫码联系客服"
               description="扫描下方二维码，添加客服微信"
-              buttonClass="inline-flex items-center justify-center rounded-md bg-white py-3 px-6 text-center text-base font-medium text-black transition duration-300 ease-in-out hover:bg-gray-100 col-span-2"
+              buttonClass="inline-flex items-center justify-center w-full h-14 rounded-md bg-white px-6 text-center text-base font-bold text-black border border-white transition duration-300 ease-in-out hover:bg-gray-100 col-span-2"
             />
           </div>
         </div>
@@ -69,36 +64,19 @@ import Qrcode from "./Qrcode.astro";
       <div class="w-full lg:w-1/2 px-4">
         <div class="wow fadeInUp relative z-10" data-wow-delay=".25s">
             <img
-              src="https://www.lot-ml.com/statics/images/172_2.png"
+              src="/public/assets/hero/172_2.png"
               alt="172号卡分销系统"
               class="w-full"
             />
           
-          <!-- 装饰元素 - 左下角 -->
-          <div class="absolute -left-6 -bottom-6 z-[-1] opacity-70">
-            <svg
-              width="134"
-              height="106"
-              viewBox="0 0 134 106"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <circle cx="1.66667" cy="104" r="1.66667" transform="rotate(-90 1.66667 104)" fill="white"></circle>
-              <circle cx="16.3333" cy="104" r="1.66667" transform="rotate(-90 16.3333 104)" fill="white"></circle>
-              <circle cx="31" cy="104" r="1.66667" transform="rotate(-90 31 104)" fill="white"></circle>
-              <circle cx="45.6667" cy="104" r="1.66667" transform="rotate(-90 45.6667 104)" fill="white"></circle>
-              <circle cx="60.3333" cy="104" r="1.66667" transform="rotate(-90 60.3333 104)" fill="white"></circle>
-              <circle cx="88.6667" cy="104" r="1.66667" transform="rotate(-90 88.6667 104)" fill="white"></circle>
-              <circle cx="117.667" cy="104" r="1.66667" transform="rotate(-90 117.667 104)" fill="white"></circle>
-              <circle cx="74.6667" cy="104" r="1.66667" transform="rotate(-90 74.6667 104)" fill="white"></circle>
-              <circle cx="103" cy="104" r="1.66667" transform="rotate(-90 103 104)" fill="white"></circle>
-              <circle cx="132" cy="104" r="1.66667" transform="rotate(-90 132 104)" fill="white"></circle>
-              <circle cx="1.66667" cy="89.3333" r="1.66667" transform="rotate(-90 1.66667 89.3333)" fill="white"></circle>
-              <circle cx="16.3333" cy="89.3333" r="1.66667" transform="rotate(-90 16.3333 89.3333)" fill="white"></circle>
-              <circle cx="31" cy="89.3333" r="1.66667" transform="rotate(-90 31 89.3333)" fill="white"></circle>
-              <circle cx="45.6667" cy="89.3333" r="1.66667" transform="rotate(-90 45.6667 89.3333)" fill="white"></circle>
-            </svg>
-          </div>
+            <!-- 装饰元素 - 左下角，替换为SVG图片 -->
+            <img
+            src="/assets/about/functionreverse.svg"
+            alt="装饰元素"
+            class="absolute -left-6 -bottom-6 z-[-1] opacity-70"
+            width="134"
+            height="106"
+            />
           
           <!-- 装饰元素 - 右上角 -->
           <div class="absolute -right-6 -top-6 z-[-1] opacity-70">
