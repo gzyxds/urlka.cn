@@ -1,0 +1,27 @@
+---
+import Breadcrumb from '../components/layout/Breadcrumb.astro';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  description="172"
+  title="172号卡官方客服咨询"
+>
+  <Breadcrumb>
+    <Fragment slot="title">客服聊天页面</Fragment>
+  </Breadcrumb>
+  
+  <!-- 七鱼客服聊天窗口 -->
+  <div class="container mx-auto mb-8">
+    <div class="w-full overflow-hidden rounded-lg shadow-md">
+      <iframe 
+        src="https://syx0xk.qiyukf.com/client?k=1bba63d184c3fecce3532aacae755c47&wp=1&robotShuntSwitch=0" 
+        width="100%" 
+        height="600px" 
+        frameborder="0"
+        title="七鱼客服"
+        class="w-full"
+      ></iframe>
+    </div>
+  </div>
+</Layout>

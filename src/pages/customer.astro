@@ -1,0 +1,69 @@
+---
+import Breadcrumb from '../components/layout/Breadcrumb.astro';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  description="172号卡官方客服咨询与产品展示"
+  title="172号卡官方客服咨询"
+>
+  <Breadcrumb>
+    <Fragment slot="title">客服与产品页面</Fragment>
+  </Breadcrumb>
+  
+  <!-- 左右布局容器 -->
+  <div class="container mx-auto px-4 mb-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- 左侧：七鱼客服聊天窗口 -->
+      <div class="overflow-hidden rounded-lg shadow-md bg-white">
+        <div class="p-4 bg-primary text-white font-medium">
+          <h2>在线客服咨询</h2>
+        </div>
+        <iframe 
+          src="https://syx0xk.qiyukf.com/client?k=1bba63d184c3fecce3532aacae755c47&wp=1&robotShuntSwitch=0" 
+          width="100%" 
+          height="800px" 
+          frameborder="0"
+          title="七鱼客服"
+          class="w-full"
+          loading="lazy"
+        ></iframe>
+      </div>
+      
+      <!-- 右侧：产品页面 -->
+      <div class="overflow-hidden rounded-lg shadow-md bg-white">
+        <div class="p-4 bg-primary text-white font-medium">
+          <h2>产品详情</h2>
+        </div>
+        <iframe 
+          src="https://h5.lot-ml.com/ProductEn/Index/1a654e0b341cadd2" 
+          width="100%" 
+          height="800px" 
+          frameborder="0"
+          title="产品页面"
+          class="w-full"
+          loading="lazy"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    /* 确保iframe在各种设备上都能正确显示 */
+    @media (max-width: 768px) {
+      iframe {
+        height: 600px;
+      }
+    }
+    
+    /* 添加平滑过渡效果 */
+    .grid {
+      transition: all 0.3s ease;
+    }
+    
+    /* 调整容器高度以适应更高的iframe */
+    .container {
+      min-height: 850px;
+    }
+  </style>
+</Layout>

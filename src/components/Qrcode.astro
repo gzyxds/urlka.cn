@@ -1,0 +1,208 @@
+---
+// QRCode.astro - 可复用的二维码弹出组件
+// 支持自定义二维码图片、尺寸和动画效果，提供平滑动画效果和移动端适配
+
+// 定义组件接收的属性
+interface Props {
+  // 二维码图片路径，默认使用本地图片
+  imagePath?: string;
+  // 二维码尺寸，单位为像素
+  size?: number;
+  // 触发按钮文本
+  buttonText?: string;
+  // 弹窗标题
+  title?: string;
+  // 弹窗描述文本
+  description?: string;
+  // 按钮自定义类名
+  buttonClass?: string;
+}
+
+// 设置默认值
+const {
+  imagePath = "/assets/team/CrAlaLEc.png", // 默认使用本地图片
+  size = 200,
+  buttonText = "显示二维码",
+  title = "扫描二维码",
+  description = "使用手机扫描以下二维码",
+  buttonClass = "inline-flex items-center justify-center rounded-md bg-blue-600 py-3 px-6 text-center text-base font-medium text-white transition duration-300 ease-in-out hover:bg-blue-700"
+} = Astro.props;
+
+// 生成唯一ID，用于DOM元素标识
+const modalId = `qrcode-modal-${Math.random().toString(36).substring(2, 11)}`;
+---
+
+<!-- 二维码组件容器 -->
+<div class="qrcode-component">
+  <!-- 触发按钮 - 点击时显示弹窗 -->
+  <button 
+    id={`${modalId}-trigger`}
+    class={buttonClass}
+    aria-haspopup="dialog"
+    aria-controls={modalId}
+  >
+    {buttonText}
+  </button>
+
+  <!-- 二维码弹窗 - 初始状态为隐藏 -->
+  <div 
+    id={modalId} 
+    class="qrcode-modal fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300"
+    role="dialog"
+    aria-labelledby={`${modalId}-title`}
+    aria-modal="true"
+    aria-hidden="true"
+  >
+    <!-- 半透明遮罩层 -->
+    <div class="qrcode-overlay absolute inset-0 bg-black bg-opacity-50"></div>
+    
+    <!-- 弹窗内容容器 -->
+    <div 
+      class="qrcode-content relative bg-white rounded-lg p-6 max-w-sm w-full mx-4 shadow-xl transform scale-95 transition-transform duration-300"
+      role="document"
+    >
+      <!-- 关闭按钮 - 位于右上角 -->
+      <button 
+        type="button" 
+        class="qrcode-close absolute top-3 right-3 text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-full p-1"
+        aria-label="关闭弹窗"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      
+      <!-- 弹窗标题 -->
+      <h3 id={`${modalId}-title`} class="text-xl font-semibold text-gray-900 mb-2">{title}</h3>
+      
+      <!-- 弹窗描述文本 -->
+      <p class="text-gray-600 mb-4">{description}</p>
+      
+      <!-- 二维码容器 - 居中显示 -->
+      <div class="qrcode-display flex justify-center items-center py-4">
+        <!-- 使用本地图片作为二维码 -->
+        <img 
+          src={imagePath} 
+          alt="二维码" 
+          width={size} 
+          height={size} 
+          class="qrcode-image"
+          style={`width: ${size}px; height: ${size}px;`}
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 组件交互逻辑 -->
+<script define:vars={{ modalId }}>
+  // 在DOM加载完成后执行
+  document.addEventListener('DOMContentLoaded', () => {
+    // 获取DOM元素引用
+    const modal = document.getElementById(modalId);
+    const trigger = document.getElementById(`${modalId}-trigger`);
+    const closeBtn = modal.querySelector('.qrcode-close');
+    const overlay = modal.querySelector('.qrcode-overlay');
+    const modalContent = modal.querySelector('.qrcode-content');
+    
+    // 打开弹窗的函数
+    const openModal = () => {
+      // 显示弹窗
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      modal.setAttribute('aria-hidden', 'false');
+      
+      // 应用动画效果
+      setTimeout(() => {
+        modalContent.classList.remove('scale-95');
+        modalContent.classList.add('scale-100');
+      }, 10);
+      
+      // 添加键盘事件监听器 - 支持按ESC关闭
+      document.addEventListener('keydown', handleKeyDown);
+      
+      // 锁定背景滚动
+      document.body.style.overflow = 'hidden';
+    };
+    
+    // 关闭弹窗的函数
+    const closeModal = () => {
+      // 应用动画效果
+      modalContent.classList.remove('scale-100');
+      modalContent.classList.add('scale-95');
+      
+      // 延迟隐藏弹窗，等待动画完成
+      setTimeout(() => {
+        modal.classList.add('opacity-0', 'pointer-events-none');
+        modal.setAttribute('aria-hidden', 'true');
+        
+        // 恢复背景滚动
+        document.body.style.overflow = '';
+      }, 300);
+      
+      // 移除键盘事件监听器
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+    
+    // 键盘事件处理函数 - 按ESC关闭弹窗
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        closeModal();
+      }
+    };
+    
+    // 事件监听器 - 点击触发按钮打开弹窗
+    trigger.addEventListener('click', openModal);
+    
+    // 事件监听器 - 点击关闭按钮关闭弹窗
+    closeBtn.addEventListener('click', closeModal);
+    
+    // 事件监听器 - 点击遮罩层关闭弹窗
+    overlay.addEventListener('click', closeModal);
+    
+    // 阻止点击弹窗内容时冒泡到遮罩层
+    modalContent.addEventListener('click', (event) => {
+      event.stopPropagation();
+    });
+    
+    // 添加触摸事件支持 - 适配移动端
+    if ('ontouchstart' in window) {
+      overlay.addEventListener('touchstart', closeModal);
+      closeBtn.addEventListener('touchstart', (event) => {
+        event.preventDefault();
+        closeModal();
+      });
+      
+      modalContent.addEventListener('touchstart', (event) => {
+        event.stopPropagation();
+      });
+    }
+  });
+</script>
+
+<!-- 组件样式 -->
+<style>
+  /* 确保弹窗在所有内容之上 */
+  .qrcode-modal {
+    z-index: 9999;
+  }
+  
+  /* 焦点样式，提高无障碍性 */
+  .qrcode-close:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+  }
+  
+  /* 确保二维码图像清晰 */
+  .qrcode-image {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+  
+  /* 添加响应式调整 */
+  @media (max-width: 640px) {
+    .qrcode-content {
+      max-width: 90%;
+      padding: 1rem;
+    }
+  }
+</style>

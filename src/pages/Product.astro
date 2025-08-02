@@ -1,0 +1,20 @@
+---
+import Product from '../components/Product.astro';
+import Breadcrumb from '../components/layout/Breadcrumb.astro';
+import Layout from '../layouts/Layout.astro';
+import Contactsection from '../components/Contactsection.astro'; // 添加导入
+---
+
+<Layout
+  description="172号卡分销系统产品展示页面，提供多种流量套餐选择，满足不同用户需求。"
+  title="产品展示 | 172号卡"
+>
+  <Breadcrumb>
+    <Fragment slot="title">产品展示</Fragment>
+  </Breadcrumb>
+  <Product 
+    title="为您精选优质流量套餐" 
+    subtitle="热门产品推荐" 
+  />
+  <Contactsection /> <!-- 确保组件已正确导入 -->
+</Layout>

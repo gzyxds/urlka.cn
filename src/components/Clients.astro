@@ -1,0 +1,73 @@
+---
+const clients = [
+  { ref: "https://tailgrids.com", image: "/assets/brands/中国移动.svg", whiteImage: "/assets/brands/中国移动.svg", name: "中国移动", description: "领先的移动通信服务提供商"},
+  { ref: "https://ayroui.com", image: "/assets/brands/中国电信.svg", whiteImage: "/assets/brands/中国电信.svg", name: "中国电信", description: "综合信息服务运营商"},
+  { ref: "https://uideck.com", image: "/assets/brands/中国联通.svg", whiteImage: "/assets/brands/中国联通.svg", name: "中国联通", description: "创新通信服务提供商"},
+  { ref: "https://graygrids.com", image: "/assets/brands/中国广电.svg", whiteImage: "/assets/brands/中国广电.svg", name: "中国广电", description: "全国性有线电视网络运营商"},
+]
+---
+
+<!-- ====== 合作伙伴卡片展示区域开始 -->
+<section class="pt-16 pb-20 dark:bg-dark">
+  <div class="container px-4">
+    <!-- 标题区域 -->
+    <div class="mb-12 text-center">
+      <h2 class="text-3xl font-bold text-dark dark:text-white sm:text-4xl">
+        我们的合作伙伴
+      </h2>
+      <p class="mt-4 text-base text-body-color dark:text-dark-6">
+        与行业领先企业携手合作，共创美好未来
+      </p>
+    </div>
+    
+    <!-- 卡片网格布局 -->
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        clients.map(client => (
+          <div class="group">
+            <a
+              href={client.ref}
+              target="_blank"
+              rel="nofollow noopener"
+              class="block"
+            >
+              <!-- 卡片容器 -->
+              <div class="relative overflow-hidden rounded-lg bg-white p-8 shadow-md transition-all duration-300 hover:shadow-xl dark:bg-dark-2 dark:shadow-card">
+                <!-- 装饰性背景图案 -->
+                <div class="absolute -right-4 -top-4 h-16 w-16 rounded-full bg-primary/5 transition-all duration-300 group-hover:scale-110"></div>
+                
+                <!-- Logo 区域 -->
+                <div class="relative z-10 mb-6 flex h-16 items-center justify-center">
+                  <img
+                    src={client.image}
+                    alt={client.name}
+                    class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110 dark:hidden"
+                  />
+                  <img
+                    src={client.whiteImage}
+                    alt={client.name}
+                    class="hidden h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110 dark:block"
+                  />
+                </div>
+                
+                <!-- 内容区域 -->
+                <div class="relative z-10 text-center">
+                  <h3 class="mb-2 text-lg font-semibold text-dark transition-colors duration-300 group-hover:text-primary dark:text-white">
+                    {client.name}
+                  </h3>
+                  <p class="text-sm text-body-color dark:text-dark-6">
+                    {client.description}
+                  </p>
+                </div>
+                
+                <!-- 悬停时的边框效果 -->
+                <div class="absolute inset-0 rounded-lg border-2 border-transparent transition-colors duration-300 group-hover:border-primary/20"></div>
+              </div>
+            </a>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+<!-- ====== 合作伙伴卡片展示区域结束 -->

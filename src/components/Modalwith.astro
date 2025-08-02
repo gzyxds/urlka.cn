@@ -1,0 +1,191 @@
+<!-- ====== 弹窗组件开始 -->
+<div id="modal-container">
+
+
+  <!-- 弹窗遮罩层 -->
+  <div 
+    id="modal-overlay" 
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-black bg-opacity-50 px-4 py-5">
+    
+    <!-- 弹窗内容 -->
+    <div 
+      id="modal-content"
+      class="relative w-full max-w-[570px] rounded-[20px] bg-white px-8 py-12 text-center shadow-2xl transform transition-all duration-300 scale-95 md:px-[70px] md:py-[60px] dark:bg-dark-2">
+      
+      <!-- 右上角关闭按钮 -->
+      <button 
+        id="close-modal-x"
+        class="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full text-2xl text-gray-500 hover:bg-gray-100 hover:text-gray-700 transition-colors dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-200"
+        title="关闭弹窗">
+        ×
+      </button>
+
+      <!-- 弹窗标题 -->
+      <h3 class="pb-[18px] text-xl font-semibold text-dark sm:text-2xl dark:text-white">
+        立即申请代理
+      </h3>
+      
+      <!-- 装饰线 -->
+      <div class="mx-auto mb-6 h-1 w-[90px] rounded-sm bg-primary"></div>
+      
+      <!-- 弹窗内容 -->
+      <p class="mb-6 text-base leading-relaxed text-body-color dark:text-dark-6">
+        立足于巅峰代理商的强大背景，把握行业先机
+      </p>
+      
+      <!-- 二维码区域 -->
+      <div class="mb-8 flex justify-center">
+        <div class="rounded-lg bg-gray-50 p-4 shadow-inner dark:bg-gray-800">
+          <img 
+            src="/assets/team/wx.png" 
+            alt="联系我们二维码" 
+            class="mx-auto h-32 w-32 rounded-lg shadow-sm"
+            loading="lazy"
+          />
+          <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+            扫码联系我们
+          </p>
+        </div>
+      </div>
+      
+      <!-- 按钮组 -->
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <button 
+          id="cancel-btn"
+          type="button" 
+          class="w-full sm:w-auto min-w-[120px] rounded-md border-2 border-gray-300 bg-white px-6 py-3 text-base font-medium text-gray-700 transition-all duration-200 hover:border-red-500 hover:bg-red-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300">
+          关闭弹窗
+        </button>
+        <a 
+          href="/"
+          class="w-full sm:w-auto min-w-[120px] rounded-md border-2 border-primary bg-primary px-6 py-3 text-base font-medium text-white transition-all duration-200 hover:bg-blue-700 hover:border-blue-700 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">
+         立即申请
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // 弹窗控制脚本
+  document.addEventListener('DOMContentLoaded', function() {
+    const modalOverlay = document.getElementById('modal-overlay');
+    const modalContent = document.getElementById('modal-content');
+    const openBtn = document.getElementById('open-modal-btn');
+    const closeXBtn = document.getElementById('close-modal-x');
+    const cancelBtn = document.getElementById('cancel-btn');
+
+    // 显示弹窗的函数
+    function showModal() {
+      if (modalOverlay) {
+        modalOverlay.classList.remove('hidden');
+        modalOverlay.classList.add('flex');
+        setTimeout(() => {
+          if (modalContent) {
+            modalContent.classList.remove('scale-95');
+            modalContent.classList.add('scale-100');
+          }
+        }, 10);
+        document.body.style.overflow = 'hidden'; // 防止背景滚动
+      }
+    }
+
+    // 隐藏弹窗的函数
+    function hideModal() {
+      if (modalContent) {
+        modalContent.classList.remove('scale-100');
+        modalContent.classList.add('scale-95');
+      }
+      setTimeout(() => {
+        if (modalOverlay) {
+          modalOverlay.classList.remove('flex');
+          modalOverlay.classList.add('hidden');
+        }
+      }, 300);
+      document.body.style.overflow = ''; // 恢复背景滚动
+    }
+
+    // 页面加载5秒后自动显示弹窗
+    setTimeout(() => {
+      showModal();
+    }, 10000);
+
+    // 点击打开按钮显示弹窗（如果存在的话）
+    if (openBtn) {
+      openBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        showModal();
+      });
+    }
+
+    // 点击右上角X按钮关闭弹窗
+    if (closeXBtn) {
+      closeXBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('关闭按钮被点击'); // 调试用
+        hideModal();
+      });
+    }
+
+    // 点击取消按钮关闭弹窗
+    if (cancelBtn) {
+      cancelBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('取消按钮被点击'); // 调试用
+        hideModal();
+      });
+    }
+
+    // 点击遮罩层关闭弹窗
+    if (modalOverlay) {
+      modalOverlay.addEventListener('click', function(e) {
+        if (e.target === modalOverlay) {
+          hideModal();
+        }
+      });
+    }
+
+    // 按ESC键关闭弹窗
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modalOverlay && !modalOverlay.classList.contains('hidden')) {
+        hideModal();
+      }
+    });
+
+    // 防止弹窗内容区域的点击事件冒泡
+    if (modalContent) {
+      modalContent.addEventListener('click', function(e) {
+        e.stopPropagation();
+      });
+    }
+
+    // 全局函数，供外部调用
+    window.showModal = showModal;
+    window.hideModal = hideModal;
+  });
+</script>
+
+<style>
+  /* 弹窗动画样式 */
+  #modal-content {
+    transition: transform 0.3s ease-out;
+  }
+  
+  /* 确保弹窗在最顶层 */
+  #modal-overlay {
+    z-index: 9999;
+  }
+  
+  /* 按钮悬停效果增强 */
+  #cancel-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+  }
+  
+  #close-modal-x:hover {
+    transform: scale(1.1);
+  }
+</style>
+<!-- ====== 弹窗组件结束 -->

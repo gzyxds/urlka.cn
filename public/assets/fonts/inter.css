@@ -1,0 +1,16 @@
+/* Inter字体 - 本地版本 */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./inter-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  src: url('./inter-bold.woff2') format('woff2');
+}
+
+/* 如果需要更多字重，可以添加更多的@font-face规则 */

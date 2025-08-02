@@ -1,0 +1,130 @@
+---
+const testimonials = [
+  {
+    authorName: '醉亦醒时醒亦醉',
+    authorRole: '金牌代理商',
+    image: '/assets/testimonials/author-01.jpg',
+    message:
+      `"我们是运营商金牌代理商，年销售量已突破10亿元的专业平台，致力于成为运营商和推广者之间的桥梁。作为您的合作伙伴，我们将为推广手机卡的用户保驾护航，为您的业务拓展提供强有力的支持！"`,
+  },
+  {
+    authorName: '待续情话',
+    authorRole: '资深合作伙伴',
+    image: '/assets/testimonials/author-02.jpg',
+    message:
+      `"172流量卡分销平台致力于打造一个公平、透明、互惠共赢的合作平台。我们相信，只有与合作伙伴携手共进，我们才能共同成长和取得更大的成功。"`,
+  },
+  {
+    authorName: '谦城之脊',
+    authorRole: '高级代理商',
+    image: '/assets/testimonials/author-03.jpg',
+    message:
+      `"加入我们，您将获得专业、高效的合作伙伴，共同开创互联网时代的新篇章。无论您是想实现财富增值，还是希望发展更广阔的人脉，我们都将为您提供一个理想的平台。"`,
+  },
+  {
+    authorName: '夜影轻舞',
+    authorRole: '长期合作伙伴',
+    image: '/assets/testimonials/author-01.jpg',
+    message:
+      `"作为172号卡的长期合作伙伴，我深深感受到这个平台的专业性和创新力。他们不仅提供优质的产品，更重要的是给予代理商全方位的支持，让我们能够更好地服务终端客户。"`,
+  },
+  {
+    authorName: '风之低语',
+    authorRole: '资深代理商',
+    image: '/assets/testimonials/author-02.jpg',
+    message:
+      `"172号卡平台的客户服务体系非常完善，无论是对代理商还是最终用户，都能提供及时、专业的支持。这种以客户为中心的理念，让我们在竞争激烈的市场中始终保持领先地位。"`,
+  },
+  {
+    authorName: '时光旅人',
+    authorRole: '技术合作伙伴',
+    image: '/assets/testimonials/author-03.jpg',
+    message:
+      `"172号卡的技术支持团队反应迅速，解决问题高效。他们不断优化系统，确保平台稳定运行，这让我们可以专注于业务拓展，无需担心技术问题。这种专业的后台支持是我们选择长期合作的重要原因之一。"`,
+  },
+];
+---
+
+<section id="testimonials" class="py-20 md:py-[120px] bg-gray-1 dark:bg-dark-2 overflow-hidden">
+  <div class="container px-4">
+    <div class="flex flex-wrap justify-center -mx-4">
+      <div class="w-full px-4">
+        <div class="mx-auto mb-[60px] max-w-[485px] text-center">
+          <span class="block mb-2 text-lg font-semibold text-primary">
+            客户评价
+          </span>
+          <h2 class="text-dark dark:text-white mb-3 text-3xl leading-[1.2] font-bold sm:text-4xl md:text-[40px]">
+            人们的评价
+          </h2>
+          <p class="text-base text-body-color dark:text-dark-6">
+            人们的评价是宝贵的信息，对于了解我们的业务和产品的品质至关重要。
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="-m-5"
+    >
+      <div class="swiper testimonial-carousel common-carousel p-5">
+        <div class="swiper-wrapper">
+          {
+            testimonials.map((testimonial) => (
+              <div class="swiper-slide">
+                <div class="shadow-testimonial bg-white dark:bg-dark rounded-xl py-[30px] px-4 sm:px-[30px]" data-wow-delay=".1s">
+                  <div class="flex items-center gap-[2px] mb-[18px]">
+                    {[...Array(5)].map(() => (
+                      <span class="text-[#FBB040]">
+                        <svg class="fill-current" width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M8.94043 0.360474L10.9477 6.06481H17.4433L12.1882 9.59028L14.1955 15.2946L8.94043 11.7691L3.68538 15.2946L5.69263 9.59028L0.437576 6.06481H6.93318L8.94043 0.360474Z" 
+                          />
+                        </svg>
+                      </span>
+                    ))}
+                  </div>
+                  <p class="text-body-color dark:text-dark-6 text-base mb-6">{testimonial.message}</p>
+                  
+                  <div class="flex items-center gap-4">
+                    <div
+                      class="w-[50px] h-[50px] rounded-full overflow-hidden"
+                    >
+                      <img
+                        src={testimonial.image}
+                        alt="作者"
+                        class="w-[50px] h-[50px] rounded-full overflow-hidden"
+                      />
+                    </div>
+                    <div>
+                      <h3 class="font-semibold text-sm text-dark dark:text-white">
+                        {testimonial.authorName}
+                      </h3>
+                      <p class="text-xs text-body-secondary">{testimonial.authorRole}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+
+        <div class="flex items-center justify-center mt-[60px] gap-1">
+          <div class="swiper-button-prev">
+            <svg class="fill-current" width="22" height="22" viewBox="0 0 22 22" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M19.25 10.2437H4.57187L10.4156 4.29687C10.725 3.9875 10.725 3.50625 10.4156 3.19687C10.1062 2.8875 9.625 2.8875 9.31562 3.19687L2.2 10.4156C1.89062 10.725 1.89062 11.2063 2.2 11.5156L9.31562 18.7344C9.45312 18.8719 9.65937 18.975 9.86562 18.975C10.0719 18.975 10.2437 18.9062 10.4156 18.7687C10.725 18.4594 10.725 17.9781 10.4156 17.6688L4.60625 11.7906H19.25C19.6625 11.7906 20.0063 11.4469 20.0063 11.0344C20.0063 10.5875 19.6625 10.2437 19.25 10.2437Z" />
+            </svg>
+          </div>
+
+          <div class="swiper-button-next">
+            <svg class="fill-current" width="22" height="22" viewBox="0 0 22 22" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M19.8 10.45L12.6844 3.2313C12.375 2.92192 11.8938 2.92192 11.5844 3.2313C11.275 3.54067 11.275 4.02192 11.5844 4.3313L17.3594 10.2094H2.75C2.3375 10.2094 1.99375 10.5532 1.99375 10.9657C1.99375 11.3782 2.3375 11.7563 2.75 11.7563H17.4281L11.5844 17.7032C11.275 18.0126 11.275 18.4938 11.5844 18.8032C11.7219 18.9407 11.9281 19.0094 12.1344 19.0094C12.3406 19.0094 12.5469 18.9407 12.6844 18.7688L19.8 11.55C20.1094 11.2407 20.1094 10.7594 19.8 10.45Z" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

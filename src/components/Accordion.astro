@@ -1,0 +1,203 @@
+<!-- ====== FAQ 手风琴 -->
+  <section x-data="
+        {
+          openFaq1: false, 
+          openFaq2: false, 
+          openFaq3: false, 
+          openFaq4: false, 
+          openFaq5: false, 
+          openFaq6: false
+        }
+      " class="relative z-20 overflow-hidden bg-white pb-12 pt-20 lg:pb-[90px] lg:pt-[120px] dark:bg-dark">
+    <div class="container mx-auto">
+      <div class="-mx-4 flex flex-wrap">
+        <div class="w-full px-4">
+          <div class="mx-auto mb-[60px] max-w-[520px] text-center lg:mb-20">
+            <span class="mb-2 block text-lg font-semibold text-primary">
+              FAQ
+            </span>
+            <h2 class="mb-4 text-3xl font-bold text-dark sm:text-[40px]/[48px] dark:text-white">
+             常见问题
+            </h2>
+            <p class="text-base text-body-color dark:text-dark-6">
+              知识库，我们通过 FAQ 的形式，汇总了客户常问的问题。
+              希望能够帮你快速找到需要了解和解决的问题，节约时间。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="-mx-4 flex flex-wrap">
+        <div class="w-full px-4 lg:w-1/2">
+          <div
+            class="mb-8 w-full rounded-lg bg-white p-4 shadow-[0px_20px_95px_0px_rgba(201,203,204,0.30)] sm:p-8 lg:px-6 xl:px-8 dark:bg-dark-2 dark:shadow-[0px_20px_95px_0px_rgba(0,0,0,0.30)]">
+            <button class="faq-btn flex w-full text-left" @click="openFaq1 = !openFaq1">
+              <div
+                class="mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg bg-primary/5 text-primary dark:bg-white/5">
+                <svg :class="openFaq1 && 'rotate-180'" width="22" height="22" viewBox="0 0 22 22" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M11 15.675C10.7937 15.675 10.6219 15.6062 10.45 15.4687L2.54374 7.69998C2.23436 7.3906 2.23436 6.90935 2.54374 6.59998C2.85311 6.2906 3.33436 6.2906 3.64374 6.59998L11 13.7844L18.3562 6.53123C18.6656 6.22185 19.1469 6.22185 19.4562 6.53123C19.7656 6.8406 19.7656 7.32185 19.4562 7.63123L11.55 15.4C11.3781 15.5719 11.2062 15.675 11 15.675Z"
+                    fill="currentColor" />
+                </svg>
+              </div>
+              <div class="w-full">
+                <h4 class="mt-1 text-lg font-semibold text-dark dark:text-white">
+                 我们的流量卡是否是正规的流量卡呢?
+                </h4>
+              </div>
+            </button>
+            <div x-show="openFaq1" class="faq-content pl-[62px]">
+              <p class="py-3 text-base leading-relaxed text-body-color dark:text-dark-6">
+                答:我们的产品，都是由四大运营商统一审核发货，官方app可查的套餐发货也是有官方统一安排发货，和你在营业厅办理的卡是一模一样的，平台全程不会接触到你的卡，统一由运营商安排的快递小哥操作配送及激活
+              </p>
+            </div>
+          </div>
+          <div
+            class="mb-8 w-full rounded-lg bg-white p-4 shadow-[0px_20px_95px_0px_rgba(201,203,204,0.30)] sm:p-8 lg:px-6 xl:px-8 dark:bg-dark-2 dark:shadow-[0px_20px_95px_0px_rgba(0,0,0,0.30)]">
+            <button class="faq-btn flex w-full text-left" @click="openFaq2 = !openFaq2">
+              <div
+                class="mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg bg-primary/5 text-primary dark:bg-white/5">
+                <svg :class="openFaq2 && 'rotate-180'" width="22" height="22" viewBox="0 0 22 22" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M11 15.675C10.7937 15.675 10.6219 15.6062 10.45 15.4687L2.54374 7.69998C2.23436 7.3906 2.23436 6.90935 2.54374 6.59998C2.85311 6.2906 3.33436 6.2906 3.64374 6.59998L11 13.7844L18.3562 6.53123C18.6656 6.22185 19.1469 6.22185 19.4562 6.53123C19.7656 6.8406 19.7656 7.32185 19.4562 7.63123L11.55 15.4C11.3781 15.5719 11.2062 15.675 11 15.675Z"
+                    fill="currentColor" />
+                </svg>
+              </div>
+              <div class="w-full">
+                <h4 class="mt-1 text-lg font-semibold text-dark dark:text-white">
+                快递激活和自主激活的区别?
+                </h4>
+              </div>
+            </button>
+            <div x-show="openFaq2" class="faq-content pl-[62px]">
+              <p class="py-3 text-base leading-relaxed text-body-color dark:text-dark-6">
+                答:快递激活就是由运营商专门指派的快递小哥带着开卡器当面给你激活开卡，你只需要带上身份证即可:自主激活，就是由顺丰、京东、EMS快递送到你的收货地址后，你根据快递包裹里的激活流程图操作激活即可;每个省份运营商激活规则不同，不管哪种激活方式都是正规实名认证的。激活方式不可指定
+              </p>
+            </div>
+          </div>
+          <div
+            class="mb-8 w-full rounded-lg bg-white p-4 shadow-[0px_20px_95px_0px_rgba(201,203,204,0.30)] sm:p-8 lg:px-6 xl:px-8 dark:bg-dark-2 dark:shadow-[0px_20px_95px_0px_rgba(0,0,0,0.30)]">
+            <button class="faq-btn flex w-full text-left" @click="openFaq3 = !openFaq3">
+              <div
+                class="mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg bg-primary/5 text-primary dark:bg-white/5">
+                <svg :class="openFaq3 && 'rotate-180'" width="22" height="22" viewBox="0 0 22 22" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M11 15.675C10.7937 15.675 10.6219 15.6062 10.45 15.4687L2.54374 7.69998C2.23436 7.3906 2.23436 6.90935 2.54374 6.59998C2.85311 6.2906 3.33436 6.2906 3.64374 6.59998L11 13.7844L18.3562 6.53123C18.6656 6.22185 19.1469 6.22185 19.4562 6.53123C19.7656 6.8406 19.7656 7.32185 19.4562 7.63123L11.55 15.4C11.3781 15.5719 11.2062 15.675 11 15.675Z"
+                    fill="currentColor" />
+                </svg>
+              </div>
+              <div class="w-full">
+                <h4 class="mt-1 text-lg font-semibold text-dark dark:text-white">
+                  首充是什么意思?后面如何充值?
+                </h4>
+              </div>
+            </button>
+            <div x-show="openFaq3" class="faq-content pl-[62px]">
+              <p class="py-3 text-base leading-relaxed text-body-color dark:text-dark-6">
+               答:目前市场上的所有互联网流量卡套餐都是由原套餐叠加流量包和充送活动才可享受优惠活动，所有的流量卡套餐必须参加首充活动后，才能享受套餐图上的优惠月租:第一次首充必须按规则在专属活动链接充值或者快递小哥处充值才可生效;参加活动后每月就可以在任意渠道充值进行缴费;
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="w-full px-4 lg:w-1/2">
+          <div
+            class="mb-8 w-full rounded-lg bg-white p-4 shadow-[0px_20px_95px_0px_rgba(201,203,204,0.30)] sm:p-8 lg:px-6 xl:px-8 dark:bg-dark-2 dark:shadow-[0px_20px_95px_0px_rgba(0,0,0,0.30)]">
+            <button class="faq-btn flex w-full text-left" @click="openFaq4 = !openFaq4">
+              <div
+                class="mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg bg-primary/5 text-primary dark:bg-white/5">
+                <svg :class="openFaq4 && 'rotate-180'" width="22" height="22" viewBox="0 0 22 22" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M11 15.675C10.7937 15.675 10.6219 15.6062 10.45 15.4687L2.54374 7.69998C2.23436 7.3906 2.23436 6.90935 2.54374 6.59998C2.85311 6.2906 3.33436 6.2906 3.64374 6.59998L11 13.7844L18.3562 6.53123C18.6656 6.22185 19.1469 6.22185 19.4562 6.53123C19.7656 6.8406 19.7656 7.32185 19.4562 7.63123L11.55 15.4C11.3781 15.5719 11.2062 15.675 11 15.675Z"
+                    fill="currentColor" />
+                </svg>
+              </div>
+              <div class="w-full">
+                <h4 class="mt-1 text-lg font-semibold text-dark dark:text-white">
+                 网速怎么样?
+                </h4>
+              </div>
+            </button>
+            <div x-show="openFaq4" class="faq-content pl-[62px]">
+              <p class="py-3 text-base leading-relaxed text-body-color dark:text-dark-6">
+                答:我们所有的卡板都是营业厅正规卡板，如果你手机支持5G网络，那么就可以使用5G网络并显示5G;和你在线下营业厅办理的手机卡是一样的，网速具体取决于你当前地址的基站覆盖情况
+              </p>
+            </div>
+          </div>
+          <div
+            class="mb-8 w-full rounded-lg bg-white p-4 shadow-[0px_20px_95px_0px_rgba(201,203,204,0.30)] sm:p-8 lg:px-6 xl:px-8 dark:bg-dark-2 dark:shadow-[0px_20px_95px_0px_rgba(0,0,0,0.30)]">
+            <button class="faq-btn flex w-full text-left" @click="openFaq5 = !openFaq5">
+              <div
+                class="mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg bg-primary/5 text-primary dark:bg-white/5">
+                <svg :class="openFaq5 && 'rotate-180'" width="22" height="22" viewBox="0 0 22 22" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M11 15.675C10.7937 15.675 10.6219 15.6062 10.45 15.4687L2.54374 7.69998C2.23436 7.3906 2.23436 6.90935 2.54374 6.59998C2.85311 6.2906 3.33436 6.2906 3.64374 6.59998L11 13.7844L18.3562 6.53123C18.6656 6.22185 19.1469 6.22185 19.4562 6.53123C19.7656 6.8406 19.7656 7.32185 19.4562 7.63123L11.55 15.4C11.3781 15.5719 11.2062 15.675 11 15.675Z"
+                    fill="currentColor" />
+                </svg>
+              </div>
+              <div class="w-full">
+                <h4 class="mt-1 text-lg font-semibold text-dark dark:text-white">
+                 怎样才算我订单成功?
+                </h4>
+              </div>
+            </button>
+            <div x-show="openFaq5" class="faq-content pl-[62px]">
+              <p class="py-3 text-base leading-relaxed text-body-color dark:text-dark-6">
+                答:在查单链接里可以看到订单状态为以下三种情况其中一个
+                ①失败订单状态为:前置拦截和开卡失败，可自行查看失败原因;
+                ②开卡中状态为:订单已经提交到运营商进行审核:
+                ③已发货状态:产生物流单号表示已发货，就算你的订单成功
+              </p>
+            </div>
+          </div>
+          <div
+            class="mb-8 w-full rounded-lg bg-white p-4 shadow-[0px_20px_95px_0px_rgba(201,203,204,0.30)] sm:p-8 lg:px-6 xl:px-8 dark:bg-dark-2 dark:shadow-[0px_20px_95px_0px_rgba(0,0,0,0.30)]">
+            <button class="faq-btn flex w-full text-left" @click="openFaq6 = !openFaq6">
+              <div
+                class="mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg bg-primary/5 text-primary dark:bg-white/5">
+                <svg :class="openFaq6 && 'rotate-180'" width="22" height="22" viewBox="0 0 22 22" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M11 15.675C10.7937 15.675 10.6219 15.6062 10.45 15.4687L2.54374 7.69998C2.23436 7.3906 2.23436 6.90935 2.54374 6.59998C2.85311 6.2906 3.33436 6.2906 3.64374 6.59998L11 13.7844L18.3562 6.53123C18.6656 6.22185 19.1469 6.22185 19.4562 6.53123C19.7656 6.8406 19.7656 7.32185 19.4562 7.63123L11.55 15.4C11.3781 15.5719 11.2062 15.675 11 15.675Z"
+                    fill="currentColor" />
+                </svg>
+              </div>
+              <div class="w-full">
+                <h4 class="mt-1 text-lg font-semibold text-dark dark:text-white">
+                  开卡年龄、不发货地区为什么不能下单?
+                </h4>
+              </div>
+            </button>
+            <div x-show="openFaq6" class="faq-content pl-[62px]">
+              <p class="py-3 text-base leading-relaxed text-body-color dark:text-dark-6">
+                答:各个省份针对不同产品的开卡年龄限制都有不同，如你的订单因为开卡年龄不符合，可以更换支持当前年龄的产品下单;不发货地区也是一样，每款产品都有不同的不发货地区限制，可以选择更换支持当前地址发货的产品下单。所有的卡激活了，全国可用，去到不发货城市一样可以使用
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute bottom-0 right-0 z-[-1]">
+      <svg width="1440" height="886" viewBox="0 0 1440 886" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path opacity="0.5"
+          d="M193.307 -273.321L1480.87 1014.24L1121.85 1373.26C1121.85 1373.26 731.745 983.231 478.513 729.927C225.976 477.317 -165.714 85.6993 -165.714 85.6993L193.307 -273.321Z"
+          fill="url(#paint0_linear)" />
+        <defs>
+          <linearGradient id="paint0_linear" x1="1308.65" y1="1142.58" x2="602.827" y2="-418.681"
+            gradientUnits="userSpaceOnUse">
+            <stop stop-color="#3056D3" stop-opacity="0.36" />
+            <stop offset="1" stop-color="#F5F2FD" stop-opacity="0" />
+            <stop offset="1" stop-color="#F5F2FD" stop-opacity="0.096144" />
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+  </section>
+  <!-- ====== FAQ 手风琴 ====== -->
+
+  

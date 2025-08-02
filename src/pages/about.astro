@@ -1,0 +1,22 @@
+---
+import Team from '../components/Team.astro';
+import Aboutsection from '../components/Aboutsection.astro';
+import Breadcrumb from '../components/layout/Breadcrumb.astro';
+import Layout from '../layouts/Layout.astro';
+import CTAsection from '../components/CTAsection.astro';
+import Download from '../components/Download.astro'; 
+import Contactsection from '../components/Contactsection.astro';
+---
+
+<Layout
+  description="Play Astro 是一个免费的开源 Astro 模板，专为 SaaS、初创企业、商业和软件网站打造。Play 的设计方式使其几乎可用于所有类型的 Web 项目。"
+  title="关于 | Play Astro"
+>
+  <Breadcrumb>
+  <Fragment slot="title">关于我们页面</Fragment>
+  </Breadcrumb>
+  <Aboutsection />
+  <CTAsection />
+  <Download />
+  <Contactsection />
+</Layout>

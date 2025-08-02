@@ -1,0 +1,228 @@
+---
+// 产品数据接口定义
+interface Product {
+  id: string;
+  name: string;
+  price: number;
+  originalPrice?: number; // 原价，用于显示折扣
+  image: string;
+  rating: number; // 1-5星评分
+  badge?: 'new' | 'hot'; // 可选的标签：新品或热门
+  description: string;
+}
+
+// 示例产品数据
+const products: Product[] = [
+  {
+    id: "prod-01",
+    name: "省内产品 集合中心",
+    price: 29.9,
+    originalPrice: 39.9,
+    image: "https://haokaapi.lot-ml.com/upload/ProductUpDateImage/20250712/8f850f8827e9407d8e3429b698fd925b.jpg", // 注意：需要添加实际图片
+    rating: 4.5,
+    badge: "new",
+    description: "月租29元，40GB全国流量，通话300分钟"
+  },
+  {
+    id: "prod-02",
+    name: "全国通用流量卡B套餐",
+    price: 39.9,
+    originalPrice: 49.9,
+    image: "https://haokaapi.lot-ml.com/upload/ProductUpDateImage/20250724/31794d9e597a4c33aca9a269aaacfaf6.jpg", // 注意：需要添加实际图片
+    rating: 5,
+    badge: "hot",
+    description: "月租39元，100GB全国流量，通话500分钟"
+  },
+  {
+    id: "prod-03",
+    name: "全国通用流量卡C套餐",
+    price: 59.9,
+    image: "https://haokaapi.lot-ml.com/upload/ProductUpDateImage/20250802/d614e28b357c4361812fdbcc0f08548a.jpg", // 注意：需要添加实际图片
+    rating: 4,
+    description: "月租59元，200GB全国流量，通话1000分钟"
+  },
+  {
+    id: "prod-04",
+    name: "全国通用流量卡D套餐",
+    price: 19.9,
+    originalPrice: 29.9,
+    image: "https://haokaapi.lot-ml.com/upload/ProductUpDateImage/20250801/372c0115205c4281b4ce71019444dbde.jpg", // 注意：需要添加实际图片
+    rating: 3.5,
+    description: "月租19元，20GB全国流量，通话100分钟"
+  },
+];
+
+// 组件属性
+interface Props {
+  title?: string;
+  subtitle?: string;
+}
+
+const { 
+  title = "为您精选优质流量套餐", 
+  subtitle = "热门产品推荐" 
+} = Astro.props;
+---
+
+<!-- ====== 产品轮播组件 开始 -->
+<section class="relative z-20 overflow-hidden bg-white dark:bg-dark pt-20 pb-12 lg:pt-[120px] lg:pb-[90px]">
+  <div class="container mx-auto">
+    <div class="flex flex-wrap -mx-4">
+      <div class="w-full px-4">
+        <div class="mx-auto mb-[60px] max-w-[620px] text-center">
+          <span class="block mb-2 text-lg font-semibold text-primary">
+            {subtitle}
+          </span>
+          <h2 class="text-dark dark:text-white mb-4 text-3xl leading-[1.2] font-bold sm:text-4xl md:text-[40px]">
+            {title}
+          </h2>
+        </div>
+      </div>
+    </div>
+
+    <!-- 产品轮播 -->
+    <div class="product-carousel -mx-4 flex flex-wrap">
+      {products.map((product) => (
+        <div class="w-full px-4 md:w-1/2 lg:w-1/3 xl:w-1/4">
+          <div class="wow fadeInUp relative mb-12 overflow-hidden rounded-lg bg-white dark:bg-dark-2 shadow-1 transition-all hover:shadow-3 dark:shadow-card dark:hover:shadow-3">
+            <div class="relative overflow-hidden">
+              <!-- 产品图片 -->
+              <img src={product.image || "/assets/products/placeholder.jpg"} alt={product.name} class="w-full h-[240px] object-cover" />
+              
+              <!-- 产品标签 (新品/热门) -->
+              {product.badge && (
+                <span class={`absolute top-4 right-4 rounded-full py-1 px-3 text-xs font-semibold text-white ${product.badge === 'new' ? 'bg-green-500' : 'bg-red-500'}`}>
+                  {product.badge === 'new' ? '新品' : '热门'}
+                </span>
+              )}
+              
+              <!-- 产品悬停效果已移除 -->
+            </div>
+            
+            <div class="p-6">
+              <!-- 产品名称 -->
+              <h3 class="mb-2 text-xl font-semibold text-dark dark:text-white">
+                {product.name}
+              </h3>
+              
+              <!-- 产品评分 -->
+              <div class="mb-3 flex items-center">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <span class={`text-yellow-500 ${i < Math.floor(product.rating) ? 'text-yellow-500' : (i < product.rating ? 'text-yellow-300' : 'text-gray-300')}`}>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+                      <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
+                    </svg>
+                  </span>
+                ))}
+                <span class="ml-1 text-xs text-gray-500">({product.rating})</span>
+              </div>
+              
+              <!-- 产品价格 -->
+              <div class="mb-4 flex items-center">
+                <span class="text-xl font-semibold text-primary mr-2">¥{product.price}</span>
+                {product.originalPrice && (
+                  <span class="text-sm text-gray-400 line-through">¥{product.originalPrice}</span>
+                )}
+              </div>
+              
+              <!-- 产品描述 -->
+              <p class="text-sm text-body-color dark:text-dark-6 mb-4">
+                {product.description}
+              </p>
+              
+              <!-- 添加立即申请和立即办理按钮 -->
+              <div class="flex space-x-2">
+                <a href={`/apply/${product.id}`} class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-primary rounded-lg hover:bg-primary-dark transition-colors">
+                  立即申请
+                </a>
+                <a href={`/order/${product.id}`} class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-primary border border-primary rounded-lg hover:bg-primary hover:text-white transition-colors">
+                  立即办理
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- ====== Product Section End -->
+  <!-- 背景装饰 -->
+  <div>
+    <span class="absolute top-4 left-4 -z-[1]">
+      <svg width="48" height="134" viewBox="0 0 48 134" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="45.6673" cy="132" r="1.66667" transform="rotate(180 45.6673 132)" fill="#13C296" />
+        <circle cx="45.6673" cy="117.333" r="1.66667" transform="rotate(180 45.6673 117.333)" fill="#13C296" />
+        <circle cx="45.6673" cy="102.667" r="1.66667" transform="rotate(180 45.6673 102.667)" fill="#13C296" />
+        <circle cx="45.6673" cy="88.0001" r="1.66667" transform="rotate(180 45.6673 88.0001)" fill="#13C296" />
+        <circle cx="45.6673" cy="73.3335" r="1.66667" transform="rotate(180 45.6673 73.3335)" fill="#13C296" />
+        <circle cx="45.6673" cy="45.0001" r="1.66667" transform="rotate(180 45.6673 45.0001)" fill="#13C296" />
+        <circle cx="45.6673" cy="16.0001" r="1.66667" transform="rotate(180 45.6673 16.0001)" fill="#13C296" />
+        <circle cx="45.6673" cy="59.0001" r="1.66667" transform="rotate(180 45.6673 59.0001)" fill="#13C296" />
+        <circle cx="45.6673" cy="30.6668" r="1.66667" transform="rotate(180 45.6673 30.6668)" fill="#13C296" />
+        <circle cx="45.6673" cy="1.66683" r="1.66667" transform="rotate(180 45.6673 1.66683)" fill="#13C296" />
+        <circle cx="31.0013" cy="132" r="1.66667" transform="rotate(180 31.0013 132)" fill="#13C296" />
+        <circle cx="31.0013" cy="117.333" r="1.66667" transform="rotate(180 31.0013 117.333)" fill="#13C296" />
+        <circle cx="31.0013" cy="102.667" r="1.66667" transform="rotate(180 31.0013 102.667)" fill="#13C296" />
+        <circle cx="31.0013" cy="88.0001" r="1.66667" transform="rotate(180 31.0013 88.0001)" fill="#13C296" />
+        <circle cx="31.0013" cy="73.3335" r="1.66667" transform="rotate(180 31.0013 73.3335)" fill="#13C296" />
+        <circle cx="31.0013" cy="45.0001" r="1.66667" transform="rotate(180 31.0013 45.0001)" fill="#13C296" />
+        <circle cx="31.0013" cy="16.0001" r="1.66667" transform="rotate(180 31.0013 16.0001)" fill="#13C296" />
+        <circle cx="31.0013" cy="59.0001" r="1.66667" transform="rotate(180 31.0013 59.0001)" fill="#13C296" />
+        <circle cx="31.0013" cy="30.6668" r="1.66667" transform="rotate(180 31.0013 30.6668)" fill="#13C296" />
+        <circle cx="31.0013" cy="1.66683" r="1.66667" transform="rotate(180 31.0013 1.66683)" fill="#13C296" />
+      </svg>
+    </span>
+    <span class="absolute bottom-4 right-4 -z-[1]">
+      <svg width="48" height="134" viewBox="0 0 48 134" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="45.6673" cy="132" r="1.66667" transform="rotate(180 45.6673 132)" fill="#3758F9" />
+        <circle cx="45.6673" cy="117.333" r="1.66667" transform="rotate(180 45.6673 117.333)" fill="#3758F9" />
+        <circle cx="45.6673" cy="102.667" r="1.66667" transform="rotate(180 45.6673 102.667)" fill="#3758F9" />
+        <circle cx="45.6673" cy="88.0001" r="1.66667" transform="rotate(180 45.6673 88.0001)" fill="#3758F9" />
+        <circle cx="45.6673" cy="73.3333" r="1.66667" transform="rotate(180 45.6673 73.3333)" fill="#3758F9" />
+        <circle cx="45.6673" cy="45.0001" r="1.66667" transform="rotate(180 45.6673 45.0001)" fill="#3758F9" />
+        <circle cx="45.6673" cy="16.0001" r="1.66667" transform="rotate(180 45.6673 16.0001)" fill="#3758F9" />
+        <circle cx="45.6673" cy="59.0001" r="1.66667" transform="rotate(180 45.6673 59.0001)" fill="#3758F9" />
+        <circle cx="45.6673" cy="30.6668" r="1.66667" transform="rotate(180 45.6673 30.6668)" fill="#3758F9" />
+        <circle cx="45.6673" cy="1.66683" r="1.66667" transform="rotate(180 45.6673 1.66683)" fill="#3758F9" />
+        <circle cx="31.0006" cy="132" r="1.66667" transform="rotate(180 31.0006 132)" fill="#3758F9" />
+        <circle cx="31.0006" cy="117.333" r="1.66667" transform="rotate(180 31.0006 117.333)" fill="#3758F9" />
+        <circle cx="31.0006" cy="102.667" r="1.66667" transform="rotate(180 31.0006 102.667)" fill="#3758F9" />
+        <circle cx="31.0006" cy="88.0001" r="1.66667" transform="rotate(180 31.0006 88.0001)" fill="#3758F9" />
+        <circle cx="31.0008" cy="73.3333" r="1.66667" transform="rotate(180 31.0008 73.3333)" fill="#3758F9" />
+        <circle cx="31.0008" cy="45.0001" r="1.66667" transform="rotate(180 31.0008 45.0001)" fill="#3758F9" />
+        <circle cx="31.0008" cy="16.0001" r="1.66667" transform="rotate(180 31.0008 16.0001)" fill="#3758F9" />
+        <circle cx="31.0008" cy="59.0001" r="1.66667" transform="rotate(180 31.0008 59.0001)" fill="#3758F9" />
+        <circle cx="31.0008" cy="30.6668" r="1.66667" transform="rotate(180 31.0008 30.6668)" fill="#3758F9" />
+        <circle cx="31.0008" cy="1.66683" r="1.66667" transform="rotate(180 31.0008 1.66683)" fill="#3758F9" />
+      </svg>
+    </span>
+  </div>
+</section>
+<!-- ====== 产品轮播组件 结束 -->
+
+<style>
+  /* 产品卡片悬停效果 */
+  .product-carousel .wow {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .product-carousel .wow:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* 移除了产品操作按钮相关样式 */
+</style>
+
+<script>
+  // 移除了产品卡片交互效果相关代码
+  document.addEventListener('DOMContentLoaded', () => {
+    // 获取所有产品卡片
+    const productCards = document.querySelectorAll('.product-carousel .wow');
+    
+    // 基本卡片效果可以保留
+  });
+</script>
+<!-- ====== Product Section End -->

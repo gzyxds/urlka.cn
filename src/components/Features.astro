@@ -1,0 +1,235 @@
+---
+const features = [
+  {
+    icon: 'phone',
+    title: '中国移动',
+    description: '中国移动官方合作，提供优质网络服务',
+    ref: '#',
+    refTitle: '查看移动套餐',
+    iconColor: 'md-white', // 蓝色 - 中国移动品牌色
+  },
+  {
+    icon: 'satellite_alt',
+    title: '中国电信',
+    description: '中国电信官方合作，稳定可靠的通信服务',
+    ref: '#',
+    refTitle: '浏览电信套餐',
+    iconColor: 'md-white', // 蓝色 - 中国电信品牌色
+  },
+  {
+    icon: 'cell_tower',
+    title: '中国联通',
+    description: '中国联通官方合作，全面覆盖的网络',
+    ref: '#',
+    refTitle: '了解联通套餐',
+    iconColor: 'md-white', // 红色 - 中国联通品牌色
+  },
+  {
+    icon: 'tv',
+    title: '中国广电',
+    description: '中国广电官方合作，创新的通信解决方案',
+    ref: '#',
+    refTitle: '探索广电套餐',
+    iconColor: 'md-white', // 绿色 - 中国广电品牌色
+  },
+  {
+    icon: 'payments',
+    title: '全网高佣金',
+    description: '全网最高的佣金，快速实现流量变现',
+    ref: '#',
+    refTitle: '了解佣金方案',
+    iconColor: 'md-white',
+  },
+  {
+    icon: 'sim_card',
+    title: '全网全卡池',
+    description: '全网最全的卡池，满足您的所有需求',
+    ref: '#',
+    refTitle: '查看卡池详情',
+    iconColor: 'md-white',
+  },
+  {
+    icon: 'data_usage',
+    title: '全网优质流量',
+    description: '全网优质的流量，满足您的所有需求',
+    ref: '#',
+    refTitle: '浏览流量套餐',
+    iconColor: 'md-white',
+  },
+  {
+    icon: 'inventory_2',
+    title: '零库存压力',
+    description: '零库存压力，无需担心库存问题',
+    ref: '#',
+    refTitle: '了解库存管理',
+    iconColor: 'md-white',
+  },
+  {
+    icon: 'local_shipping',
+    title: '全自动发货',
+    description: '全自动发货，无需人工干预',
+    ref: '#',
+    refTitle: '查看发货流程',
+    iconColor: 'md-white',
+  },
+  {
+    icon: 'support_agent',
+    title: '24小时客户服务',
+    description: '我们提供全天候的客户支持，随时解答您的疑问',
+    ref: '#',
+    refTitle: '联系客服',
+    iconColor: 'md-white',
+  },
+  {
+    icon: 'smartphone',
+    title: '灵活的套餐选择',
+    description: '提供多种套餐选择，满足不同用户的需求',
+    ref: '#',
+    refTitle: '查看套餐选项',
+    iconColor: 'md-white',
+  },
+  {
+    icon: 'verified',
+    title: '高质量服务保证',
+    description: '我们承诺提供高质量的服务，确保客户满意度',
+    ref: '#',
+    refTitle: '服务承诺',
+    iconColor: 'md-white',
+  },
+  {
+    icon: 'rocket_launch',
+    title: '快速激活流程',
+    description: '简化的激活流程，让您快速开始使用我们的服务',
+    ref: '#',
+    refTitle: '激活指南',
+    iconColor: 'md-white',
+  },
+  {
+    icon: 'analytics', // 更换为更具代表性的图标
+    title: '实时数据洞察', // 修改标题使其更具吸引力
+    description: '实时追踪、精准分析，数据动态尽在掌握', // 优化描述文案
+    ref: '#',
+    refTitle: '开启数据洞察', // 修改跳转标题
+    iconColor: 'md-white', // 更换图标颜色为蓝色
+  },
+  {
+    icon: 'upgrade',
+    title: '灵活的升级选项',
+    description: '提供灵活的升级选项，随时调整以满足您不断变化的需求',
+    ref: '#',
+    refTitle: '升级方案',
+    iconColor: 'md-white',
+  },
+  {
+    icon: 'public',
+    title: '全国覆盖',
+    description: '我们的服务覆盖全国各地，无论您在哪里都能享受到优质服务',
+    ref: '#',
+    refTitle: '查看覆盖范围',
+    iconColor: 'md-white',
+  },
+  {
+    icon: 'groups',
+    title: '专业团队支持',
+    description: '拥有专业的技术和客服团队，为您提供全方位的支持',
+    ref: '#',
+    refTitle: '认识我们的团队',
+    iconColor: 'md-white',
+  },
+  {
+    icon: 'security',
+    title: '安全可靠',
+    description: '采用先进的安全技术，保护您的个人信息和数据安全',
+    ref: '#',
+    refTitle: '安全保障',
+    iconColor: 'md-white',
+  },
+  {
+    icon: 'visibility',
+    title: '透明定价',
+    description: '我们的定价透明公开，没有隐藏费用，让您放心使用',
+    ref: '#',
+    refTitle: '查看价格详情',
+    iconColor: 'md-white',
+  },
+  {
+    icon: 'star',
+    title: '优质客户体验',
+    description: '我们致力于提供卓越的客户体验，确保每位用户都满意',
+    ref: '#',
+    refTitle: '172号卡产品资料汇总',
+    iconColor: 'md-white',
+  },
+  {
+    icon: 'business_center',
+    title: '零成本加盟',
+    description: '代理商无需支付任何代理费用即可开启流量卡推广业务，实现零成本创业，轻创业，享未来',
+    ref: '#',
+    refTitle: '了解加盟详情',
+    iconColor: 'md-white',
+  },
+  {
+    icon: 'desktop_windows',
+    title: '独立后台操作',
+    description: '通过独立后台，代理商可以清晰直观管理订单和一键式操作，大大提高了工作效率',
+    ref: '#',
+    refTitle: '查看后台演示',
+    iconColor: 'md-white',
+  },
+  {
+    icon: 'build',
+    title: '零售后服务',
+    description: '客户完成首冲后，可以直接享受运营商官方的客服支持，代理商无需承担售后服务压力',
+    ref: '#',
+    refTitle: '了解售后政策',
+    iconColor: 'md-white',
+  },
+  {
+    icon: 'support',
+    title: '日间客服服务',
+    description: '直属本站的代理和订单都可以享受到本站官方的客服服务，有任何问题都可以迅速得到解决',
+    ref: '#',
+    refTitle: '联系客服',
+    iconColor: 'md-white',
+  },
+];
+---
+
+<!-- ====== Services Section Start -->
+<section class="pb-12 pt-20 lg:pb-[90px] lg:pt-[120px] dark:bg-dark">
+  <div class="container mx-auto">
+    <div class="-mx-4 flex flex-wrap">
+      <div class="w-full px-4">
+        <div class="mx-auto mb-12 max-w-[510px] text-center lg:mb-20">
+          <span class="mb-2 block text-lg font-semibold text-primary">
+            我们的服务
+          </span>
+          <h2 class="mb-3 text-3xl font-bold leading-[1.2] text-dark sm:text-4xl md:text-[40px] dark:text-white">
+            产品优势
+          </h2>
+          <p class="text-base text-body-color dark:text-dark-6">
+            运营商官方合作伙伴，大流量+超低月租
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="-mx-4 flex flex-wrap">
+      {
+        features.map((feature) => (
+          <div class="w-full px-4 md:w-1/2 lg:w-1/4">
+            <div class="mb-9 rounded-[10px] bg-white p-10 shadow-sm hover:shadow-md md:px-7 xl:px-10 dark:bg-dark-2">
+              <h4 class="mb-[14px] text-2xl font-semibold text-dark dark:text-white flex items-center">
+                <span class={`material-icons ${feature.iconColor} mr-2 bg-primary p-1 rounded-md`} style="font-size: 1.2rem;">{feature.icon}</span>
+                {feature.title}
+              </h4>
+              <p class="text-body-color dark:text-dark-6">
+                {feature.description}
+              </p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+<!-- ====== Services Section End -->

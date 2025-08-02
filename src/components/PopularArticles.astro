@@ -1,0 +1,166 @@
+---
+// 导入 Astro 内容集合 API 来获取博客文章
+import { getCollection } from 'astro:content';
+
+// 获取所有博客文章并按发布日期排序，取前4篇作为热门文章
+const allPosts = await getCollection('blog');
+const popularPosts = allPosts
+  .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
+  .slice(0, 4);
+
+// 如果没有足够的文章，使用默认数据作为后备
+const fallbackArticles = [
+  {
+    image: "/assets/logo/bloglogo.png", // 统一使用博客 Logo 作为作者头像
+    title: "创建引人入胜的在线课程，让学生爱上学习", 
+    author: "张小明",
+    slug: "#",
+    pubDate: "2024-01-15"
+  },
+  {
+    image: "/assets/logo/bloglogo.png", // 统一使用博客 Logo 作为作者头像
+    title: "启动在线课程的终极公式和策略", 
+    author: "李华",
+    slug: "#",
+    pubDate: "2024-01-10"
+  },
+  {
+    image: "/assets/logo/bloglogo.png", // 统一使用博客 Logo 作为作者头像
+    title: "50个最佳网页设计技巧，助你脱颖而出", 
+    author: "王小红",
+    slug: "#",
+    pubDate: "2024-01-05"
+  },
+  {
+    image: "/assets/logo/bloglogo.png", // 统一使用博客 Logo 作为作者头像
+    title: "8个最佳着陆页构建器深度评测", 
+    author: "赵强",
+    slug: "#",
+    pubDate: "2024-01-01"
+  },
+];
+
+// 处理文章数据，优先使用真实文章，不足时用默认数据补充
+const articles = popularPosts.length > 0 
+  ? popularPosts.map(post => ({
+      image: "/assets/logo/bloglogo.png", // 统一使用博客 Logo 作为作者头像
+      title: post.data.title,
+      author: post.data.author || "匿名作者",
+      slug: `/blog/${post.slug}`,
+      pubDate: post.data.pubDate
+    }))
+  : fallbackArticles;
+
+// 确保至少有4篇文章显示
+const displayArticles = articles.length < 4 
+  ? [...articles, ...fallbackArticles.slice(articles.length)] 
+  : articles.slice(0, 4);
+
+// 格式化日期显示
+function formatDate(date: string | Date) {
+  return new Date(date).toLocaleDateString('zh-CN', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+}
+---
+
+<!-- 热门文章组件容器 -->
+<section class="-mx-4 mb-8 flex flex-wrap" aria-labelledby="popular-articles-title">
+  <!-- 组件标题区域 -->
+  <div class="w-full px-4">
+    <h2
+      id="popular-articles-title"
+      class="wow fadeInUp relative pb-5 text-2xl font-semibold text-dark dark:text-white sm:text-[28px]"
+      data-wow-delay=".1s"
+    >
+      热门文章
+    </h2>
+    <span
+      class="mb-10 inline-block h-[2px] w-20 bg-primary"
+      aria-hidden="true"
+    ></span>
+  </div>
+
+  <!-- 文章列表 -->
+  {displayArticles.map((article, index) => (
+    <article class="w-full px-4 md:w-1/2 lg:w-full">
+      <div
+        class="wow fadeInUp mb-5 flex w-full items-center border-b border-stroke dark:border-dark-3 pb-5 transition-all duration-300 hover:bg-gray-50 dark:hover:bg-dark-2 rounded-lg p-3"
+        data-wow-delay={`.${index + 1}s`}
+      >
+        <!-- 作者头像区域 -->
+        <div
+          class="mr-5 h-20 w-full max-w-[80px] overflow-hidden rounded-full ring-2 ring-gray-200 dark:ring-dark-3 transition-all duration-300 hover:ring-primary"
+        >
+          <img
+            src={article.image}
+            alt={`${article.author}的头像`}
+            class="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+            loading="lazy"
+            onerror="this.src='/assets/blog/default-author.png'"
+          />
+        </div>
+        
+        <!-- 文章信息区域 -->
+        <div class="w-full">
+          <h3 class="mb-2">
+            <a
+              href={article.slug}
+              class="inline-block text-lg font-medium leading-snug text-dark dark:text-dark-6 hover:text-primary dark:hover:text-primary lg:text-base xl:text-lg transition-colors duration-300 line-clamp-2"
+              title={article.title}
+            >
+              {article.title}
+            </a>
+          </h3>
+          
+          <!-- 作者和日期信息 -->
+          <div class="flex items-center justify-between text-sm text-body-color dark:text-dark-6">
+            <span class="flex items-center">
+              <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
+              </svg>
+              {article.author}
+            </span>
+            
+            {article.pubDate && (
+              <time 
+                datetime={new Date(article.pubDate).toISOString()}
+                class="flex items-center text-xs"
+              >
+                <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
+                </svg>
+                {formatDate(article.pubDate)}
+              </time>
+            )}
+          </div>
+        </div>
+      </div>
+    </article>
+  ))}
+</section>
+
+<!-- 添加自定义样式 -->
+<style>
+  /* 文本截断样式 */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  /* 平滑过渡效果 */
+  article:hover .ring-2 {
+    transform: scale(1.05);
+  }
+  
+  /* 响应式调整 */
+  @media (max-width: 768px) {
+    .line-clamp-2 {
+      -webkit-line-clamp: 3;
+    }
+  }
+</style>
