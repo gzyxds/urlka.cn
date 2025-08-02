@@ -1,0 +1,97 @@
+---
+import Breadcrumb from '../components/layout/Breadcrumb.astro';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  description="172号卡"
+  title="在线领卡"
+>
+  <Breadcrumb>
+    <Fragment slot="title">在线领卡</Fragment>
+  </Breadcrumb>
+  
+  <!-- 全屏客服聊天窗口 -->
+  <div class="container mx-auto px-4 mb-8">
+    <div class="overflow-hidden rounded-lg shadow-md bg-white dark:bg-dark-2">
+     
+      </div>
+      <div class="iframe-container">
+        <iframe 
+          src="https://h5.lot-ml.com/ProductEn/Index/1a654e0b341cadd2" 
+          width="100%" 
+          height="600px" 
+          frameborder="0"
+          title="七鱼客服"
+          class="w-full"
+          loading="lazy"
+          id="customerServiceFrame"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    /* 确保iframe在各种设备上都能正确显示 */
+    .iframe-container {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      min-height: 600px;
+    }
+    
+    iframe {
+      border: 0;
+      height: 600px;
+    }
+    
+    @media (max-width: 768px) {
+      .iframe-container {
+        min-height: 500px;
+      }
+      
+      iframe {
+        height: 500px;
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .iframe-container {
+        min-height: 700px;
+      }
+      
+      iframe {
+        height: 700px;
+      }
+    }
+    
+    /* 添加平滑过渡效果 */
+    .container {
+      transition: all 0.3s ease;
+    }
+  </style>
+
+  <script>
+    // 动态调整iframe高度以适应内容
+    document.addEventListener('DOMContentLoaded', () => {
+      const adjustFrameHeight = () => {
+        const frame = document.getElementById('customerServiceFrame');
+        if (frame) {
+          // 设置最小高度，确保在小屏幕上也有足够的显示空间
+          const minHeight = 500;
+          // 计算可用高度（视口高度减去其他元素高度的估计值）
+          const availableHeight = window.innerHeight - 200; // 减去头部和面包屑导航的高度
+          const frameHeight = Math.max(minHeight, availableHeight);
+          frame.style.height = `${frameHeight}px`;
+          frame.parentElement.style.minHeight = `${frameHeight}px`;
+        }
+      };
+      
+      // 初始调整
+      adjustFrameHeight();
+      
+      // 窗口大小改变时重新调整
+      window.addEventListener('resize', adjustFrameHeight);
+    });
+  </script>
+</Layout>

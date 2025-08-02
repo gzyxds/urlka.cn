@@ -18,7 +18,13 @@ const menuitems = [
   },
   {
     title: "联系我们",
-    path: "/contact",
+    path: "javascript:void(0)",
+    children: [
+      { title: "在线客服", path: "/online" },
+      { title: "在线留言", path: "/message" },
+      { title: "加入我们", path: "/join-us" },
+      { title: "合作伙伴", path: "/partners" }
+    ]
   },
   {
     title: "博客",
@@ -29,10 +35,10 @@ const menuitems = [
     path: "javascript:void(0)",
     children: [
       { title: "关于页面", path: "/about" },
-      { title: "定价页面", path: "/Product" },
-      { title: "在线客服", path: "/customer" },
+      { title: "热门产品", path: "/Product" },
+      { title: "在线领卡", path: "/card" },
       { title: "联系页面", path: "/contact" },
-      { title: "博客网格页面", path: "/blog" },
+      { title: "新闻资讯", path: "/blog" },
       { title: "注册页面", path: "/signup" },
       { title: "登录页面", path: "/signin" },
       { title: "404页面", path: "/404" },
@@ -179,16 +185,20 @@ const menuitems = [
           </button>
           <div class="hidden sm:flex">
             <a
-              href="/signin"
+              href="https://haoka.lot-ml.com/plugreg.html?agentid=90925"
+              target="_blank"
+              rel="noopener noreferrer"
               class={`${Astro.url.pathname === '/' ? 'loginBtn py-2 px-[22px] text-base font-medium text-white hover:opacity-70' : 'loginBtn py-2 px-[22px] text-base font-medium text-dark dark:text-white hover:opacity-70'}`}
             >
-              登录
+              申请代理
             </a>
             <a
-              href="/signup"
+              href="https://haoka.lot-ml.com/login.html"
+              target="_blank"
+              rel="noopener noreferrer" 
               class={`${Astro.url.pathname === '/' ? 'signUpBtn rounded-md bg-white bg-opacity-20 py-2 px-6 text-base font-medium text-white duration-300 ease-in-out hover:bg-opacity-100 hover:text-dark' : 'signUpBtn rounded-md bg-primary py-2 px-6 text-base font-medium text-white duration-300 ease-in-out hover:bg-blue-dark'}`}
             >
-              注册
+              登入
             </a>
           </div>
         </div>
