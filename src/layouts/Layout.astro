@@ -8,9 +8,10 @@ interface Props {
   description: string;
   title: string;
   image?: string;
+  keywords?: string;
 }
 
-const { description, title, image } = Astro.props;
+const { description, title, image, keywords } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -24,6 +25,7 @@ const { description, title, image } = Astro.props;
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
     <meta property="og:image" content={image} />
     <meta property="twitter:image" content={image} />
     <title>{title}</title>
