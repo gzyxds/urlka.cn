@@ -1,0 +1,423 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumb from '../components/layout/Breadcrumb.astro';
+import CTAsection from '../components/CTAsection.astro';
+import Contactsection from '../components/Contactsection.astro';
+---
+
+<Layout
+  description="加入172号卡分销团队，成为我们的合作伙伴。享受丰厚佣金、专业培训、技术支持等多重优势，共同开拓流量卡市场"
+  title="加入我们 - 172号卡分销系统"
+  keywords="172号卡代理,号卡分销加盟,流量卡代理,分销合作伙伴,代理申请"
+>
+  <!-- 面包屑导航 -->
+  <Breadcrumb>
+    <Fragment slot="title">加入我们</Fragment>
+  </Breadcrumb>
+
+  <!-- 加入我们介绍区域 -->
+  <section class="relative z-10 overflow-hidden bg-white py-20 lg:py-[120px] dark:bg-dark">
+    <div class="container mx-auto">
+      <div class="flex flex-wrap items-center -mx-4">
+        <!-- 左侧内容 -->
+        <div class="w-full lg:w-1/2 px-4 mb-12 lg:mb-0">
+          <div class="wow fadeInUp" data-wow-delay=".2s">
+            <span class="mb-4 block text-base font-semibold text-primary">
+              成为合作伙伴
+            </span>
+            <h2 class="mb-6 text-3xl font-bold text-dark sm:text-4xl lg:text-5xl dark:text-white">
+              加入172号卡
+              <span class="text-primary">分销团队</span>
+            </h2>
+            <p class="mb-8 text-base text-body-color dark:text-dark-6 leading-relaxed">
+              172号卡分销系统是运营商官方合作伙伴，拥有超过百万分销商的专业平台。
+              我们致力于为合作伙伴提供最优质的产品、最丰厚的佣金和最完善的服务支持。
+            </p>
+            
+            <!-- 核心优势列表 -->
+            <div class="space-y-4 mb-8">
+              <div class="flex items-start">
+                <div class="flex-shrink-0 w-6 h-6 bg-primary rounded-full flex items-center justify-center mr-4 mt-1">
+                  <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold text-dark dark:text-white mb-1">丰厚佣金回报</h4>
+                  <p class="text-body-color dark:text-dark-6">业界领先的佣金比例，多层级奖励机制</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="flex-shrink-0 w-6 h-6 bg-primary rounded-full flex items-center justify-center mr-4 mt-1">
+                  <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold text-dark dark:text-white mb-1">专业培训支持</h4>
+                  <p class="text-body-color dark:text-dark-6">完善的培训体系，助您快速上手</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="flex-shrink-0 w-6 h-6 bg-primary rounded-full flex items-center justify-center mr-4 mt-1">
+                  <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold text-dark dark:text-white mb-1">技术平台支持</h4>
+                  <p class="text-body-color dark:text-dark-6">先进的分销管理系统，操作简单高效</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 快速申请按钮 -->
+            <div class="flex flex-wrap gap-4">
+              <a
+                href="https://haoka.lot-ml.com/plugreg.html?agentid=90925"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center px-8 py-3 text-base font-medium text-white bg-primary rounded-md hover:bg-blue-dark transition duration-300"
+              >
+                立即申请代理
+                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </a>
+              <a
+                href="#application-form"
+                class="inline-flex items-center justify-center px-8 py-3 text-base font-medium text-primary border border-primary rounded-md hover:bg-primary hover:text-white transition duration-300"
+              >
+                了解更多
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 右侧图片 -->
+        <div class="w-full lg:w-1/2 px-4">
+          <div class="wow fadeInUp relative" data-wow-delay=".25s">
+            <img
+              src="/assets/hero/172_2.png"
+              alt="加入172号卡团队"
+              class="w-full max-w-[500px] mx-auto"
+            />
+            
+            <!-- 装饰元素 -->
+            <div class="absolute -right-6 -top-6 z-[-1] opacity-30">
+              <svg width="134" height="106" viewBox="0 0 134 106" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="1.66667" cy="104" r="1.66667" transform="rotate(-90 1.66667 104)" fill="#3056D3"></circle>
+                <circle cx="16.3333" cy="104" r="1.66667" transform="rotate(-90 16.3333 104)" fill="#3056D3"></circle>
+                <circle cx="31" cy="104" r="1.66667" transform="rotate(-90 31 104)" fill="#3056D3"></circle>
+                <circle cx="45.6667" cy="104" r="1.66667" transform="rotate(-90 45.6667 104)" fill="#3056D3"></circle>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 合作优势区域 -->
+  <section class="bg-[#F4F7FF] py-20 lg:py-[120px] dark:bg-dark-2">
+    <div class="container mx-auto">
+      <!-- 标题 -->
+      <div class="text-center mb-16">
+        <span class="mb-4 block text-base font-semibold text-primary">
+          合作优势
+        </span>
+        <h2 class="mb-6 text-3xl font-bold text-dark sm:text-4xl dark:text-white">
+          为什么选择与我们合作
+        </h2>
+        <div class="flex justify-center">
+          <div class="w-24 h-1 bg-primary rounded-full"></div>
+        </div>
+      </div>
+
+      <!-- 优势卡片 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- 优势1 -->
+        <div class="wow fadeInUp bg-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300 dark:bg-dark" data-wow-delay=".1s">
+          <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-dark dark:text-white mb-4">高额佣金</h3>
+          <p class="text-body-color dark:text-dark-6 leading-relaxed">
+            业界领先的佣金比例，每单都有丰厚回报。多层级奖励机制，让您的收益持续增长。
+          </p>
+        </div>
+
+        <!-- 优势2 -->
+        <div class="wow fadeInUp bg-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300 dark:bg-dark" data-wow-delay=".2s">
+          <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-dark dark:text-white mb-4">品牌保障</h3>
+          <p class="text-body-color dark:text-dark-6 leading-relaxed">
+            运营商官方合作伙伴，正规渠道保障。品牌知名度高，客户信任度强，转化率更高。
+          </p>
+        </div>
+
+        <!-- 优势3 -->
+        <div class="wow fadeInUp bg-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300 dark:bg-dark" data-wow-delay=".3s">
+          <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-dark dark:text-white mb-4">技术支持</h3>
+          <p class="text-body-color dark:text-dark-6 leading-relaxed">
+            先进的分销管理系统，实时数据统计。专业技术团队7×24小时支持，确保系统稳定运行。
+          </p>
+        </div>
+
+        <!-- 优势4 -->
+        <div class="wow fadeInUp bg-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300 dark:bg-dark" data-wow-delay=".4s">
+          <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-dark dark:text-white mb-4">培训体系</h3>
+          <p class="text-body-color dark:text-dark-6 leading-relaxed">
+            完善的培训课程体系，从入门到精通。定期举办线上线下培训，助您快速提升业务能力。
+          </p>
+        </div>
+
+        <!-- 优势5 -->
+        <div class="wow fadeInUp bg-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300 dark:bg-dark" data-wow-delay=".5s">
+          <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-dark dark:text-white mb-4">团队支持</h3>
+          <p class="text-body-color dark:text-dark-6 leading-relaxed">
+            专业的客服团队和销售支持，协助您处理客户问题。丰富的营销素材和推广工具免费提供。
+          </p>
+        </div>
+
+        <!-- 优势6 -->
+        <div class="wow fadeInUp bg-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300 dark:bg-dark" data-wow-delay=".6s">
+          <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-dark dark:text-white mb-4">快速启动</h3>
+          <p class="text-body-color dark:text-dark-6 leading-relaxed">
+            简化的申请流程，快速审核通过。提供完整的启动指南，让您在最短时间内开始盈利。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 申请表单区域 -->
+  <section id="application-form" class="relative z-10 overflow-hidden bg-white py-20 lg:py-[120px] dark:bg-dark">
+    <div class="container mx-auto">
+      <div class="flex flex-wrap -mx-4">
+        <!-- 左侧信息 -->
+        <div class="w-full lg:w-1/2 px-4 mb-12 lg:mb-0">
+          <div class="wow fadeInUp" data-wow-delay=".2s">
+            <span class="mb-4 block text-base font-semibold text-primary">
+              代理申请
+            </span>
+            <h2 class="mb-6 text-3xl font-bold text-dark sm:text-4xl dark:text-white">
+              立即申请成为
+              <span class="text-primary">合作伙伴</span>
+            </h2>
+            <p class="mb-8 text-base text-body-color dark:text-dark-6 leading-relaxed">
+              填写下方申请表单，我们的专业团队将在24小时内与您联系，为您详细介绍合作政策和开通流程。
+            </p>
+
+            <!-- 申请流程 -->
+            <div class="space-y-6">
+              <div class="flex items-start">
+                <div class="flex-shrink-0 w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center mr-4 text-sm font-bold">
+                  1
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold text-dark dark:text-white mb-1">提交申请</h4>
+                  <p class="text-body-color dark:text-dark-6">填写申请表单，提供基本信息</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="flex-shrink-0 w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center mr-4 text-sm font-bold">
+                  2
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold text-dark dark:text-white mb-1">资质审核</h4>
+                  <p class="text-body-color dark:text-dark-6">我们将对您的申请进行审核</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="flex-shrink-0 w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center mr-4 text-sm font-bold">
+                  3
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold text-dark dark:text-white mb-1">账户开通</h4>
+                  <p class="text-body-color dark:text-dark-6">审核通过后开通分销账户</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="flex-shrink-0 w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center mr-4 text-sm font-bold">
+                  4
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold text-dark dark:text-white mb-1">开始盈利</h4>
+                  <p class="text-body-color dark:text-dark-6">接受培训后即可开始推广盈利</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 右侧申请表单 -->
+        <div class="w-full lg:w-1/2 px-4">
+          <div class="wow fadeInUp bg-white dark:bg-dark-2 rounded-lg shadow-lg p-8" data-wow-delay=".25s">
+            <h3 class="text-2xl font-bold text-dark dark:text-white mb-6 text-center">代理申请表单</h3>
+            
+            <form class="space-y-6" action="#" method="POST">
+              <!-- 姓名 -->
+              <div>
+                <label for="name" class="block text-sm font-medium text-dark dark:text-white mb-2">
+                  姓名 <span class="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  class="w-full px-4 py-3 border border-stroke rounded-md focus:outline-none focus:border-primary dark:border-dark-3 dark:bg-dark dark:text-white"
+                  placeholder="请输入您的真实姓名"
+                />
+              </div>
+
+              <!-- 手机号 -->
+              <div>
+                <label for="phone" class="block text-sm font-medium text-dark dark:text-white mb-2">
+                  手机号 <span class="text-red-500">*</span>
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  required
+                  class="w-full px-4 py-3 border border-stroke rounded-md focus:outline-none focus:border-primary dark:border-dark-3 dark:bg-dark dark:text-white"
+                  placeholder="请输入您的手机号码"
+                />
+              </div>
+
+              <!-- 微信号 -->
+              <div>
+                <label for="wechat" class="block text-sm font-medium text-dark dark:text-white mb-2">
+                  微信号
+                </label>
+                <input
+                  type="text"
+                  id="wechat"
+                  name="wechat"
+                  class="w-full px-4 py-3 border border-stroke rounded-md focus:outline-none focus:border-primary dark:border-dark-3 dark:bg-dark dark:text-white"
+                  placeholder="请输入您的微信号"
+                />
+              </div>
+
+              <!-- 所在地区 -->
+              <div>
+                <label for="location" class="block text-sm font-medium text-dark dark:text-white mb-2">
+                  所在地区 <span class="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="location"
+                  name="location"
+                  required
+                  class="w-full px-4 py-3 border border-stroke rounded-md focus:outline-none focus:border-primary dark:border-dark-3 dark:bg-dark dark:text-white"
+                  placeholder="请输入您的所在城市"
+                />
+              </div>
+
+              <!-- 推广渠道 -->
+              <div>
+                <label for="channel" class="block text-sm font-medium text-dark dark:text-white mb-2">
+                  主要推广渠道
+                </label>
+                <select
+                  id="channel"
+                  name="channel"
+                  class="w-full px-4 py-3 border border-stroke rounded-md focus:outline-none focus:border-primary dark:border-dark-3 dark:bg-dark dark:text-white"
+                >
+                  <option value="">请选择推广渠道</option>
+                  <option value="social">社交媒体</option>
+                  <option value="offline">线下推广</option>
+                  <option value="online">线上推广</option>
+                  <option value="friends">朋友圈</option>
+                  <option value="other">其他渠道</option>
+                </select>
+              </div>
+
+              <!-- 备注 -->
+              <div>
+                <label for="message" class="block text-sm font-medium text-dark dark:text-white mb-2">
+                  备注信息
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  class="w-full px-4 py-3 border border-stroke rounded-md focus:outline-none focus:border-primary dark:border-dark-3 dark:bg-dark dark:text-white resize-none"
+                  placeholder="请简单介绍您的推广经验或其他想要说明的信息"
+                ></textarea>
+              </div>
+
+              <!-- 提交按钮 -->
+              <div class="text-center">
+                <button
+                  type="submit"
+                  class="w-full bg-primary text-white py-3 px-6 rounded-md font-medium hover:bg-blue-dark transition duration-300"
+                >
+                  提交申请
+                </button>
+                <p class="mt-4 text-sm text-body-color dark:text-dark-6">
+                  提交申请即表示您同意我们的服务条款和隐私政策
+                </p>
+              </div>
+            </form>
+
+            <!-- 快速申请链接 -->
+            <div class="mt-8 pt-6 border-t border-stroke dark:border-dark-3 text-center">
+              <p class="text-body-color dark:text-dark-6 mb-4">或者直接访问官方申请页面</p>
+              <a
+                href="https://haoka.lot-ml.com/plugreg.html?agentid=90925"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center px-6 py-2 text-primary border border-primary rounded-md hover:bg-primary hover:text-white transition duration-300"
+              >
+                官方申请页面
+                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA区域 -->
+  <CTAsection />
+
+  <!-- 联系方式区域 -->
+  <Contactsection />
+</Layout>

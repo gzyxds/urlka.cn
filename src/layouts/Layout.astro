@@ -3,6 +3,7 @@ import Footer from '../components/layout/Footer.astro';
 import Header from '../components/layout/Header.astro';
 import BackToTop from '../components/layout/BackToTop.astro';
 import MadeWithButton from '../components/layout/MadeWithButton.astro';
+import BottomBar from '../components/layout/BottomBar.astro';
 
 interface Props {
   description: string;
@@ -33,6 +34,8 @@ const { description, title, image, keywords } = Astro.props;
     <link href="/assets/icons/material-icons.css" rel="stylesheet">
     <!-- 本地 Inter 字体 -->
     <link href="/assets/fonts/inter.css" rel="stylesheet">
+    <!-- Alpine.js CDN - 用于交互式组件 -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   </head>
   <body>
     <Header />
@@ -43,6 +46,7 @@ const { description, title, image, keywords } = Astro.props;
     <Footer />
     <BackToTop />
     <MadeWithButton />
+    <BottomBar />
     <style is:global>
       /* 使用本地Inter字体 */
       body {

@@ -1,0 +1,476 @@
+---
+// 飞利猫服务优势组件 - 展示管理系统的专业服务
+const services = [
+  {
+    title: '智能设备管理',
+    description: '通过先进的管理系统，实时监控所有设备状态，确保网络服务的稳定性和可靠性',
+    features: ['实时状态监控', '远程设备控制', '故障自动诊断', '性能优化建议'],
+    icon: 'monitor',
+    image: '/assets/features/device-management.svg'
+  },
+  {
+    title: '专业技术支持',
+    description: '拥有专业的技术团队，提供7x24小时技术支持服务，确保您的网络问题得到及时解决',
+    features: ['24小时在线客服', '专业技术团队', '快速响应机制', '远程技术支持'],
+    icon: 'support',
+    image: '/assets/features/tech-support.svg'
+  },
+  {
+    title: '数据安全保障',
+    description: '采用企业级安全防护措施，保护用户数据安全，让您安心使用我们的服务',
+    features: ['数据加密传输', '安全认证机制', '隐私保护', '合规性保障'],
+    icon: 'security',
+    image: '/assets/features/data-security.svg'
+  }
+];
+---
+
+<!-- ====== 飞利猫服务优势 Section Start -->
+<section id="services" class="py-20 lg:py-[120px] bg-gray-50 dark:bg-gray-900">
+  <div class="container mx-auto px-4">
+    <!-- 标题区域 -->
+    <div class="text-center mb-16">
+     <h2 class="mb-6 text-3xl font-bold text-gray-900 sm:text-4xl lg:text-5xl dark:text-white relative inline-block">
+         飞利猫
+        <span class="text-blue-600">WIFI</span>
+        <span class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-transparent rounded-full"></span>
+      </h2>
+      <p class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+        我们不仅提供优质的硬件设备，更重要的是为您提供专业的管理系统和全方位的服务支持
+      </p>
+    </div>
+
+
+
+      <!-- 产品卡片区域 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+        <!-- 充电宝款WIFI卡片 -->
+        <div class="bg-white dark:bg-gray-800 overflow-hidden border border-gray-200 dark:border-gray-600 transform transition-all duration-300">
+          <!-- 卡片头部 -->
+          <div class="bg-gradient-to-r from-blue-50 to-white dark:from-gray-800 dark:to-gray-900 p-6 border-b border-gray-200 dark:border-gray-600">
+            <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-2 flex items-center">
+              <span class="w-2 h-6 bg-blue-600 rounded-full mr-3"></span>
+              飞利猫充电宝款WIFI
+            </h4>
+            <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+              行走的宽带，全程高速上网；轻薄小巧有电就有WiFi，8000毫安超强续航随身wifi；最新芯片/信号更强；电信-联通随心切换，运营商网络任您选择；享1000G/随时随地畅想网络；多设备同时连接， 支持多合设备一起连网；
+            </p>
+          </div>
+          
+          <!-- 卡片特性列表 -->
+          <div class="p-6">
+            <div class="grid grid-cols-2 gap-4 mb-6">
+              <div class="flex items-start">
+                <svg class="w-5 h-5 text-blue-600 mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span class="text-gray-700 dark:text-gray-300 font-medium">充电WIFI二合一</span>
+              </div>
+              <div class="flex items-start">
+                <svg class="w-5 h-5 text-blue-600 mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span class="text-gray-700 dark:text-gray-300 font-medium">最新研发芯片</span>
+              </div>
+              <div class="flex items-start">
+                <svg class="w-5 h-5 text-blue-600 mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span class="text-gray-700 dark:text-gray-300 font-medium">8000mAh电池</span>
+              </div>
+              <div class="flex items-start">
+                <svg class="w-5 h-5 text-blue-600 mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span class="text-gray-700 dark:text-gray-300 font-medium">高速4G多网通</span>
+              </div>
+            </div>
+            
+            <!-- 查看详情按钮 -->
+            <a href="#" class="inline-flex items-center px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-medium transition-all duration-300">
+              查看详情
+              <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- 经典款WIFI卡片 -->
+        <div class="bg-white dark:bg-gray-800 overflow-hidden border border-gray-200 dark:border-gray-600 transform transition-all duration-300">
+          <!-- 卡片头部 -->
+          <div class="bg-gradient-to-r from-blue-50 to-white dark:from-gray-800 dark:to-gray-900 p-6 border-b border-gray-200 dark:border-gray-600">
+            <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-2 flex items-center">
+              <span class="w-2 h-6 bg-blue-600 rounded-full mr-3"></span>
+              飞利猫经典款WIFI
+            </h4>
+            <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+              全新面貌/小巧精致WiFi6高速上网/网速可达8-30m/超轻薄mini；独享高速WiFi,游戏组团开黑不断网，办公多人不卡顿；信号稳定低延迟 游戏加速火力全开；超距信号无障碍传输；智能芯片防蹭网，防破解防万能钥匙；免驱动免宽带，电脑直连自动联网；
+            </p>
+          </div>
+          
+          <!-- 卡片特性列表 -->
+          <div class="p-6">
+            <div class="grid grid-cols-2 gap-4 mb-6">
+              <div class="flex items-start">
+                <svg class="w-5 h-5 text-blue-600 mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span class="text-gray-700 dark:text-gray-300 font-medium">全程高速8-30Mbps</span>
+              </div>
+              <div class="flex items-start">
+                <svg class="w-5 h-5 text-blue-600 mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span class="text-gray-700 dark:text-gray-300 font-medium">超级信号/免插卡</span>
+              </div>
+              <div class="flex items-start">
+                <svg class="w-5 h-5 text-blue-600 mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span class="text-gray-700 dark:text-gray-300 font-medium">智能4G芯片防蹭网</span>
+              </div>
+              <div class="flex items-start">
+                <svg class="w-5 h-5 text-blue-600 mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span class="text-gray-700 dark:text-gray-300 font-medium">联通/电信双网切换</span>
+              </div>
+            </div>
+            
+            <!-- 查看详情按钮 -->
+            <a href="#" class="inline-flex items-center px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-medium transition-all duration-300">
+              查看详情
+              <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+<!-- ====== 飞利猫服务优势 Section End -->
+
+
+<!-- ====== 飞利猫充电宝WIFI产品展示 Section Start -->
+<section class="py-16 lg:py-24 bg-white dark:bg-gray-900">
+  <div class="container mx-auto px-4">
+    <!-- 产品展示区域 -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+      
+      <!-- 左侧：产品信息 -->
+      <div class="space-y-8">
+        <!-- 产品标题 -->
+        <div>
+          <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            飞利猫充电宝款WIFI
+          </h2>
+          <p class="text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+            行走的宽带，全程高速上网；轻薄小巧有电就有WiFi，8000毫安超强续航随身wifi；最新芯片/信号更强；电信-联通随心切换，运营商网络任您选择；享1000G/随时随地畅想网络；多设备同时连接， 支持多合设备一起连网；
+          </p>
+        </div>
+
+        <!-- 产品特性图标区域 -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- 充电WIFI二合一 -->
+          <div class="text-center">
+            <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-2xl flex items-center justify-center mx-auto mb-3">
+              <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"></path>
+              </svg>
+            </div>
+            <p class="text-sm font-medium text-gray-700 dark:text-gray-300">充电WIFI二合一</p>
+          </div>
+
+          <!-- 最新研发芯片 -->
+          <div class="text-center">
+            <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-2xl flex items-center justify-center mx-auto mb-3">
+              <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
+              </svg>
+            </div>
+            <p class="text-sm font-medium text-gray-700 dark:text-gray-300">最新研发芯片</p>
+          </div>
+
+          <!-- 8000mAh电池 -->
+          <div class="text-center">
+            <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-2xl flex items-center justify-center mx-auto mb-3">
+              <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+              </svg>
+            </div>
+            <p class="text-sm font-medium text-gray-700 dark:text-gray-300">8000mAh电池</p>
+          </div>
+
+          <!-- 高速4G多网通 -->
+          <div class="text-center">
+            <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-2xl flex items-center justify-center mx-auto mb-3">
+              <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <p class="text-sm font-medium text-gray-700 dark:text-gray-300">高速4G多网通</p>
+          </div>
+        </div>
+
+        <!-- 查看详情按钮 -->
+        <div>
+          <a href="#" class="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-300">
+            查看详情
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- 右侧：产品展示区域 -->
+      <div class="relative">
+        <!-- 产品标题和规格 -->
+        <div class="text-right mb-8">
+          <h3 class="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+            飞利猫白金款
+          </h3>
+          
+          <!-- 流量规格卡片 -->
+          <div class="flex justify-end space-x-4 mb-6">
+            <!-- 8G套餐 -->
+            <div class="bg-blue-50 dark:bg-blue-900 rounded-xl p-4 text-center min-w-[100px]">
+              <div class="text-2xl font-bold text-blue-600 mb-1">8G</div>
+              <div class="text-xs text-gray-600 dark:text-gray-400">月/10000</div>
+            </div>
+            
+            <!-- 98G套餐 -->
+            <div class="bg-blue-50 dark:bg-blue-900 rounded-xl p-4 text-center min-w-[100px]">
+              <div class="text-2xl font-bold text-blue-600 mb-1">98G</div>
+              <div class="text-xs text-gray-600 dark:text-gray-400">月/10000</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 产品图片展示区域 -->
+        <div class="relative bg-gradient-to-br from-blue-50 to-blue-100 dark:from-gray-800 dark:to-gray-700 rounded-3xl p-8 overflow-hidden">
+          <!-- 背景装饰圆圈 -->
+          <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-to-br from-blue-200 to-blue-300 dark:from-blue-800 dark:to-blue-900 rounded-full opacity-30"></div>
+          
+          <!-- 产品图片 -->
+          <div class="relative z-10 text-center">
+            <!-- 多个产品展示 -->
+            <div class="flex justify-center items-end space-x-2">
+              <!-- 白色产品 -->
+              <div class="transform hover:scale-105 transition-transform duration-300">
+                <div class="w-16 h-24 bg-white rounded-lg shadow-lg border border-gray-200 flex flex-col items-center justify-center">
+                  <div class="w-2 h-8 bg-gray-300 rounded-full mb-2"></div>
+                  <div class="w-8 h-2 bg-gray-200 rounded-full"></div>
+                </div>
+              </div>
+              
+              <!-- 蓝色产品 -->
+              <div class="transform hover:scale-105 transition-transform duration-300">
+                <div class="w-16 h-24 bg-blue-400 rounded-lg shadow-lg border border-blue-300 flex flex-col items-center justify-center">
+                  <div class="w-2 h-8 bg-blue-600 rounded-full mb-2"></div>
+                  <div class="w-8 h-2 bg-blue-300 rounded-full"></div>
+                </div>
+              </div>
+              
+              <!-- 粉色产品 -->
+              <div class="transform hover:scale-105 transition-transform duration-300">
+                <div class="w-16 h-24 bg-pink-300 rounded-lg shadow-lg border border-pink-200 flex flex-col items-center justify-center">
+                  <div class="w-2 h-8 bg-pink-500 rounded-full mb-2"></div>
+                  <div class="w-8 h-2 bg-pink-200 rounded-full"></div>
+                </div>
+              </div>
+              
+              <!-- 灰色产品 -->
+              <div class="transform hover:scale-105 transition-transform duration-300">
+                <div class="w-16 h-24 bg-gray-600 rounded-lg shadow-lg border border-gray-500 flex flex-col items-center justify-center">
+                  <div class="w-2 h-8 bg-gray-800 rounded-full mb-2"></div>
+                  <div class="w-8 h-2 bg-gray-500 rounded-full"></div>
+                </div>
+              </div>
+              
+              <!-- 橙色产品 -->
+              <div class="transform hover:scale-105 transition-transform duration-300">
+                <div class="w-16 h-24 bg-orange-400 rounded-lg shadow-lg border border-orange-300 flex flex-col items-center justify-center">
+                  <div class="w-2 h-8 bg-orange-600 rounded-full mb-2"></div>
+                  <div class="w-8 h-2 bg-orange-300 rounded-full"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 装饰元素 -->
+          <div class="absolute top-4 right-4 w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center shadow-lg">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ====== 飞利猫充电宝WIFI产品展示 Section End -->
+
+
+<!-- ====== 飞利猫经典款WIFI产品展示 Section Start -->
+<section class="py-16 lg:py-24 bg-white dark:bg-gray-900">
+  <div class="container mx-auto px-4">
+    <!-- 产品展示区域 -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+
+      <!-- 左侧：产品展示区域 -->
+      <div class="relative">
+        <!-- 产品标题和规格 -->
+        <div class="text-left mb-8">
+          <h3 class="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+            飞利猫经典款
+          </h3>
+          
+          <!-- 流量规格卡片 -->
+          <div class="flex space-x-4 mb-6">
+            <!-- 8G套餐 -->
+            <div class="bg-blue-50 dark:bg-blue-900 rounded-xl p-4 text-center min-w-[100px]">
+              <div class="text-2xl font-bold text-blue-600 mb-1">8G</div>
+              <div class="text-xs text-gray-600 dark:text-gray-400">月/10000</div>
+            </div>
+            
+            <!-- 98G套餐 -->
+            <div class="bg-blue-50 dark:bg-blue-900 rounded-xl p-4 text-center min-w-[100px]">
+              <div class="text-2xl font-bold text-blue-600 mb-1">98G</div>
+              <div class="text-xs text-gray-600 dark:text-gray-400">月/10000</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 产品图片展示区域 -->
+        <div class="relative bg-gradient-to-br from-blue-50 to-blue-100 dark:from-gray-800 dark:to-gray-700 rounded-3xl p-8 overflow-hidden">
+          <!-- 背景装饰圆圈 -->
+          <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-to-br from-blue-200 to-blue-300 dark:from-blue-800 dark:to-blue-900 rounded-full opacity-30"></div>
+          
+          <!-- 产品图片 -->
+          <div class="relative z-10 text-center">
+            <!-- 多个产品展示 -->
+            <div class="flex justify-center items-end space-x-2">
+              <!-- 白色产品 -->
+              <div class="transform hover:scale-105 transition-transform duration-300">
+                <div class="w-16 h-24 bg-white rounded-lg shadow-lg border border-gray-200 flex flex-col items-center justify-center">
+                  <div class="w-2 h-8 bg-gray-300 rounded-full mb-2"></div>
+                  <div class="w-8 h-2 bg-gray-200 rounded-full"></div>
+                </div>
+              </div>
+              
+              <!-- 蓝色产品 -->
+              <div class="transform hover:scale-105 transition-transform duration-300">
+                <div class="w-16 h-24 bg-blue-400 rounded-lg shadow-lg border border-blue-300 flex flex-col items-center justify-center">
+                  <div class="w-2 h-8 bg-blue-600 rounded-full mb-2"></div>
+                  <div class="w-8 h-2 bg-blue-300 rounded-full"></div>
+                </div>
+              </div>
+              
+              <!-- 粉色产品 -->
+              <div class="transform hover:scale-105 transition-transform duration-300">
+                <div class="w-16 h-24 bg-pink-300 rounded-lg shadow-lg border border-pink-200 flex flex-col items-center justify-center">
+                  <div class="w-2 h-8 bg-pink-500 rounded-full mb-2"></div>
+                  <div class="w-8 h-2 bg-pink-200 rounded-full"></div>
+                </div>
+              </div>
+              
+              <!-- 灰色产品 -->
+              <div class="transform hover:scale-105 transition-transform duration-300">
+                <div class="w-16 h-24 bg-gray-600 rounded-lg shadow-lg border border-gray-500 flex flex-col items-center justify-center">
+                  <div class="w-2 h-8 bg-gray-800 rounded-full mb-2"></div>
+                  <div class="w-8 h-2 bg-gray-500 rounded-full"></div>
+                </div>
+              </div>
+              
+              <!-- 橙色产品 -->
+              <div class="transform hover:scale-105 transition-transform duration-300">
+                <div class="w-16 h-24 bg-orange-400 rounded-lg shadow-lg border border-orange-300 flex flex-col items-center justify-center">
+                  <div class="w-2 h-8 bg-orange-600 rounded-full mb-2"></div>
+                  <div class="w-8 h-2 bg-orange-300 rounded-full"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 装饰元素 -->
+          <div class="absolute top-4 right-4 w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center shadow-lg">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- 右侧：产品信息 -->
+      <div class="space-y-8">
+        <!-- 产品标题 -->
+        <div>
+          <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            飞利猫经典款WIFI
+          </h2>
+          <p class="text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+            全新面貌/小巧精致WiFi6高速上网/网速可达8-30m/超轻薄mini；独享高速WiFi,游戏组团开黑不断网，办公多人不卡顿；信号稳定低延迟 游戏加速火力全开；超距信号无障碍传输；智能芯片防蹭网，防破解防万能钥匙；免驱动免宽带，电脑直连自动联网；
+          </p>
+        </div>
+
+        <!-- 产品特性图标区域 -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- 全程高速8-30Mbps -->
+          <div class="text-center">
+            <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-2xl flex items-center justify-center mx-auto mb-3">
+              <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"></path>
+              </svg>
+            </div>
+            <p class="text-sm font-medium text-gray-700 dark:text-gray-300">全程高速8-30Mbps</p>
+          </div>
+
+          <!-- 超级信号/免插卡 -->
+          <div class="text-center">
+            <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-2xl flex items-center justify-center mx-auto mb-3">
+              <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
+              </svg>
+            </div>
+            <p class="text-sm font-medium text-gray-700 dark:text-gray-300">超级信号/免插卡</p>
+          </div>
+
+          <!-- 智能4G芯片防蹭网 -->
+          <div class="text-center">
+            <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-2xl flex items-center justify-center mx-auto mb-3">
+              <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+              </svg>
+            </div>
+            <p class="text-sm font-medium text-gray-700 dark:text-gray-300">智能4G芯片防蹭网</p>
+          </div>
+
+          <!-- 联通/电信双网切换 -->
+          <div class="text-center">
+            <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-2xl flex items-center justify-center mx-auto mb-3">
+              <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <p class="text-sm font-medium text-gray-700 dark:text-gray-300">联通/电信双网切换</p>
+          </div>
+        </div>
+
+        <!-- 查看详情按钮 -->
+        <div>
+          <a href="#" class="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-300">
+            查看详情
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- ====== 飞利猫经典款WIFI产品展示 Section End -->

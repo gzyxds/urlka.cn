@@ -1,0 +1,442 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="知识库 - 172号卡">
+  <!-- ====== 知识库页面 ====== -->
+  <section class="py-20 bg-gray-50 dark:bg-dark-2 min-h-screen">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-dark dark:text-white mb-4">知识库</h1>
+        <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          这里汇集了所有关于172号卡的使用指南、操作教程和常见问题解答，帮助您快速上手并解决遇到的问题。
+        </p>
+      </div>
+
+      <div class="flex flex-col lg:flex-row gap-8">
+        <!-- 左侧导航栏 -->
+        <div class="lg:w-1/4">
+          <div class="bg-white dark:bg-dark rounded-xl shadow-lg border border-gray-100 dark:border-dark-3 p-6 sticky top-8">
+            <!-- 搜索框 -->
+            <div class="mb-6">
+              <div class="relative">
+                <input 
+                  type="text" 
+                  id="searchInput"
+                  placeholder="搜索知识库..." 
+                  class="w-full pl-10 pr-4 py-3 border border-gray-200 dark:border-dark-3 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-dark-2 text-dark dark:text-white"
+                >
+                <span class="material-icons absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">search</span>
+              </div>
+            </div>
+
+            <!-- 分类导航 -->
+            <div class="space-y-2" id="categoryNav">
+              <h3 class="text-lg font-semibold text-dark dark:text-white mb-4">知识分类</h3>
+              <!-- 分类将通过JavaScript动态生成 -->
+            </div>
+          </div>
+        </div>
+
+        <!-- 右侧内容区域 -->
+        <div class="lg:w-3/4">
+          <div class="space-y-6" id="articlesList">
+            <!-- 文章列表将通过JavaScript动态生成 -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<script>
+  // 知识库文章数据
+  const articles = [
+    {
+      id: 1,
+      title: "新手入门指南",
+      category: "新手指南",
+      date: "2024-08-15",
+      views: "3.2k",
+      rating: "98%",
+      content: `
+        <div>
+          <strong>欢迎加入172号卡大家庭！</strong><br>
+          本指南将帮助您快速了解172号卡的基本功能和使用方法。
+        </div>
+        <div>
+          <strong>一、什么是172号卡？</strong><br>
+          172号卡是一款专为代理商设计的流量卡产品，具有高佣金、快结算、易推广的特点。
+        </div>
+        <div>
+          <strong>二、如何开始？</strong><br>
+          1. 注册成为代理商<br>
+          2. 了解产品特性<br>
+          3. 学习推广技巧<br>
+          4. 开始推广赚取佣金
+        </div>
+        <div>
+          <strong>三、常用功能</strong><br>
+          • 订单管理：查看和管理您的所有订单<br>
+          • 佣金查询：实时查看佣金收入<br>
+          • 推广素材：获取最新的推广素材<br>
+          • 客户服务：7×24小时客服支持
+        </div>
+      `
+    },
+    {
+      id: 2,
+      title: "如何查看订单状态",
+      category: "操作教程",
+      date: "2024-08-10",
+      views: "2.8k",
+      rating: "95%",
+      content: `
+        <div>
+          <strong>订单状态说明</strong><br>
+          了解不同订单状态的含义，帮助您更好地跟踪订单进度。
+        </div>
+        <div>
+          <strong>一、订单状态类型</strong><br>
+          • 待处理：订单已提交，等待系统处理<br>
+          • 审核中：订单正在审核，请耐心等待<br>
+          • 已发货：订单已发货，可查看物流信息<br>
+          • 已签收：客户已签收包裹<br>
+          • 已激活：号卡已成功激活<br>
+          • 已结算：佣金已结算到账
+        </div>
+        <div>
+          <strong>二、如何查看订单</strong><br>
+          1. 登录代理后台<br>
+          2. 点击"订单管理"<br>
+          3. 选择时间范围和状态筛选<br>
+          4. 查看详细订单信息
+        </div>
+      `
+    },
+    {
+      id: 3,
+      title: "佣金结算规则详解",
+      category: "规则说明",
+      date: "2024-08-05",
+      views: "4.1k",
+      rating: "97%",
+      content: `
+        <div>
+          <strong>佣金结算规则</strong><br>
+          详细了解佣金的计算方式和结算时间。
+        </div>
+        <div>
+          <strong>一、佣金计算</strong><br>
+          佣金 = 订单金额 × 佣金比例<br>
+          不同产品的佣金比例可能不同，具体以后台显示为准。
+        </div>
+        <div>
+          <strong>二、结算时间</strong><br>
+          • 月结：每月25-30日结算上月佣金<br>
+          • 结算前提：客户正常激活并首充<br>
+          • 到账时间：结算后1-3个工作日
+        </div>
+        <div>
+          <strong>三、结算条件</strong><br>
+          1. 客户成功激活号卡<br>
+          2. 完成首次充值<br>
+          3. 次月底仍在网使用<br>
+          4. 无违规操作记录
+        </div>
+      `
+    },
+    {
+      id: 4,
+      title: "常见问题解答",
+      category: "常见问题",
+      date: "2024-08-01",
+      views: "5.2k",
+      rating: "96%",
+      content: `
+        <div>
+          <strong>常见问题汇总</strong><br>
+          这里整理了代理商最常遇到的问题和解决方案。
+        </div>
+        <div>
+          <strong>Q1：如何提高激活率？</strong><br>
+          A：选择合适的客户群体，提供优质的售前咨询服务，确保客户了解产品特性。
+        </div>
+        <div>
+          <strong>Q2：佣金什么时候到账？</strong><br>
+          A：一般在次月25-30日结算，结算后1-3个工作日到账。
+        </div>
+        <div>
+          <strong>Q3：如何处理客户投诉？</strong><br>
+          A：及时响应客户需求，协助解决问题，必要时联系客服协助处理。
+        </div>
+        <div>
+          <strong>Q4：可以同时推广多个产品吗？</strong><br>
+          A：可以，建议根据客户需求选择合适的产品进行推广。
+        </div>
+      `
+    },
+    {
+      id: 5,
+      title: "推广技巧分享",
+      category: "操作教程",
+      date: "2024-07-28",
+      views: "3.8k",
+      rating: "94%",
+      content: `
+        <div>
+          <strong>高效推广技巧</strong><br>
+          分享一些实用的推广方法，帮助您提高转化率。
+        </div>
+        <div>
+          <strong>一、目标客户定位</strong><br>
+          • 流量需求大的用户<br>
+          • 对价格敏感的用户<br>
+          • 经常出差的商务人士<br>
+          • 学生群体
+        </div>
+        <div>
+          <strong>二、推广渠道</strong><br>
+          • 社交媒体平台<br>
+          • 朋友圈分享<br>
+          • 线下地推<br>
+          • 口碑传播
+        </div>
+        <div>
+          <strong>三、话术技巧</strong><br>
+          1. 突出产品优势<br>
+          2. 解决客户痛点<br>
+          3. 提供优质服务<br>
+          4. 建立信任关系
+        </div>
+      `
+    },
+    {
+      id: 6,
+      title: "后台功能介绍",
+      category: "新手指南",
+      date: "2024-07-25",
+      views: "2.9k",
+      rating: "93%",
+      content: `
+        <div>
+          <strong>代理后台功能详解</strong><br>
+          全面了解代理后台的各项功能，提高工作效率。
+        </div>
+        <div>
+          <strong>一、首页概览</strong><br>
+          • 今日数据统计<br>
+          • 订单趋势图表<br>
+          • 重要通知公告<br>
+          • 快捷操作入口
+        </div>
+        <div>
+          <strong>二、订单管理</strong><br>
+          • 订单列表查看<br>
+          • 订单状态筛选<br>
+          • 批量操作功能<br>
+          • 订单详情查看
+        </div>
+        <div>
+          <strong>三、财务中心</strong><br>
+          • 佣金收入统计<br>
+          • 提现申请<br>
+          • 财务报表<br>
+          • 交易记录
+        </div>
+      `
+    }
+  ];
+
+  // 分类配置
+  const categories = [
+    { id: 'all', name: '全部文章', color: 'gray' },
+    { id: '新手指南', name: '新手指南', color: 'blue' },
+    { id: '操作教程', name: '操作教程', color: 'green' },
+    { id: '规则说明', name: '规则说明', color: 'red' },
+    { id: '常见问题', name: '常见问题', color: 'orange' }
+  ];
+
+  // 获取分类颜色样式
+  function getCategoryStyle(category) {
+    const categoryConfig = categories.find(cat => cat.id === category);
+    const color = categoryConfig ? categoryConfig.color : 'gray';
+    
+    const colorMap = {
+      blue: 'bg-blue-100 dark:bg-blue-900/30 text-primary',
+      green: 'bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400',
+      red: 'bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400',
+      orange: 'bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400',
+      gray: 'bg-gray-100 dark:bg-gray-900/30 text-gray-600 dark:text-gray-400'
+    };
+    
+    return colorMap[color] || colorMap.gray;
+  }
+
+  // 渲染分类导航
+  function renderCategories() {
+    const categoryNav = document.getElementById('categoryNav');
+    const categoriesHtml = categories.map(category => `
+      <button 
+        class="category-btn w-full text-left px-4 py-3 rounded-lg transition-all duration-200 hover:bg-gray-50 dark:hover:bg-dark-3 ${category.id === 'all' ? 'bg-primary text-white' : 'text-gray-600 dark:text-gray-400'}"
+        data-category="${category.id}"
+      >
+        <span class="flex items-center justify-between">
+          <span>${category.name}</span>
+          <span class="text-sm opacity-75" id="count-${category.id}">
+            ${category.id === 'all' ? articles.length : articles.filter(article => article.category === category.id).length}
+          </span>
+        </span>
+      </button>
+    `).join('');
+    
+    categoryNav.innerHTML = `
+      <h3 class="text-lg font-semibold text-dark dark:text-white mb-4">知识分类</h3>
+      ${categoriesHtml}
+    `;
+  }
+
+  // 渲染文章列表
+  function renderArticles(filteredArticles) {
+    const articlesList = document.getElementById('articlesList');
+    
+    if (filteredArticles.length === 0) {
+      articlesList.innerHTML = `
+        <div class="text-center py-12">
+          <span class="material-icons text-6xl text-gray-300 dark:text-gray-600 mb-4">search_off</span>
+          <h3 class="text-xl font-semibold text-gray-500 dark:text-gray-400 mb-2">未找到相关文章</h3>
+          <p class="text-gray-400 dark:text-gray-500">请尝试其他关键词或选择不同的分类</p>
+        </div>
+      `;
+      return;
+    }
+
+    const articlesHtml = filteredArticles.map(article => `
+      <article class="bg-white dark:bg-dark rounded-xl shadow-lg border border-gray-100 dark:border-dark-3 p-6 hover:shadow-xl transition-all duration-300 collapsible-article cursor-pointer">
+        <div class="flex items-start justify-between">
+          <div class="flex-1">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="px-3 py-1 ${getCategoryStyle(article.category)} text-xs font-medium rounded-full">${article.category}</span>
+              <span class="text-xs text-gray-500 dark:text-gray-400">${article.date}</span>
+            </div>
+            <h3 class="text-xl font-semibold text-dark dark:text-white mb-2 hover:text-primary transition-colors">
+              ${article.title}
+            </h3>
+            <div class="article-content hidden mt-4">
+              <div class="text-gray-600 dark:text-gray-400 text-sm mb-4 space-y-2">
+                ${article.content}
+              </div>
+            </div>
+            <div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
+              <span class="flex items-center">
+                <span class="material-icons text-xs mr-1">visibility</span>
+                ${article.views} 阅读
+              </span>
+              <span class="flex items-center">
+                <span class="material-icons text-xs mr-1">thumb_up</span>
+                ${article.rating} 有用
+              </span>
+            </div>
+          </div>
+          <div class="ml-4">
+            <span class="material-icons text-gray-300 dark:text-gray-600 article-chevron">chevron_right</span>
+          </div>
+        </div>
+      </article>
+    `).join('');
+    
+    articlesList.innerHTML = articlesHtml;
+    
+    // 重新绑定点击事件
+    bindArticleEvents();
+  }
+
+  // 绑定文章点击事件
+  function bindArticleEvents() {
+    const articles = document.querySelectorAll('.collapsible-article');
+    articles.forEach(article => {
+      const content = article.querySelector('.article-content');
+      const chevron = article.querySelector('.article-chevron');
+
+      article.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A') {
+          return;
+        }
+
+        const isHidden = content.classList.contains('hidden');
+        
+        if (isHidden) {
+          content.classList.remove('hidden');
+          if (chevron) {
+            chevron.textContent = 'expand_more';
+          }
+        } else {
+          content.classList.add('hidden');
+          if (chevron) {
+            chevron.textContent = 'chevron_right';
+          }
+        }
+      });
+    });
+  }
+
+  // 分类筛选
+  function filterByCategory(categoryId) {
+    const filteredArticles = categoryId === 'all' 
+      ? articles 
+      : articles.filter(article => article.category === categoryId);
+    
+    renderArticles(filteredArticles);
+    
+    // 更新分类按钮状态
+    document.querySelectorAll('.category-btn').forEach(btn => {
+      btn.classList.remove('bg-primary', 'text-white');
+      btn.classList.add('text-gray-600', 'dark:text-gray-400');
+    });
+    
+    const activeBtn = document.querySelector(`[data-category="${categoryId}"]`);
+    if (activeBtn) {
+      activeBtn.classList.add('bg-primary', 'text-white');
+      activeBtn.classList.remove('text-gray-600', 'dark:text-gray-400');
+    }
+  }
+
+  // 搜索功能
+  function searchArticles(query) {
+    const filteredArticles = articles.filter(article => 
+      article.title.toLowerCase().includes(query.toLowerCase()) ||
+      article.content.toLowerCase().includes(query.toLowerCase()) ||
+      article.category.toLowerCase().includes(query.toLowerCase())
+    );
+    
+    renderArticles(filteredArticles);
+  }
+
+  // 初始化
+  document.addEventListener('DOMContentLoaded', () => {
+    // 渲染分类导航
+    renderCategories();
+    
+    // 绑定分类点击事件
+    document.addEventListener('click', (e) => {
+      if (e.target.closest('.category-btn')) {
+        const categoryId = e.target.closest('.category-btn').dataset.category;
+        filterByCategory(categoryId);
+      }
+    });
+    
+    // 绑定搜索事件
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', (e) => {
+      const query = e.target.value.trim();
+      if (query) {
+        searchArticles(query);
+      } else {
+        filterByCategory('all');
+      }
+    });
+    
+    // Initial render
+    filterByCategory('all');
+  });
+</script>
+</Layout>

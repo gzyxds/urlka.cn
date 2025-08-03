@@ -1,0 +1,399 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumb from '../components/layout/Breadcrumb.astro';
+import CTAsection from '../components/CTAsection.astro';
+import Contactsection from '../components/Contactsection.astro';
+
+// 定义合作伙伴数据
+const partners = [
+  { 
+    name: "中国移动", 
+    logo: "/assets/brands/中国移动.svg", 
+    description: "全球领先的移动通信服务提供商，拥有超过9亿用户",
+    partnership: "战略合作伙伴",
+    since: "2020年",
+    category: "运营商"
+  },
+  { 
+    name: "中国电信", 
+    logo: "/assets/brands/中国电信.svg", 
+    description: "综合信息服务运营商，提供全方位通信解决方案",
+    partnership: "核心合作伙伴",
+    since: "2019年",
+    category: "运营商"
+  },
+  { 
+    name: "中国联通", 
+    logo: "/assets/brands/中国联通.svg", 
+    description: "创新通信服务提供商，致力于数字化转型",
+    partnership: "战略合作伙伴",
+    since: "2020年",
+    category: "运营商"
+  },
+  { 
+    name: "中国广电", 
+    logo: "/assets/brands/中国广电.svg", 
+    description: "全国性有线电视网络运营商，新兴5G服务提供商",
+    partnership: "合作伙伴",
+    since: "2021年",
+    category: "运营商"
+  }
+];
+
+// 成功案例数据
+const successCases = [
+  {
+    title: "全国分销网络覆盖",
+    description: "与四大运营商深度合作，建立覆盖全国的分销网络",
+    achievement: "100万+",
+    metric: "分销商",
+    icon: "network"
+  },
+  {
+    title: "月度激活量突破",
+    description: "通过优质的产品和服务，实现月度激活量持续增长",
+    achievement: "500万+",
+    metric: "月激活量",
+    icon: "growth"
+  },
+  {
+    title: "客户满意度",
+    description: "凭借专业的服务和技术支持，获得客户高度认可",
+    achievement: "98%",
+    metric: "满意度",
+    icon: "satisfaction"
+  },
+  {
+    title: "合作伙伴收益",
+    description: "为合作伙伴创造丰厚收益，实现共赢发展",
+    achievement: "1000万+",
+    metric: "月分佣",
+    icon: "revenue"
+  }
+];
+---
+
+<Layout
+  description="172号卡合作伙伴页面，展示我们与中国移动、中国电信、中国联通、中国广电等运营商的深度合作关系，共同为用户提供优质的流量卡服务"
+  title="合作伙伴 - 172号卡分销系统"
+  keywords="172号卡合作伙伴,运营商合作,中国移动,中国电信,中国联通,中国广电,战略合作"
+>
+  <!-- 面包屑导航 -->
+  <Breadcrumb>
+    <Fragment slot="title">合作伙伴</Fragment>
+  </Breadcrumb>
+
+  <!-- 合作伙伴介绍区域 -->
+  <section class="relative z-10 overflow-hidden bg-white py-20 lg:py-[120px] dark:bg-dark">
+    <div class="container mx-auto">
+      <div class="flex flex-wrap items-center -mx-4">
+        <!-- 左侧内容 -->
+        <div class="w-full lg:w-1/2 px-4 mb-12 lg:mb-0">
+          <div class="wow fadeInUp" data-wow-delay=".2s">
+            <span class="mb-4 block text-base font-semibold text-primary">
+              战略合作
+            </span>
+            <h2 class="mb-6 text-3xl font-bold text-dark sm:text-4xl lg:text-5xl dark:text-white">
+              携手行业
+              <span class="text-primary">领军企业</span>
+            </h2>
+            <p class="mb-8 text-base text-body-color dark:text-dark-6 leading-relaxed">
+              172号卡与中国移动、中国电信、中国联通、中国广电等四大运营商建立了深度战略合作关系。
+              我们致力于为用户提供最优质的流量卡产品和服务，与合作伙伴共同推动行业发展。
+            </p>
+            
+            <!-- 合作亮点 -->
+            <div class="space-y-4 mb-8">
+              <div class="flex items-start">
+                <div class="flex-shrink-0 w-6 h-6 bg-primary rounded-full flex items-center justify-center mr-4 mt-1">
+                  <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold text-dark dark:text-white mb-1">官方授权合作</h4>
+                  <p class="text-body-color dark:text-dark-6">获得四大运营商官方授权，确保产品正规可靠</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="flex-shrink-0 w-6 h-6 bg-primary rounded-full flex items-center justify-center mr-4 mt-1">
+                  <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold text-dark dark:text-white mb-1">深度技术对接</h4>
+                  <p class="text-body-color dark:text-dark-6">与运营商系统深度对接，实现实时数据同步</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="flex-shrink-0 w-6 h-6 bg-primary rounded-full flex items-center justify-center mr-4 mt-1">
+                  <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold text-dark dark:text-white mb-1">优质产品资源</h4>
+                  <p class="text-body-color dark:text-dark-6">获得运营商优质产品资源，价格更优惠</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 合作数据 -->
+            <div class="grid grid-cols-2 gap-6">
+              <div class="text-center p-4 bg-primary/5 rounded-lg">
+                <h3 class="text-2xl font-bold text-primary mb-1">4+</h3>
+                <p class="text-body-color dark:text-dark-6">运营商合作</p>
+              </div>
+              <div class="text-center p-4 bg-primary/5 rounded-lg">
+                <h3 class="text-2xl font-bold text-primary mb-1">5年+</h3>
+                <p class="text-body-color dark:text-dark-6">合作历程</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 右侧图片 -->
+        <div class="w-full lg:w-1/2 px-4">
+          <div class="wow fadeInUp relative" data-wow-delay=".25s">
+            <img
+              src="/assets/hero/172_2.png"
+              alt="172号卡合作伙伴"
+              class="w-full max-w-[500px] mx-auto"
+            />
+            
+            <!-- 装饰元素 -->
+            <div class="absolute -right-6 -top-6 z-[-1] opacity-30">
+              <svg width="134" height="106" viewBox="0 0 134 106" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="1.66667" cy="104" r="1.66667" transform="rotate(-90 1.66667 104)" fill="#3056D3"></circle>
+                <circle cx="16.3333" cy="104" r="1.66667" transform="rotate(-90 16.3333 104)" fill="#3056D3"></circle>
+                <circle cx="31" cy="104" r="1.66667" transform="rotate(-90 31 104)" fill="#3056D3"></circle>
+                <circle cx="45.6667" cy="104" r="1.66667" transform="rotate(-90 45.6667 104)" fill="#3056D3"></circle>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 合作伙伴展示区域 -->
+  <section class="bg-[#F4F7FF] py-20 lg:py-[120px] dark:bg-dark-2">
+    <div class="container mx-auto">
+      <!-- 标题 -->
+      <div class="text-center mb-16">
+        <span class="mb-4 block text-base font-semibold text-primary">
+          核心合作伙伴
+        </span>
+        <h2 class="mb-6 text-3xl font-bold text-dark sm:text-4xl dark:text-white">
+          与行业领军企业携手合作
+        </h2>
+        <div class="flex justify-center">
+          <div class="w-24 h-1 bg-primary rounded-full"></div>
+        </div>
+      </div>
+
+      <!-- 合作伙伴卡片 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {partners.map((partner, index) => (
+          <div class="wow fadeInUp bg-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300 dark:bg-dark group" data-wow-delay={`.${index + 1}s`}>
+            <!-- Logo区域 -->
+            <div class="w-20 h-20 bg-gray-50 dark:bg-dark-3 rounded-lg flex items-center justify-center mb-6 mx-auto group-hover:bg-primary/5 transition-colors duration-300">
+              <img
+                src={partner.logo}
+                alt={partner.name}
+                class="w-12 h-12 object-contain"
+              />
+            </div>
+            
+            <!-- 内容区域 -->
+            <div class="text-center">
+              <h3 class="text-xl font-bold text-dark dark:text-white mb-2">{partner.name}</h3>
+              <div class="mb-4">
+                <span class="inline-block px-3 py-1 text-xs font-medium text-primary bg-primary/10 rounded-full mb-2">
+                  {partner.partnership}
+                </span>
+                <p class="text-sm text-body-color dark:text-dark-6 mb-2">
+                  合作始于 {partner.since}
+                </p>
+              </div>
+              <p class="text-sm text-body-color dark:text-dark-6 leading-relaxed">
+                {partner.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 成功案例区域 -->
+  <section class="relative z-10 overflow-hidden bg-white py-20 lg:py-[120px] dark:bg-dark">
+    <div class="container mx-auto">
+      <!-- 标题 -->
+      <div class="text-center mb-16">
+        <span class="mb-4 block text-base font-semibold text-primary">
+          合作成果
+        </span>
+        <h2 class="mb-6 text-3xl font-bold text-dark sm:text-4xl dark:text-white">
+          携手共创辉煌成就
+        </h2>
+        <div class="flex justify-center">
+          <div class="w-24 h-1 bg-primary rounded-full"></div>
+        </div>
+      </div>
+
+      <!-- 成功案例卡片 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {successCases.map((case_, index) => (
+          <div class="wow fadeInUp text-center" data-wow-delay={`.${index + 1}s`}>
+            <!-- 图标区域 -->
+            <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mb-6 mx-auto">
+              {case_.icon === 'network' && (
+                <svg class="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0-9v9"></path>
+                </svg>
+              )}
+              {case_.icon === 'growth' && (
+                <svg class="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                </svg>
+              )}
+              {case_.icon === 'satisfaction' && (
+                <svg class="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h8m-10 5a9 9 0 1118 0H3z"></path>
+                </svg>
+              )}
+              {case_.icon === 'revenue' && (
+                <svg class="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+                </svg>
+              )}
+            </div>
+            
+            <!-- 数据展示 -->
+            <div class="mb-4">
+              <h3 class="text-4xl font-bold text-primary mb-2">{case_.achievement}</h3>
+              <p class="text-lg font-semibold text-dark dark:text-white">{case_.metric}</p>
+            </div>
+            
+            <!-- 描述 -->
+            <div>
+              <h4 class="text-xl font-bold text-dark dark:text-white mb-3">{case_.title}</h4>
+              <p class="text-body-color dark:text-dark-6 leading-relaxed">
+                {case_.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 合作优势区域 -->
+  <section class="bg-[#F4F7FF] py-20 lg:py-[120px] dark:bg-dark-2">
+    <div class="container mx-auto">
+      <!-- 标题 -->
+      <div class="text-center mb-16">
+        <span class="mb-4 block text-base font-semibold text-primary">
+          合作优势
+        </span>
+        <h2 class="mb-6 text-3xl font-bold text-dark sm:text-4xl dark:text-white">
+          为什么选择与我们合作
+        </h2>
+        <div class="flex justify-center">
+          <div class="w-24 h-1 bg-primary rounded-full"></div>
+        </div>
+      </div>
+
+      <!-- 优势网格 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- 优势1 -->
+        <div class="wow fadeInUp bg-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300 dark:bg-dark" data-wow-delay=".1s">
+          <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-dark dark:text-white mb-4">官方授权保障</h3>
+          <p class="text-body-color dark:text-dark-6 leading-relaxed">
+            获得四大运营商官方授权，确保所有产品和服务的合规性和可靠性，为合作伙伴提供强有力的品牌背书。
+          </p>
+        </div>
+
+        <!-- 优势2 -->
+        <div class="wow fadeInUp bg-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300 dark:bg-dark" data-wow-delay=".2s">
+          <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-dark dark:text-white mb-4">技术领先优势</h3>
+          <p class="text-body-color dark:text-dark-6 leading-relaxed">
+            拥有行业领先的分销管理系统，实现与运营商系统的深度对接，提供实时数据同步和智能化管理。
+          </p>
+        </div>
+
+        <!-- 优势3 -->
+        <div class="wow fadeInUp bg-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300 dark:bg-dark" data-wow-delay=".3s">
+          <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-dark dark:text-white mb-4">丰厚利润回报</h3>
+          <p class="text-body-color dark:text-dark-6 leading-relaxed">
+            提供业界领先的佣金比例和多层级奖励机制，确保合作伙伴获得丰厚的利润回报和持续的收益增长。
+          </p>
+        </div>
+
+        <!-- 优势4 -->
+        <div class="wow fadeInUp bg-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300 dark:bg-dark" data-wow-delay=".4s">
+          <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-dark dark:text-white mb-4">全方位支持</h3>
+          <p class="text-body-color dark:text-dark-6 leading-relaxed">
+            提供专业的培训体系、技术支持、营销素材和客服支持，帮助合作伙伴快速上手并持续发展。
+          </p>
+        </div>
+
+        <!-- 优势5 -->
+        <div class="wow fadeInUp bg-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300 dark:bg-dark" data-wow-delay=".5s">
+          <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-dark dark:text-white mb-4">市场领先地位</h3>
+          <p class="text-body-color dark:text-dark-6 leading-relaxed">
+            在流量卡分销领域拥有领先的市场地位，超过百万分销商的选择，为合作伙伴提供强大的市场竞争力。
+          </p>
+        </div>
+
+        <!-- 优势6 -->
+        <div class="wow fadeInUp bg-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300 dark:bg-dark" data-wow-delay=".6s">
+          <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-dark dark:text-white mb-4">长期合作关系</h3>
+          <p class="text-body-color dark:text-dark-6 leading-relaxed">
+            致力于建立长期稳定的合作关系，与合作伙伴共同成长，实现互利共赢的可持续发展。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA区域 -->
+  <CTAsection />
+
+  <!-- 联系方式区域 -->
+  <Contactsection />
+</Layout>

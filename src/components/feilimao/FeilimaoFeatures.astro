@@ -1,0 +1,178 @@
+---
+// 飞利猫产品特色组件 - 展示随身WiFi的核心功能和优势
+const features = [
+  {
+    icon: 'wifi',
+    title: '高速WiFi连接',
+    description: '支持4G/5G网络，提供高达100Mbps的网络速度，让您随时随地享受高速网络',
+    color: 'from-blue-500 to-blue-600'
+  },
+  {
+    icon: 'globe',
+    title: '全国无漫游',
+    description: '覆盖全国各地，无论您身在何处，都能享受稳定的网络连接服务',
+    color: 'from-blue-500 to-blue-600'
+  },
+  {
+    icon: 'battery',
+    title: '超长续航',
+    description: '大容量电池设计，连续使用12小时以上，满足您全天候的网络需求',
+    color: 'from-blue-500 to-blue-600'
+  },
+  {
+    icon: 'users',
+    title: '多设备连接',
+    description: '支持最多10台设备同时连接，满足个人和团队的多样化网络需求',
+    color: 'from-blue-500 to-blue-600'
+  },
+  {
+    icon: 'shield',
+    title: '安全防护',
+    description: '采用WPA2加密技术，保护您的网络安全，让您放心使用',
+    color: 'from-blue-500 to-blue-600'
+  },
+  {
+    icon: 'settings',
+    title: '智能管理',
+    description: '配备专业管理系统，实时监控设备状态，远程管理更便捷',
+    color: 'from-blue-500 to-blue-600'
+  }
+];
+
+// SVG图标组件
+const getIcon = (iconName: string) => {
+  const icons = {
+    wifi: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"></path>`,
+    globe: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>`,
+    battery: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>`,
+    users: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>`,
+    shield: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>`,
+    settings: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>`
+  };
+  return icons[iconName] || icons.wifi;
+};
+---
+
+<!-- ====== 飞利猫产品特色 Section Start -->
+<section id="features" class="py-24 lg:py-32 bg-white dark:bg-gray-900">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- 标题区域 -->
+    <div class="text-center mb-20">
+      <span class="mb-4 inline-block px-4 py-1 text-sm font-medium text-blue-600 bg-blue-50 dark:bg-blue-900/30 dark:text-blue-400 rounded-full">
+        产品特色
+      </span>
+      <h2 class="mb-6 text-3xl font-bold text-gray-900 sm:text-4xl lg:text-5xl dark:text-white">
+        为什么选择
+        <span class="text-blue-600 relative inline-block">
+          飞利猫随身WiFi
+          <span class="absolute bottom-0 left-0 w-full h-1 bg-blue-600/30"></span>
+        </span>
+      </h2>
+      <p class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+        我们致力于为用户提供最优质的随身WiFi服务，让您随时随地享受高速稳定的网络连接
+      </p>
+    </div>
+
+    <!-- 特色功能网格 -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+      {features.map((feature, index) => (
+        <div 
+          class="group bg-white dark:bg-gray-800 p-8 border border-gray-200 dark:border-gray-600 flex flex-col transition-all duration-300"
+          data-wow-delay={`.${index + 1}s`}
+        >
+          <!-- 图标区域 -->
+          <div class={`w-14 h-14 rounded-xl bg-gradient-to-br ${feature.color} flex items-center justify-center mb-6 group-hover:scale-102 transition-transform duration-300`}>
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <Fragment set:html={getIcon(feature.icon)} />
+            </svg>
+          </div>
+
+          <!-- 内容区域 -->
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 transition-colors duration-300">
+            {feature.title}
+          </h3>
+          <p class="text-gray-600 dark:text-gray-300 leading-relaxed text-base flex-grow">
+            {feature.description}
+          </p>
+
+          <!-- 装饰元素 -->
+          <div class="mt-6 w-full h-px bg-gradient-to-r from-transparent via-gray-200 dark:via-gray-700 to-transparent"></div>
+        </div>
+      ))}
+    </div>
+
+    <!-- 底部统计数据 -->
+    <div class="mt-24 relative">
+      <!-- 背景装饰 -->
+      <div class="absolute inset-0 bg-gradient-to-br from-gray-50 via-blue-50/30 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"></div>
+      <div class="absolute top-4 right-4 w-32 h-32 bg-blue-100/20 dark:bg-blue-900/10 rounded-full blur-2xl"></div>
+      <div class="absolute bottom-4 left-4 w-24 h-24 bg-blue-200/30 dark:bg-blue-800/20 rounded-full blur-xl"></div>
+      
+      <!-- 内容区域 -->
+      <div class="relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-8 lg:p-12 border border-gray-200/50 dark:border-gray-700/50">
+        <!-- 标题区域 -->
+        <div class="text-center mb-12">
+          <h3 class="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+            数据说话
+            <span class="relative inline-block ml-2">
+              <span class="text-blue-600">实力见证</span>
+              <span class="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-600 to-blue-400"></span>
+            </span>
+          </h3>
+          <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            用真实数据展现飞利猫的卓越性能和可靠服务
+          </p>
+        </div>
+
+        <!-- 统计数据网格 -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+          <div class="group text-center bg-white dark:bg-gray-900/50 p-6 lg:p-8 border border-gray-100 dark:border-gray-700/50 transition-all duration-300">
+            <div class="relative mb-4">
+              <div class="text-4xl lg:text-5xl font-bold text-blue-600 mb-2 flex items-center justify-center">
+                <span class="mr-1">1000</span>
+                <span class="text-blue-500 text-2xl lg:text-3xl">+</span>
+              </div>
+              <div class="w-12 h-0.5 bg-gradient-to-r from-blue-600 to-blue-400 mx-auto rounded-full"></div>
+            </div>
+            <div class="text-gray-700 dark:text-gray-300 font-semibold text-sm lg:text-base">活跃设备</div>
+            <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">Active Devices</div>
+          </div>
+
+          <div class="group text-center bg-white dark:bg-gray-900/50 p-6 lg:p-8 border border-gray-100 dark:border-gray-700/50 transition-all duration-300">
+            <div class="relative mb-4">
+              <div class="text-4xl lg:text-5xl font-bold text-blue-600 mb-2 flex items-center justify-center">
+                <span class="mr-1">99.9</span>
+                <span class="text-blue-500 text-2xl lg:text-3xl">%</span>
+              </div>
+              <div class="w-12 h-0.5 bg-gradient-to-r from-blue-600 to-blue-400 mx-auto rounded-full"></div>
+            </div>
+            <div class="text-gray-700 dark:text-gray-300 font-semibold text-sm lg:text-base">网络稳定性</div>
+            <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">Network Stability</div>
+          </div>
+
+          <div class="group text-center bg-white dark:bg-gray-900/50 p-6 lg:p-8 border border-gray-100 dark:border-gray-700/50 transition-all duration-300">
+            <div class="relative mb-4">
+              <div class="text-4xl lg:text-5xl font-bold text-blue-600 mb-2">24/7</div>
+              <div class="w-12 h-0.5 bg-gradient-to-r from-blue-600 to-blue-400 mx-auto rounded-full"></div>
+            </div>
+            <div class="text-gray-700 dark:text-gray-300 font-semibold text-sm lg:text-base">技术支持</div>
+            <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">Technical Support</div>
+          </div>
+
+          <div class="group text-center bg-white dark:bg-gray-900/50 p-6 lg:p-8 border border-gray-100 dark:border-gray-700/50 transition-all duration-300">
+            <div class="relative mb-4">
+              <div class="text-4xl lg:text-5xl font-bold text-blue-600 mb-2 flex items-center justify-center">
+                <span class="mr-1">100</span>
+                <span class="text-blue-500 text-2xl lg:text-3xl">M</span>
+              </div>
+              <div class="w-12 h-0.5 bg-gradient-to-r from-blue-600 to-blue-400 mx-auto rounded-full"></div>
+            </div>
+            <div class="text-gray-700 dark:text-gray-300 font-semibold text-sm lg:text-base">最高速度</div>
+            <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">Max Speed</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ====== 飞利猫产品特色 Section End -->
