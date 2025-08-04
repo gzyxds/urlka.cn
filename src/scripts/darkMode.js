@@ -34,9 +34,11 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // call theme switch on clicking buttons
-  themeSwitcher.addEventListener('click', () => {
-    themeSwitch();
-  });
+  if (themeSwitcher) {
+    themeSwitcher.addEventListener('click', () => {
+      themeSwitch();
+    });
+  }
 
   // invoke theme check on initial load
   themeCheck();

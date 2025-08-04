@@ -1,6 +1,7 @@
 ---
 // 飞利猫官网首页 - 专业的随身WiFi管理系统
-import Layout from '../layouts/Layout.astro';
+import FeilimaoLayout from '../layouts/FeilimaoLayout.astro';
+import Header from '../components/feilimao/Header.astro';
 import FeilimaoHero from '../components/feilimao/FeilimaoHero.astro';
 import FeilimaoFeatures from '../components/feilimao/FeilimaoFeatures.astro';
 import FeilimaoServices from '../components/feilimao/FeilimaoServices.astro';
@@ -8,11 +9,14 @@ import FeilimaoContact from '../components/feilimao/FeilimaoContact.astro';
 import FeilimaoAbout from '../components/feilimao/FeilimaoAbout.astro';
 ---
 
-<Layout
+<FeilimaoLayout
   description="飞利猫随身WiFi官网 - 专业的飞利猫综合管理系统，提供飞利猫app下载、固件升级、去控破解等服务。飞利猫随身wifi怎么样？官方后台管理，高速稳定的移动网络连接解决方案"
   title="飞利猫随身WiFi官网 - 飞利猫综合管理系统 | 飞利猫app下载"
   keywords="飞利猫随身wifi,飞利猫综合管理系统,飞利猫官网,飞利猫app,飞利猫随身wifi怎么样,飞利猫随身wifi官网,飞利猫去控,飞利猫wifi,飞利猫破解,飞利猫后台,飞利猫固件,随身WiFi,WiFi管理系统,移动网络,便携WiFi"
 >
+  <!-- 飞利猫专业导航菜单 -->
+  <Header />
+
   <!-- 飞利猫Hero区域 -->
   <FeilimaoHero />
 
@@ -26,4 +30,4 @@ import FeilimaoAbout from '../components/feilimao/FeilimaoAbout.astro';
   <FeilimaoAbout />
   <!-- 飞利猫联系信息 -->
   <FeilimaoContact />
-</Layout>
+</FeilimaoLayout>

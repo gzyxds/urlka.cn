@@ -2,6 +2,12 @@
 document.addEventListener('DOMContentLoaded', function () {
   window.onscroll = function () {
     const ud_header = document.querySelector('.ud-header');
+    
+    // 检查元素是否存在
+    if (!ud_header) {
+      return;
+    }
+    
     const sticky = ud_header.offsetTop;
     const logo = document.querySelectorAll('.header-logo');
 
@@ -31,12 +37,6 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
 
-    // show or hide the back-top-top button
-    const backToTop = document.querySelector('.back-to-top');
-    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-      backToTop.style.display = 'flex';
-    } else {
-      backToTop.style.display = 'none';
-    }
+    // BackToTop functionality is now handled in the BackToTop component itself
   };
 });
