@@ -162,75 +162,107 @@
       </div>
     </div>
 
-    <!-- APP页面截图滚动展示 - 放在最下方 -->
-    <div class="mt-16 lg:mt-20">
-      <div class="text-center mb-8">
-        <h4 class="text-2xl font-bold text-black mb-2">应用界面预览</h4>
-        <p class="text-gray-600">体验172APP的精美界面设计</p>
+    <!-- APP页面截图滚动展示 - 重新设计 -->
+    <div class="mt-20 lg:mt-24">
+      <!-- 标题区域 -->
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center mb-4">
+          <div class="w-1 h-6 bg-blue-600 mr-3"></div>
+          <span class="text-sm font-medium text-gray-600 uppercase tracking-wider">
+            应用界面展示
+          </span>
+        </div>
+        <h4 class="text-3xl lg:text-4xl font-bold text-black mb-4">
+          精美界面设计
+        </h4>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          沉浸式体验172APP的现代化界面设计，每一个细节都经过精心打磨
+        </p>
       </div>
-      <div class="relative overflow-hidden">
+
+      <!-- 滚动展示区域 -->
+      <div class="relative">
         <!-- 滚动容器 -->
-        <div class="flex space-x-6 animate-scroll">
-          <!-- 第一张图片 -->
-          <div class="flex-shrink-0 w-56 lg:w-60 xl:w-64 h-[28rem] lg:h-[30rem] xl:h-[32rem] bg-gray-100 rounded-2xl overflow-hidden shadow-lg">
-            <img 
-              src="https://pp.myapp.com/ma_pic2/0/shot_54346678_1_1753753197/0" 
-              alt="APP界面截图1" 
-              class="w-full h-full object-cover"
-            />
-          </div>
-          
-          <!-- 第二张图片 -->
-          <div class="flex-shrink-0 w-56 lg:w-60 xl:w-64 h-[28rem] lg:h-[30rem] xl:h-[32rem] bg-gray-100 rounded-2xl overflow-hidden shadow-lg">
-            <img 
-              src="https://pp.myapp.com/ma_pic2/0/shot_54346678_1_1753753197/0" 
-              alt="APP界面截图2" 
-              class="w-full h-full object-cover"
-            />
-          </div>
-          
-          <!-- 第三张图片 -->
-          <div class="flex-shrink-0 w-56 lg:w-60 xl:w-64 h-[28rem] lg:h-[30rem] xl:h-[32rem] bg-gray-100 rounded-2xl overflow-hidden shadow-lg">
-            <img 
-              src="https://pp.myapp.com/ma_pic2/0/shot_54346678_1_1753753197/0" 
-              alt="APP界面截图3" 
-              class="w-full h-full object-cover"
-            />
-          </div>
-          
-          <!-- 第四张图片 -->
-          <div class="flex-shrink-0 w-56 lg:w-60 xl:w-64 h-[28rem] lg:h-[30rem] xl:h-[32rem] bg-gray-100 rounded-2xl overflow-hidden shadow-lg">
-            <img 
-              src="https://pp.myapp.com/ma_pic2/0/shot_54346678_1_1753753197/0" 
-              alt="APP界面截图4" 
-              class="w-full h-full object-cover"
-            />
-          </div>
-          
-          <!-- 第五张图片 -->
-          <div class="flex-shrink-0 w-56 lg:w-60 xl:w-64 h-[28rem] lg:h-[30rem] xl:h-[32rem] bg-gray-100 rounded-2xl overflow-hidden shadow-lg">
-            <img 
-              src="https://pp.myapp.com/ma_pic2/0/shot_54346678_1_1753753197/0" 
-              alt="APP界面截图5" 
-              class="w-full h-full object-cover"
-            />
-          </div>
-          
-          <!-- 重复图片以实现无缝滚动 -->
-          <div class="flex-shrink-0 w-56 lg:w-60 xl:w-64 h-[28rem] lg:h-[30rem] xl:h-[32rem] bg-gray-100 rounded-2xl overflow-hidden shadow-lg">
-            <img 
-              src="https://pp.myapp.com/ma_pic2/0/shot_54346678_1_1753753197/0" 
-              alt="APP界面截图1" 
-              class="w-full h-full object-cover"
-            />
-          </div>
-          
-          <div class="flex-shrink-0 w-56 lg:w-60 xl:w-64 h-[28rem] lg:h-[30rem] xl:h-[32rem] bg-gray-100 rounded-2xl overflow-hidden shadow-lg">
-            <img 
-              src="https://pp.myapp.com/ma_pic2/0/shot_54346678_1_1753753197/0" 
-              alt="APP界面截图2" 
-              class="w-full h-full object-cover"
-            />
+        <div class="overflow-hidden">
+          <div class="flex space-x-6 animate-scroll-smooth">
+            <!-- 截图卡片组 - 1080x1920比例 (9:16) -->
+            <div class="flex-shrink-0">
+              <div class="w-[270px] h-[480px] bg-white rounded-3xl shadow-lg border border-gray-100 p-2 flex items-center justify-center mb-4">
+              <img 
+                src="https://pp.myapp.com/ma_pic2/0/shot_54346678_1_1754268314/0" 
+                alt="首页界面" 
+                class="w-full h-full object-contain rounded-2xl"
+                style="aspect-ratio: 9/16;"
+              />
+            </div>
+            </div>
+
+            <div class="flex-shrink-0">
+                <div class="w-[270px] h-[480px] bg-white rounded-3xl shadow-lg border border-gray-100 p-2 flex items-center justify-center mb-4">
+                  <img 
+                    src="https://pp.myapp.com/ma_pic2/0/shot_54346678_2_1753753197/0" 
+                    alt="订单管理" 
+                    class="w-full h-full object-contain rounded-2xl"
+                    style="aspect-ratio: 9/16;"
+                  />
+                </div>
+              </div>
+
+              <div class="flex-shrink-0">
+                <div class="w-[270px] h-[480px] bg-white rounded-3xl shadow-lg border border-gray-100 p-2 flex items-center justify-center mb-4">
+                  <img 
+                    src="https://pp.myapp.com/ma_pic2/0/shot_54346678_3_1753753197/0" 
+                    alt="收益统计" 
+                    class="w-full h-full object-contain rounded-2xl"
+                    style="aspect-ratio: 9/16;"
+                  />
+                </div>
+              </div>
+
+              <div class="flex-shrink-0">
+                <div class="w-[270px] h-[480px] bg-white rounded-3xl shadow-lg border border-gray-100 p-2 flex items-center justify-center mb-4">
+                  <img 
+                    src="https://pp.myapp.com/ma_pic2/0/shot_54346678_4_1753753197/0" 
+                    alt="个人中心" 
+                    class="w-full h-full object-contain rounded-2xl"
+                    style="aspect-ratio: 9/16;"
+                  />
+                </div>
+              </div>
+
+              <div class="flex-shrink-0">
+                <div class="w-[270px] h-[480px] bg-white rounded-3xl shadow-lg border border-gray-100 p-2 flex items-center justify-center mb-4">
+                  <img 
+                    src="https://pp.myapp.com/ma_pic2/0/shot_54346678_1_1754268314/0" 
+                    alt="设置页面" 
+                    class="w-full h-full object-contain rounded-2xl"
+                    style="aspect-ratio: 9/16;"
+                  />
+                </div>
+              </div>
+
+            <!-- 重复卡片实现无缝滚动 -->
+              <div class="flex-shrink-0">
+                <div class="w-[270px] h-[480px] bg-white rounded-3xl shadow-lg border border-gray-100 p-2 flex items-center justify-center mb-4">
+                  <img 
+                    src="https://pp.myapp.com/ma_pic2/0/shot_54346678_1_1754268314/0" 
+                    alt="首页界面" 
+                    class="w-full h-full object-contain rounded-2xl"
+                    style="aspect-ratio: 9/16;"
+                  />
+                </div>
+              </div>
+
+              <div class="flex-shrink-0">
+                <div class="w-[270px] h-[480px] bg-white rounded-3xl shadow-lg border border-gray-100 p-2 flex items-center justify-center mb-4">
+                  <img 
+                    src="https://pp.myapp.com/ma_pic2/0/shot_54346678_4_1754268314/0" 
+                    alt="订单管理" 
+                    class="w-full h-full object-contain rounded-2xl"
+                    style="aspect-ratio: 9/16;"
+                  />
+                </div>
+              </div>
           </div>
         </div>
       </div>
@@ -240,59 +272,24 @@
 <!-- ====== 移动应用下载推广部分 结束 -->
 
 <style>
-  /* APP页面截图滚动动画 */
-  @keyframes scroll {
+  /* APP页面截图滚动动画 - 1080x1920比例 */
+  @keyframes scroll-smooth {
     0% {
       transform: translateX(0);
     }
     100% {
-      transform: translateX(-1240px); /* 基础滚动距离 */
+      transform: translateX(-2058px); /* 7张卡片 * 270px宽度 + 7 * 24px间距 */
     }
   }
   
-  @keyframes scroll-lg {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-1320px); /* lg屏幕滚动距离 */
-    }
+  .animate-scroll-smooth {
+    animation: scroll-smooth 20s linear infinite;
   }
   
-  @keyframes scroll-xl {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-1400px); /* xl屏幕滚动距离 */
-    }
-  }
-  
-  .animate-scroll {
-    animation: scroll 15s linear infinite;
-  }
-  
-  /* 鼠标悬停时暂停动画 */
-  .animate-scroll:hover {
-    animation-play-state: paused;
-  }
-  
-  /* 响应式动画调整 */
+  /* 移动端优化 */
   @media (max-width: 768px) {
-    .animate-scroll {
-      animation-duration: 20s; /* 移动端稍慢一些 */
-    }
-  }
-  
-  @media (min-width: 1024px) {
-    .animate-scroll {
-      animation-name: scroll-lg;
-    }
-  }
-  
-  @media (min-width: 1280px) {
-    .animate-scroll {
-      animation-name: scroll-xl;
+    .animate-scroll-smooth {
+      animation-duration: 25s;
     }
   }
 </style>
