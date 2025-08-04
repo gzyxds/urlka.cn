@@ -13,6 +13,25 @@ const publishedBlogEntries = await getCollection("blog", ({ data }) => {
 publishedBlogEntries.sort(function (a, b) {
   return b.data.publishDate.valueOf() - a.data.publishDate.valueOf();
 });
+
+// 博客图片列表
+const blogImages = [
+  'blog-01.jpg',
+  'blog-02.jpg', 
+  'blog-03.jpg',
+  'blog-1.jpg',
+  'blog-2.jpg',
+  'blog-3.jpg',
+  'blog-4.jpg',
+  'blog-5.jpg',
+  'blog-details-01.jpg'
+];
+
+// 为每篇文章分配随机图片
+const getRandomImage = (index: number) => {
+  const imageIndex = index % blogImages.length;
+  return `/assets/blog/${blogImages[imageIndex]}`;
+};
 ---
 
 <Layout
@@ -30,12 +49,12 @@ publishedBlogEntries.sort(function (a, b) {
           publishedBlogEntries.map((blogPostEntry, index) => (
             <li class="w-full px-4 md:w-1/2 lg:w-1/3">
               <a class="wow fadeInUp group block mb-10" data-wow-delay=".1s" href={`/blog/${blogPostEntry.slug}`}>
-                <div class="mb-8 overflow-hidden rounded-[5px]">
-                  <span class="block">
+                <div class="mb-8 overflow-hidden rounded-[5px] h-[240px]">
+                  <span class="block h-full">
                     <img
-                      src={blogPostEntry.data.image.src}
-                      alt={blogPostEntry.data.image.alt}
-                      class="w-full ease-in duration-300 group-hover:rotate-6 group-hover:scale-125"
+                      src={getRandomImage(index)}
+                      alt={blogPostEntry.data.title}
+                      class="w-full h-full object-cover ease-in duration-300 group-hover:rotate-6 group-hover:scale-125"
                     />
                   </span>
                 </div>
@@ -53,7 +72,7 @@ publishedBlogEntries.sort(function (a, b) {
                     </span>
                   </h3>
                   <p class="max-w-[370px] text-base text-body-color dark:text-dark-6">
-                    {blogPostEntry.data.postDetails.paraOne.slice(0, 100)}
+                    {blogPostEntry.data.snippet || "阅读更多精彩内容..."}
                   </p>
                 </div>
               </a>

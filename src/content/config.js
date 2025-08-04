@@ -6,41 +6,17 @@ const blogCollection = defineCollection({
   type: 'content',
   schema: z.object({
     // 基本信息
-    draft: z.boolean(),                                // 是否为草稿
+    draft: z.boolean().default(false),                // 是否为草稿
     title: z.string(),                                // 文章标题
-    snippet: z.string(),                              // 文章摘要
     
-    // 图片信息 - 使用通用图片对象结构
-    image: z.object({ src: z.string(), alt: z.string() }),     // 列表页缩略图
-    bigImg: z.object({ src: z.string(), alt: z.string() }),    // 详情页大图
-    authorImg: z.object({ src: z.string(), alt: z.string() }), // 作者头像
-    
-    // 元数据
+    // 发布信息
     publishDate: z.string().transform((str) => new Date(str)),  // 发布日期
-    author: z.string().default('Pimjolabs'),                   // 作者名称
-    category: z.string(),                                       // 文章分类
-    tags: z.array(z.string()),                                  // 文章标签
+    author: z.string().default('172号卡团队'),                   // 作者名称
     
-    // 统计数据
-    comments: z.string(),                                       // 评论数
-    views: z.string(),                                          // 浏览量
+    // 可选的摘要信息（用于列表页展示）
+    snippet: z.string().optional(),                   // 文章摘要
     
-    // 文章内容 - 结构化段落
-    postDetails: z.object({
-      paraOne: z.string(),    // 第一段落
-      paraTwo: z.string(),    // 第二段落
-      title: z.string(),      // 中间标题
-      paraThree: z.string(),  // 第三段落
-      titleTwo: z.string(),   // 第二个标题
-      paraFour: z.string(),   // 第四段落
-      paraFive: z.string(),   // 第五段落
-    }),
-    
-    // 引用内容
-    quotes: z.object({
-      quote: z.string(),      // 引用文本
-      author: z.string(),     // 引用作者
-    }),
+    // 注意：文章的主要内容将直接写在 Markdown 正文中，不再使用复杂的 frontmatter 结构
   }),
 });
 
