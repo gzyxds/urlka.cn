@@ -1,54 +1,182 @@
 ---
 // 产品数据接口定义
+interface ProductSpecs {
+  generalTraffic: string; // 通用流量
+  directionalTraffic: string; // 定向流量
+  callMinutes: string; // 通话时长
+  smsCount?: string; // 短信条数
+  validityPeriod?: string; // 有效期
+}
+
+interface ProductEligibility {
+  minAge: number; // 最小年龄
+  maxAge: number; // 最大年龄
+  regions?: string[]; // 适用地区
+  restrictions?: string[]; // 其他限制条件
+}
+
+interface ProductStats {
+  claimedCount: number; // 已领取人数
+  rating: number; // 1-5星评分
+  reviewCount?: number; // 评价数量
+  successRate?: number; // 办理成功率
+}
+
 interface Product {
   id: string;
   name: string;
+  shortName?: string; // 简短名称
   price: number;
   originalPrice?: number; // 原价，用于显示折扣
+  monthlyFee: number; // 月租费用
   image: string;
-  rating: number; // 1-5星评分
-  badge?: 'new' | 'hot'; // 可选的标签：新品或热门
+  badge?: 'new' | 'hot' | 'recommended' | 'limited'; // 产品标签
   description: string;
+  specs: ProductSpecs; // 产品规格
+  eligibility: ProductEligibility; // 办理条件
+  stats: ProductStats; // 统计信息
+  features?: string[]; // 产品特色
+  provider: 'unicom' | 'mobile' | 'telecom'; // 运营商
+  category: 'data' | 'voice' | 'combo'; // 产品类别
+  isActive: boolean; // 是否可办理
+  priority?: number; // 显示优先级
 }
 
 // 示例产品数据
 const products: Product[] = [
   {
     id: "prod-01",
-    name: "省内产品 集合中心",
-    price: 29.9,
-    originalPrice: 39.9,
-    image: "https://haokaapi.lot-ml.com/upload/ProductUpDateImage/20250712/8f850f8827e9407d8e3429b698fd925b.jpg", // 注意：需要添加实际图片
-    rating: 4.5,
-    badge: "new",
-    description: "月租29元，40GB全国流量，通话300分钟"
+    name: "联通专用卡【29元139G+100分钟】",
+    shortName: "湖北联通专用卡",
+    price: 29,
+    originalPrice: 39,
+    monthlyFee: 29,
+    image: "https://haokaapi.lot-ml.com/upload/ProductUpDateImage/20250702/907f5512f6f34773bce18b4871be5e74.jpg",
+    badge: "hot",
+    description: "联通专用流量卡，超值套餐，高性价比选择",
+    specs: {
+      generalTraffic: "139G",
+      directionalTraffic: "0G",
+      callMinutes: "100分钟",
+      validityPeriod: "长期有效"
+    },
+    eligibility: {
+      minAge: 18,
+      maxAge: 60,
+      regions: ["湖北省"],
+      restrictions: ["需实名认证", "一人限办一张"]
+    },
+    stats: {
+      claimedCount: 346542,
+      rating: 4.8,
+      reviewCount: 12580,
+      successRate: 98.5
+    },
+    features: ["超大流量", "通话包含", "湖北专享", "快速激活"],
+    provider: "unicom",
+    category: "combo",
+    isActive: true,
+    priority: 1
   },
   {
     id: "prod-02",
-    name: "全国通用流量卡B套餐",
-    price: 39.9,
-    originalPrice: 49.9,
-    image: "https://haokaapi.lot-ml.com/upload/ProductUpDateImage/20250724/31794d9e597a4c33aca9a269aaacfaf6.jpg", // 注意：需要添加实际图片
-    rating: 5,
-    badge: "hot",
-    description: "月租39元，100GB全国流量，通话500分钟"
+    name: "联通省内卡【29元135G+100分钟】",
+    shortName: "湖北联通省内卡",
+    price: 29,
+    originalPrice: 39,
+    monthlyFee: 29,
+    image: "https://haokaapi.lot-ml.com/upload/ProductUpDateImage/20250408/835bcd8dad874f19b264e763f584bd5c.jpg",
+    badge: "recommended",
+    description: "联通省内专属套餐，超大流量优惠",
+    specs: {
+      generalTraffic: "135G",
+      directionalTraffic: "0G",
+      callMinutes: "100分钟",
+      validityPeriod: "长期有效"
+    },
+    eligibility: {
+      minAge: 18,
+      maxAge: 60,
+      regions: ["湖北省"],
+      restrictions: ["需实名认证"]
+    },
+    stats: {
+      claimedCount: 523587,
+      rating: 4.9,
+      reviewCount: 8520,
+      successRate: 99.2
+    },
+    features: ["省内专享", "超大流量", "性价比高", "快速办理"],
+    provider: "unicom",
+    category: "combo",
+    isActive: true,
+    priority: 2
   },
   {
     id: "prod-03",
-    name: "全国通用流量卡C套餐",
-    price: 59.9,
-    image: "https://haokaapi.lot-ml.com/upload/ProductUpDateImage/20250802/d614e28b357c4361812fdbcc0f08548a.jpg", // 注意：需要添加实际图片
-    rating: 4,
-    description: "月租59元，200GB全国流量，通话1000分钟"
+    name: "省内产品集合中心",
+    shortName: "省内产品集合",
+    price: 29,
+    monthlyFee: 29,
+    image: "https://haokaapi.lot-ml.com/upload/ProductUpDateImage/20240809/d91b218ae73a4025b3a0e16a30748e19.jpg",
+    badge: "recommended",
+    description: "省内专属套餐集合，超值优惠套餐",
+    specs: {
+      generalTraffic: "105G",
+      directionalTraffic: "30G",
+      callMinutes: "100分钟",
+      validityPeriod: "长期有效"
+    },
+    eligibility: {
+      minAge: 18,
+      maxAge: 60,
+      regions: ["全国"],
+      restrictions: ["需实名认证", "限省内用户"]
+    },
+    stats: {
+      claimedCount: 32314986,
+      rating: 4.8,
+      reviewCount: 15680,
+      successRate: 99.2
+    },
+    features: ["省内专享", "超大流量", "性价比高", "快速办理"],
+    provider: "unicom",
+    category: "combo",
+    isActive: true,
+    priority: 3
   },
   {
     id: "prod-04",
-    name: "全国通用流量卡D套餐",
-    price: 19.9,
-    originalPrice: 29.9,
-    image: "https://haokaapi.lot-ml.com/upload/ProductUpDateImage/20250801/372c0115205c4281b4ce71019444dbde.jpg", // 注意：需要添加实际图片
-    rating: 3.5,
-    description: "月租19元，20GB全国流量，通话100分钟"
+    name: "电信飞诗卡【首年19元80G】",
+    shortName: "电信飞诗卡",
+    price: 19,
+    monthlyFee: 19,
+    image: "https://haokaapi.lot-ml.com/upload/ProductUpDateImage/20250705/45aed7c617c8404793fafcdc15c7bd50.jpg",
+    badge: "hot",
+    description: "19元50G通用+30G定向",
+    specs: {
+      generalTraffic: "50G",
+      directionalTraffic: "30G",
+      callMinutes: "0分钟",
+      validityPeriod: "长期有效"
+    },
+    eligibility: {
+      minAge: 18,
+      maxAge: 60,
+      regions: ["全国"],
+      restrictions: ["需实名认证"]
+    },
+    stats: {
+      claimedCount: 1233099,
+      rating: 4.8,
+      reviewCount: 3250,
+      successRate: 98.5
+    },
+    features: ["超大流量", "性价比高", "首年特惠", "全国通用"],
+    provider: "telecom",
+    category: "data",
+    isActive: true,
+    priority: 4
   },
 ];
 
@@ -89,10 +217,18 @@ const {
               <!-- 产品图片 -->
               <img src={product.image || "/assets/products/placeholder.jpg"} alt={product.name} class="w-full h-[240px] object-cover" />
               
-              <!-- 产品标签 (新品/热门) -->
+              <!-- 产品标签 -->
               {product.badge && (
-                <span class={`absolute top-4 right-4 rounded-full py-1 px-3 text-xs font-semibold text-white ${product.badge === 'new' ? 'bg-green-500' : 'bg-red-500'}`}>
-                  {product.badge === 'new' ? '新品' : '热门'}
+                <span class={`absolute top-4 right-4 rounded-full py-1 px-3 text-xs font-semibold text-white ${
+                  product.badge === 'new' ? 'bg-green-500' : 
+                  product.badge === 'hot' ? 'bg-red-500' : 
+                  product.badge === 'recommended' ? 'bg-blue-500' : 
+                  'bg-orange-500'
+                }`}>
+                  {product.badge === 'new' ? '新品' : 
+                   product.badge === 'hot' ? '热门' : 
+                   product.badge === 'recommended' ? '推荐' : 
+                   '限时'}
                 </span>
               )}
               
@@ -105,16 +241,35 @@ const {
                 {product.name}
               </h3>
               
-              <!-- 产品评分 -->
-              <div class="mb-3 flex items-center">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <span class={`text-yellow-500 ${i < Math.floor(product.rating) ? 'text-yellow-500' : (i < product.rating ? 'text-yellow-300' : 'text-gray-300')}`}>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
-                      <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
-                    </svg>
-                  </span>
-                ))}
-                <span class="ml-1 text-xs text-gray-500">({product.rating})</span>
+              <!-- 产品评分和统计 -->
+              <div class="mb-3 flex items-center justify-between">
+                <div class="flex items-center">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <span class={`${i < Math.floor(product.stats.rating) ? 'text-yellow-500' : (i < product.stats.rating ? 'text-yellow-300' : 'text-gray-300')}`}>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                        <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
+                      </svg>
+                    </span>
+                  ))}
+                  <span class="ml-1 text-xs text-gray-500">({product.stats.rating})</span>
+                </div>
+                <span class="text-xs text-green-600 font-medium">{product.stats.claimedCount.toLocaleString()}人已领取</span>
+              </div>
+              
+              <!-- 产品规格 -->
+              <div class="mb-3 text-xs text-gray-600 dark:text-gray-400">
+                <div class="flex justify-between mb-1">
+                  <span>通用流量:</span>
+                  <span class="font-medium text-primary">{product.specs.generalTraffic}</span>
+                </div>
+                <div class="flex justify-between mb-1">
+                  <span>通话时长:</span>
+                  <span class="font-medium">{product.specs.callMinutes}</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>适用年龄:</span>
+                  <span class="font-medium">{product.eligibility.minAge}-{product.eligibility.maxAge}周岁</span>
+                </div>
               </div>
               
               <!-- 产品价格 -->
@@ -132,10 +287,10 @@ const {
               
               <!-- 添加立即申请和立即办理按钮 -->
               <div class="flex space-x-2">
-                <a href={`/apply/${product.id}`} class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-primary rounded-lg hover:bg-primary-dark transition-colors">
+                <a href="https://h5.lot-ml.com/ProductEn/Index/1a654e0b341cadd2" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-primary hover:bg-primary-dark transition-colors">
                   立即申请
                 </a>
-                <a href={`/order/${product.id}`} class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-primary border border-primary rounded-lg hover:bg-primary hover:text-white transition-colors">
+                <a href="https://h5.lot-ml.com/ProductEn/Index/1a654e0b341cadd2" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-primary border border-primary hover:bg-primary hover:text-white transition-colors">
                   立即办理
                 </a>
               </div>
