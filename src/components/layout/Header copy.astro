@@ -165,7 +165,7 @@ const menuitems = [
         <a href="/" class="flex items-center gap-2 sm:gap-3 py-2 group">
           <div class="flex items-center gap-2 sm:gap-3">
             <!-- Logo图标 -->
-            <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center overflow-hidden bg-blue-50 dark:bg-blue-900/20 group-hover:scale-105 transition-transform duration-200">
+            <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform duration-200">
               <img 
                 src="/assets/logo/172.png" 
                 alt="172号卡 Logo" 
@@ -176,8 +176,12 @@ const menuitems = [
             </div>
             <!-- 品牌名称 -->
             <div class="flex flex-col min-w-0">
-              <span class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white truncate">172号卡</span>
-              <span class="text-xs text-gray-500 dark:text-gray-400 hidden sm:block truncate">智能通信专家</span>
+              <div class="flex items-center gap-2">
+                <span class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white truncate">172号卡</span>
+                <!-- 官网标签 -->
+                <span class="px-2 py-1 text-xs font-normal bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-full leading-none">官网</span>
+              </div>
+              <span class="text-xs text-gray-500 dark:text-gray-400 hidden sm:block truncate">分销管理平台</span>
             </div>
           </div>
         </a>
@@ -325,8 +329,11 @@ const menuitems = [
             href="https://haoka.lot-ml.com/plugreg.html?agentid=90925"
             target="_blank"
             rel="noopener noreferrer"
-            class="group inline-flex items-center px-3 lg:px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-lg shadow-sm hover:shadow-md transition-all text-base lg:text-lg whitespace-nowrap"
+            class="group inline-flex items-center gap-2 px-4 lg:px-5 py-2.5 bg-[#015bfe] hover:bg-[#0147be] text-white font-medium rounded-xl shadow-sm hover:shadow-md transition-all text-base lg:text-lg whitespace-nowrap hover:-translate-y-0.5"
           >
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+            </svg>
             <span>注册</span>
           </a>
           
@@ -334,8 +341,11 @@ const menuitems = [
             href="https://haoka.lot-ml.com/login.html"
             target="_blank"
             rel="noopener noreferrer"
-            class="group inline-flex items-center px-3 lg:px-4 py-2 bg-white/80 dark:bg-blue-900/20 text-gray-900 dark:text-white font-medium rounded-lg shadow-sm hover:shadow-md transition-all text-base lg:text-lg border border-gray-200/50 dark:border-blue-900/30 hover:bg-gray-50 dark:hover:bg-blue-900/30 whitespace-nowrap"
+            class="group inline-flex items-center gap-2 px-4 lg:px-5 py-2.5 bg-white/80 dark:bg-blue-900/20 text-gray-900 dark:text-white font-medium rounded-xl shadow-sm hover:shadow-md transition-all text-base lg:text-lg border border-gray-200/50 dark:border-blue-900/30 hover:bg-gray-50 dark:hover:bg-blue-900/30 whitespace-nowrap hover:-translate-y-0.5"
           >
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+            </svg>
             <span>登入</span>
           </a>
         </div>
