@@ -1,9 +1,6 @@
 ---
-// 优化后的菜单分类结构
-// 1. 消除重复项目
-// 2. 重新组织分类，使其更加合理
-// 3. 按照用户使用频率和逻辑关系排序
-// 4. 为每个子菜单项添加短介绍
+// 现代化简约风格的菜单分类结构
+// 优化移动端响应式设计，确保内容不溢出屏幕
 const menuitems = [
   {
     title: "首页",
@@ -160,15 +157,15 @@ const menuitems = [
     showAboutMenu: false,
     showPartnerMenu: false
   }
-" class="sticky top-0 z-50 w-full bg-white dark:bg-black backdrop-blur-md transition-all duration-300 border-b border-gray-100 dark:border-blue-900/20">
-  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex h-16 items-center justify-between">
+" class="sticky top-0 z-50 w-full bg-white/95 dark:bg-black/95 backdrop-blur-lg transition-all duration-300 border-b border-gray-100/50 dark:border-blue-900/20 shadow-sm">
+  <div class="container mx-auto px-3 sm:px-4 lg:px-8 xl:px-12">
+    <div class="flex h-16 sm:h-20 items-center justify-between">
       <!-- Logo -->
-      <div class="flex items-center">
-        <a href="/" class="flex items-center gap-3 py-2">
-          <div class="flex items-center gap-3">
+      <div class="flex items-center min-w-0 flex-shrink-0">
+        <a href="/" class="flex items-center gap-2 sm:gap-3 py-2 group">
+          <div class="flex items-center gap-2 sm:gap-3">
             <!-- Logo图标 -->
-            <div class="w-10 h-10 rounded-lg flex items-center justify-center overflow-hidden">
+            <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center overflow-hidden bg-blue-50 dark:bg-blue-900/20 group-hover:scale-105 transition-transform duration-200">
               <img 
                 src="/assets/logo/172.png" 
                 alt="172号卡 Logo" 
@@ -178,23 +175,23 @@ const menuitems = [
               />
             </div>
             <!-- 品牌名称 -->
-            <div class="flex flex-col">
-              <span class="text-xl font-bold text-gray-900 dark:text-white">172号卡</span>
-              <span class="text-xs text-gray-500 dark:text-gray-400">智能通信专家</span>
+            <div class="flex flex-col min-w-0">
+              <span class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white truncate">172号卡</span>
+              <span class="text-xs text-gray-500 dark:text-gray-400 hidden sm:block truncate">智能通信专家</span>
             </div>
           </div>
         </a>
       </div>
 
       <!-- Desktop Navigation -->
-      <nav class="hidden xl:flex xl:items-center xl:space-x-6">
+      <nav class="hidden lg:flex lg:items-center lg:space-x-1 xl:space-x-4 flex-1 justify-center max-w-4xl">
         {
           menuitems.map((item, index) => {
             if(!item.children) {
               return (
                 <a 
                   href={item.path}
-                  class="nav-link"
+                  class="nav-link whitespace-nowrap"
                 >
                   {item.title}
                 </a>
@@ -213,9 +210,9 @@ const menuitems = [
                      @mouseleave={`${menuKey} = false`}
                      @click.outside={`${menuKey} = false`}>
                   <button @click={`${menuKey} = !${menuKey}`}
-                    class="nav-link flex items-center">
+                    class="nav-link flex items-center whitespace-nowrap">
                     {item.title}
-                    <svg class="ml-1 h-3.5 w-3.5 transition-transform duration-200" 
+                    <svg class="ml-1 h-3 w-3 transition-transform duration-200" 
                          :class={`${menuKey} ? 'rotate-180' : ''`}
                          fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -224,54 +221,55 @@ const menuitems = [
                   
                   <!-- Mega Menu Container -->
                   <div x-show={menuKey}
-                       x-transition:enter="transition ease-out duration-200"
-                       x-transition:enter-start="opacity-0 scale-95"
-                       x-transition:enter-end="opacity-100 scale-100"
-                       x-transition:leave="transition ease-in duration-150"
-                       x-transition:leave-start="opacity-100 scale-100"
-                       x-transition:leave-end="opacity-0 scale-95"
-                       class="absolute left-0 mt-2 w-[800px] rounded-lg bg-white dark:bg-black shadow-lg ring-1 ring-black/5 dark:ring-white/10"
+                       x-transition:enter="transition ease-out duration-300"
+                       x-transition:enter-start="opacity-0 scale-95 translate-y-2"
+                       x-transition:enter-end="opacity-100 scale-100 translate-y-0"
+                       x-transition:leave="transition ease-in duration-200"
+                       x-transition:leave-start="opacity-100 scale-100 translate-y-0"
+                       x-transition:leave-end="opacity-0 scale-95 translate-y-2"
+                       class="absolute left-1/2 transform -translate-x-1/2 mt-3 w-[90vw] max-w-2xl rounded-2xl bg-white dark:bg-gray-900 backdrop-blur-xl shadow-2xl shadow-blue-500/10 dark:shadow-blue-500/5 ring-1 ring-gray-200/50 dark:ring-blue-800/30 border border-gray-100/80 dark:border-blue-900/40 overflow-hidden"
                        style="display: none;">
                     
                     <!-- Menu Header -->
-                    <div class="rounded-t-lg bg-white p-5 dark:bg-black border-b border-gray-100 dark:border-blue-900/20">
-                      <div class="mb-3">
-                        <h4 class="mb-1 text-base font-medium text-black dark:text-white">
+                    <div class="rounded-t-2xl bg-white dark:bg-gray-900 p-5 border-b border-gray-200/60 dark:border-blue-800/40">
+                      <div class="mb-4">
+                        <h4 class="text-base font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-2">
+                          <div class="w-2 h-2 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full"></div>
                           {item.title}
                         </h4>
-                        <p class="text-xs text-gray-600 dark:text-gray-400">
-                          {item.title === "产品服务" ? "探索我们的产品和服务，为您提供全方位的解决方案。" :
-                           item.title === "服务中心" ? "专业的客户服务支持，随时为您提供帮助。" :
-                           item.title === "关于我们" ? "了解我们的公司文化和发展历程。" :
-                           item.title === "合作产品" ? "精选合作伙伴产品，为您提供更多选择。" : ""}
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                          {item.title === "产品服务" ? "探索我们的产品和服务，为您提供全方位的解决方案" :
+                           item.title === "服务中心" ? "专业的客户服务支持，随时为您提供帮助" :
+                           item.title === "关于我们" ? "了解我们的公司文化和发展历程" :
+                           item.title === "合作产品" ? "精选合作伙伴产品，为您提供更多选择" : ""}
                         </p>
                       </div>
                       
                       <!-- Menu Items Grid -->
-                      <div class="grid grid-cols-2 gap-3">
+                      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         {item.children.map(childItem => (
                           <a 
                             href={childItem.path}
                             target={childItem.external ? "_blank" : "_self"}
                             rel={childItem.external ? "noopener noreferrer" : undefined}
-                            class="group flex items-start space-x-3 p-3 rounded-md hover:bg-blue-50 dark:hover:bg-blue-900/10 transition-all duration-200"
+                            class="group flex items-start space-x-4 p-4 rounded-xl hover:bg-white dark:hover:bg-white/5 transition-all duration-300 border border-gray-100/50 dark:border-blue-900/20 hover:border-blue-200 dark:hover:border-blue-700/40 hover:shadow-lg hover:shadow-blue-500/10 dark:hover:shadow-blue-500/5 hover:-translate-y-0.5 bg-white dark:bg-blue-950/20"
                           >
-                            <div class="flex-shrink-0 w-7 h-7 bg-blue-50 dark:bg-blue-900/20 rounded-md flex items-center justify-center mt-0.5">
+                            <div class="flex-shrink-0 w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-600 dark:from-blue-400 dark:to-blue-500 rounded-xl flex items-center justify-center shadow-sm group-hover:shadow-md group-hover:scale-110 transition-all duration-300">
                               {childItem.external ? (
-                                <svg class="w-3.5 h-3.5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                                 </svg>
                               ) : (
-                                <svg class="w-3.5 h-3.5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                                 </svg>
                               )}
                             </div>
                             <div class="flex-1 min-w-0">
-                              <div class="font-medium text-black dark:text-white group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors duration-200 mb-0.5">
+                              <div class="text-sm font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300 truncate mb-1">
                                 {childItem.title}
                               </div>
-                              <div class="text-xs text-gray-500 dark:text-gray-400 line-clamp-2">
+                              <div class="text-xs text-gray-600 dark:text-gray-400 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors duration-300 line-clamp-2 leading-relaxed">
                                 {childItem.description}
                               </div>
                             </div>
@@ -281,14 +279,14 @@ const menuitems = [
                     </div>
                     
                     <!-- Menu Footer -->
-                    <div class="rounded-b-lg bg-gray-50 px-5 py-3 border-t border-gray-100 dark:border-blue-900/20 dark:bg-blue-900/5">
+                    <div class="rounded-b-2xl bg-white dark:bg-gray-900 px-5 py-4 border-t border-gray-200/60 dark:border-blue-800/40">
                       <a href={item.title === "产品服务" ? "/Product" : 
                                item.title === "服务中心" ? "/online" :
                                item.title === "关于我们" ? "/about" :
                                item.title === "合作产品" ? "#" : "#"}
-                         class="flex w-full items-center justify-center gap-2 text-xs font-medium text-blue-500 hover:text-blue-600 transition-colors">
+                         class="group flex w-full items-center justify-center gap-3 px-6 py-3 text-sm font-bold text-blue-600 dark:text-blue-400 hover:text-white dark:hover:text-white bg-white dark:bg-gray-800 hover:bg-gradient-to-r hover:from-blue-500 hover:to-blue-600 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/30 hover:scale-105 border border-blue-100/50 dark:border-blue-800/30 hover:border-transparent">
                         查看全部{item.title}
-                        <svg class="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg class="w-4 h-4 transition-all duration-300 group-hover:translate-x-1 group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                         </svg>
                       </a>
@@ -302,33 +300,36 @@ const menuitems = [
       </nav>
 
       <!-- Right Side Actions -->
-      <div class="flex items-center space-x-3">
+      <div class="flex items-center space-x-2 sm:space-x-3 flex-shrink-0">
         <!-- Dark Mode Toggle -->
         <button 
           id="themeSwitcher"
-          class="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-blue-900/10 transition-colors duration-200"
+          class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-blue-900/20 transition-all duration-200 group"
           aria-label="切换暗黑模式"
         >
           <span class="hidden dark:block">
-            <svg class="h-5 w-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg class="h-4 w-4 sm:h-5 sm:w-5 text-blue-400 group-hover:text-blue-300 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
             </svg>
           </span>
           <span class="block dark:hidden">
-            <svg class="h-5 w-5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg class="h-4 w-4 sm:h-5 sm:w-5 text-blue-500 group-hover:text-blue-600 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
             </svg>
           </span>
         </button>
 
         <!-- Auth Buttons -->
-        <div class="flex flex-wrap justify-center xl:justify-start gap-3">
+        <div class="hidden sm:flex items-center gap-2">
           <a 
             href="https://haoka.lot-ml.com/plugreg.html?agentid=90925"
             target="_blank"
             rel="noopener noreferrer"
-            class="group hidden sm:inline-flex items-center px-5 py-2 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-md shadow-sm hover:shadow-md transition-all text-sm"
+            class="group inline-flex items-center gap-2 px-4 lg:px-5 py-2.5 bg-[#015bfe] hover:bg-[#0147be] text-white font-medium rounded-xl shadow-sm hover:shadow-md transition-all text-base lg:text-lg whitespace-nowrap hover:-translate-y-0.5"
           >
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+            </svg>
             <span>注册</span>
           </a>
           
@@ -336,8 +337,11 @@ const menuitems = [
             href="https://haoka.lot-ml.com/login.html"
             target="_blank"
             rel="noopener noreferrer"
-            class="group hidden sm:inline-flex items-center px-5 py-2 bg-white dark:bg-blue-900/20 text-black dark:text-white font-medium rounded-md shadow-sm hover:shadow-md transition-all text-sm border border-gray-200 dark:border-blue-900/30"
+            class="group inline-flex items-center gap-2 px-4 lg:px-5 py-2.5 bg-white/80 dark:bg-blue-900/20 text-gray-900 dark:text-white font-medium rounded-xl shadow-sm hover:shadow-md transition-all text-base lg:text-lg border border-gray-200/50 dark:border-blue-900/30 hover:bg-gray-50 dark:hover:bg-blue-900/30 whitespace-nowrap hover:-translate-y-0.5"
           >
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+            </svg>
             <span>登入</span>
           </a>
         </div>
@@ -346,12 +350,12 @@ const menuitems = [
         <button 
           @click="navbarOpen = !navbarOpen"
           :class="navbarOpen && 'navbarTogglerActive'"
-          class="xl:hidden p-2 rounded-md hover:bg-gray-100 dark:hover:bg-blue-900/10 transition-colors duration-200"
+          class="lg:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-blue-900/20 transition-all duration-200 group"
           aria-label="切换菜单"
         >
-          <span class="relative my-[6px] block h-[2px] w-[24px] bg-black dark:bg-white"></span>
-          <span class="relative my-[6px] block h-[2px] w-[24px] bg-black dark:bg-white"></span>
-          <span class="relative my-[6px] block h-[2px] w-[24px] bg-black dark:bg-white"></span>
+          <span class="relative my-[5px] block h-[2px] w-[20px] sm:w-[24px] bg-gray-700 dark:bg-gray-200 transition-all duration-200"></span>
+          <span class="relative my-[5px] block h-[2px] w-[20px] sm:w-[24px] bg-gray-700 dark:bg-gray-200 transition-all duration-200"></span>
+          <span class="relative my-[5px] block h-[2px] w-[20px] sm:w-[24px] bg-gray-700 dark:bg-gray-200 transition-all duration-200"></span>
         </button>
       </div>
     </div>
@@ -359,149 +363,198 @@ const menuitems = [
 
   <!-- Mobile Menu -->
   <div 
-    x-show="navbarOpen"
-    x-transition:enter="transition ease-out duration-200"
-    x-transition:enter-start="opacity-0 -translate-y-4"
-    x-transition:enter-end="opacity-100 translate-y-0"
-    x-transition:leave="transition ease-in duration-150"
-    x-transition:leave-start="opacity-100 translate-y-0"
-    x-transition:leave-end="opacity-0 -translate-y-4"
-    class="xl:hidden fixed inset-x-0 top-16 z-50 w-full overflow-hidden bg-white dark:bg-black border-t border-gray-100 dark:border-blue-900/20"
-    style="display: none;">
-    <nav class="relative max-h-[calc(100vh-4rem)] overflow-y-auto p-4 space-y-3">
-      <div class="space-y-2">
-        {
-          menuitems.map((item) => {
-            if(!item.children) {
-              return (
-                <a href={item.path} class="mobile-nav-item">
-                  {item.title}
-                </a>
-              )
-            }
-          
-            if(item.children) {
-              const mobileMenuKey = `mobile${item.title.replace(/\s+/g, '')}Menu`;
-              return (
-                <div class="space-y-1" x-data={`{ ${mobileMenuKey}: false }`}>
-                  <div @click={`${mobileMenuKey} = !${mobileMenuKey}`} class="mobile-nav-item w-full flex items-center justify-between group cursor-pointer">
-                    <span>{item.title}</span>
-                    <svg class="h-4 w-4 transition-all duration-200" 
-                         :class={`${mobileMenuKey} ? 'rotate-180' : ''`}
-                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </div>
-                  
-                  <div x-show={mobileMenuKey}
-                       x-transition:enter="transition ease-out duration-200"
-                       x-transition:enter-start="opacity-0 max-h-0"
-                       x-transition:enter-end="opacity-100 max-h-96"
-                       x-transition:leave="transition ease-in duration-150"
-                       x-transition:leave-start="opacity-100 max-h-96"
-                       x-transition:leave-end="opacity-0 max-h-0"
-                       class="pt-1 pl-3 border-l-2 border-blue-100 dark:border-blue-900 overflow-hidden"
-                       style="display: none;">
-                    <div class="grid grid-cols-1 gap-1">
-                      {item.children.map(childItem => (
-                        <a 
-                          href={childItem.path}
-                          target={childItem.external ? "_blank" : "_self"}
-                          rel={childItem.external ? "noopener noreferrer" : undefined}
-                          class="mobile-menu-item"
-                        >
-                          <div class="flex flex-col">
-                            <div class="flex items-center justify-between">
-                              <span class="font-medium">{childItem.title}</span>
-                              {childItem.external && (
-                                <svg class="h-3.5 w-3.5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                                </svg>
-                              )}
-                            </div>
-                            <div class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
-                              {childItem.description}
-                            </div>
+    x-show="navbarOpen" 
+    x-transition:enter="transition ease-out duration-300"
+    x-transition:enter-start="opacity-0 transform -translate-y-4"
+    x-transition:enter-end="opacity-100 transform translate-y-0"
+    x-transition:leave="transition ease-in duration-200"
+    x-transition:leave-start="opacity-100 transform translate-y-0"
+    x-transition:leave-end="opacity-0 transform -translate-y-4"
+    class="lg:hidden absolute top-full left-0 right-0 bg-white/95 dark:bg-blue-950/95 backdrop-blur-md border-t border-gray-200/50 dark:border-blue-900/30 shadow-xl z-50"
+    style="display: none;"
+  >
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 max-h-[calc(100vh-96px)] overflow-y-auto">
+      <!-- Mobile Navigation Items -->
+      <nav class="space-y-2">
+        {menuitems.map((item) => (
+          <div class="mobile-nav-item">
+            {item.children ? (
+              <div x-data="{ open: false }">
+                <button 
+                  @click="open = !open"
+                  class="mobile-menu-item w-full flex items-center justify-between py-3 px-4 text-gray-900 dark:text-white hover:bg-blue-50 dark:hover:bg-blue-900/30 rounded-lg transition-all duration-200 group"
+                >
+                  <span class="font-medium text-base sm:text-lg">{item.title}</span>
+                  <svg 
+                    :class="open ? 'rotate-180' : ''"
+                    class="h-4 w-4 text-gray-400 group-hover:text-blue-500 transition-all duration-200 flex-shrink-0"
+                    fill="none" 
+                    viewBox="0 0 24 24" 
+                    stroke="currentColor"
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                
+                <div 
+                  x-show="open"
+                  x-transition:enter="transition ease-out duration-200"
+                  x-transition:enter-start="opacity-0 max-h-0"
+                  x-transition:enter-end="opacity-100 max-h-96"
+                  x-transition:leave="transition ease-in duration-150"
+                  x-transition:leave-start="opacity-100 max-h-96"
+                  x-transition:leave-end="opacity-0 max-h-0"
+                  class="overflow-hidden"
+                  style="display: none;"
+                >
+                  <div class="pl-4 space-y-1 mt-2 border-l-2 border-blue-100 dark:border-blue-900/50 ml-4">
+                    {item.children.map((child) => (
+                      <a 
+                        href={child.path}
+                        target={child.path.startsWith('http') ? '_blank' : '_self'}
+                        rel={child.path.startsWith('http') ? 'noopener noreferrer' : ''}
+                        class="block py-2.5 px-3 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50/50 dark:hover:bg-blue-900/20 rounded-lg transition-all duration-200"
+                      >
+                        <div class="font-medium text-sm">{child.title}</div>
+                        {child.description && (
+                          <div class="text-xs text-gray-500 dark:text-gray-400 mt-1 line-clamp-2 leading-relaxed">
+                            {child.description}
                           </div>
-                        </a>
-                      ))}
-                    </div>
+                        )}
+                      </a>
+                    ))}
                   </div>
                 </div>
-              )
-            }
-          })
-        }
-      </div>
-
+              </div>
+            ) : (
+              <a 
+                href={item.path}
+                target={item.path.startsWith('http') ? '_blank' : '_self'}
+                rel={item.path.startsWith('http') ? 'noopener noreferrer' : ''}
+                class="mobile-menu-item block py-3 px-4 text-gray-900 dark:text-white hover:bg-blue-50 dark:hover:bg-blue-900/30 rounded-lg transition-all duration-200 font-medium text-base sm:text-lg"
+              >
+                {item.title}
+              </a>
+            )}
+          </div>
+        ))}
+      </nav>
+      
       <!-- Mobile Auth Buttons -->
-      <div class="pt-4 space-y-3">
-        <a 
-          href="https://haoka.lot-ml.com/plugreg.html?agentid=90925" 
-          target="_blank"
-          rel="noopener noreferrer"
-          class="block w-full text-center px-4 py-2.5 rounded-md bg-blue-500 hover:bg-blue-600 text-white font-medium transition-colors duration-200 text-sm"
-        >
-          申请代理
-        </a>
-        <a 
-          href="https://haoka.lot-ml.com/login.html" 
-          target="_blank"
-          rel="noopener noreferrer"
-          class="block w-full text-center px-4 py-2.5 rounded-md border border-gray-200 dark:border-blue-900/30 hover:bg-gray-50 dark:hover:bg-blue-900/10 text-black dark:text-white font-medium transition-colors duration-200 text-sm"
-        >
-          登入
-        </a>
+      <div class="mt-6 pt-4 border-t border-gray-200/50 dark:border-blue-900/30">
+        <div class="flex flex-col space-y-3">
+          <a 
+            href="https://haoka.lot-ml.com/plugreg.html?agentid=90925"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full inline-flex items-center justify-center px-4 py-3 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-lg shadow-sm hover:shadow-md transition-all duration-200 text-base lg:text-lg"
+          >
+            <span>注册</span>
+          </a>
+          
+          <a 
+            href="https://haoka.lot-ml.com/login.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full inline-flex items-center justify-center px-4 py-3 bg-white/80 dark:bg-blue-900/30 text-gray-900 dark:text-white font-medium rounded-lg shadow-sm hover:shadow-md transition-all duration-200 text-base lg:text-lg border border-gray-200/50 dark:border-blue-900/30 hover:bg-gray-50 dark:hover:bg-blue-900/40"
+          >
+            <span>登入</span>
+          </a>
+        </div>
       </div>
-    </nav>
+    </div>
   </div>
 </header>
 
 <style>
-  .nav-link {
-    @apply px-2 xl:px-3 py-2 rounded-md text-gray-700 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 font-medium transition-all duration-300 relative overflow-hidden text-sm;
-  }
+    /* Navigation Link Styles */
+    .nav-link {
+      @apply relative text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 font-medium px-3 py-2 rounded-lg text-base lg:text-lg;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 50%;
+      background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transform: translateX(-50%);
+      border-radius: 1px;
+    }
+    
+    .nav-link:hover::after {
+      width: 80%;
+    }
 
-  .nav-link::after {
-    content: '';
-    @apply absolute bottom-0 left-0 w-full h-0.5 bg-blue-500 dark:bg-blue-400 transform scale-x-0 transition-transform duration-300 origin-left;
-  }
+    .nav-link:hover {
+      @apply bg-blue-50/50 dark:bg-blue-900/20;
+    }
 
-  .nav-link:hover::after {
-    @apply scale-x-100;
-  }
+    /* Menu Item Styles */
+    .menu-item {
+      @apply block px-4 py-3 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-all duration-200;
+    }
 
-  .menu-item {
-    @apply flex items-center space-x-2 xl:space-x-3 p-2 rounded-md transition-all duration-300 hover:bg-blue-50 dark:hover:bg-blue-900/10;
-  }
+    .menu-item:hover {
+      @apply transform translate-x-1;
+    }
 
-  .mobile-nav-item {
-    @apply flex items-center justify-between w-full px-3 py-2.5 rounded-md text-gray-800 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 transition-all duration-300 font-medium hover:translate-x-1 text-sm;
-  }
+    /* Mobile Navigation Styles */
+    .mobile-nav-item {
+      @apply block w-full text-left text-gray-900 dark:text-white transition-all duration-200;
+    }
 
-  .mobile-menu-item {
-    @apply flex items-center w-full px-3 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-all duration-300 hover:translate-x-1 text-sm;
-  }
+    .mobile-menu-item {
+      @apply block w-full text-left text-gray-700 dark:text-gray-300 transition-all duration-200;
+    }
 
-  .navbarTogglerActive > span:nth-child(1) {
-    @apply transform rotate-45 translate-y-[7px];
-  }
+    /* Hamburger Menu Animation */
+    .navbarTogglerActive > span:nth-child(1) {
+      top: 6px;
+      transform: rotate(45deg);
+      background-color: #3b82f6;
+    }
+    .navbarTogglerActive > span:nth-child(2) {
+      opacity: 0;
+      transform: scale(0);
+    }
+    .navbarTogglerActive > span:nth-child(3) {
+      top: -6px;
+      transform: rotate(-45deg);
+      background-color: #3b82f6;
+    }
 
-  .navbarTogglerActive > span:nth-child(2) {
-    @apply opacity-0;
-  }
+    /* Text Truncation */
+    .line-clamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
-  .navbarTogglerActive > span:nth-child(3) {
-    @apply transform -rotate-45 -translate-y-[7px];
-  }
+    /* Smooth Scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
 
-  .line-clamp-2 {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-</style>
+    /* Focus Styles for Accessibility */
+    .nav-link:focus,
+    .menu-item:focus,
+    .mobile-menu-item:focus {
+      @apply outline-none ring-2 ring-blue-500 ring-offset-2 ring-offset-white dark:ring-offset-blue-950;
+    }
+
+    /* Backdrop Blur Support */
+    @supports (backdrop-filter: blur(12px)) {
+      .backdrop-blur-md {
+        backdrop-filter: blur(12px);
+      }
+    }
+  </style>
 
 <script is:inline>
   // 使用防抖函数优化滚动事件处理

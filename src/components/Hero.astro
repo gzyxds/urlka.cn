@@ -199,41 +199,13 @@ import Qrcode from './Qrcode.astro';
               
               <!-- 实际产品图片展示 - 使用SVG创建WiFi设备图标 -->
               <div class="relative bg-white rounded-2xl p-4 md:p-6 lg:p-8 shadow-lg border border-blue-100/50 group-hover:shadow-xl transition-all duration-500">
-                <!-- WiFi设备SVG图标 -->
+                <!-- 5G设备图标 -->
                 <div class="flex items-center justify-center h-28 md:h-32 lg:h-40 xl:h-44">
-                  <svg class="w-24 h-24 lg:w-32 lg:h-32 text-blue-600 transform transition-transform duration-500 group-hover:scale-110" viewBox="0 0 200 200" fill="none">
-                    <!-- 设备主体 -->
-                    <rect x="60" y="80" width="80" height="60" rx="12" fill="currentColor" opacity="0.9"/>
-                    <rect x="65" y="85" width="70" height="50" rx="8" fill="white"/>
-                    
-                    <!-- 屏幕显示 -->
-                    <rect x="70" y="90" width="60" height="20" rx="4" fill="currentColor" opacity="0.1"/>
-                    <circle cx="85" cy="100" r="3" fill="currentColor" opacity="0.3"/>
-                    <rect x="95" y="97" width="30" height="6" rx="3" fill="currentColor" opacity="0.2"/>
-                    
-                    <!-- 按钮 -->
-                    <circle cx="100" cy="120" r="8" fill="currentColor" opacity="0.8"/>
-                    <circle cx="100" cy="120" r="4" fill="white"/>
-                    
-                    <!-- WiFi信号波纹 -->
-                    <path d="M100 60 Q120 40 140 60" stroke="currentColor" stroke-width="3" fill="none" opacity="0.6" class="animate-pulse"/>
-                    <path d="M100 55 Q125 30 150 55" stroke="currentColor" stroke-width="2" fill="none" opacity="0.4" class="animate-pulse" style="animation-delay: 0.5s"/>
-                    <path d="M100 50 Q130 20 160 50" stroke="currentColor" stroke-width="1" fill="none" opacity="0.3" class="animate-pulse" style="animation-delay: 1s"/>
-                    
-                    <!-- 左侧信号 -->
-                    <path d="M100 60 Q80 40 60 60" stroke="currentColor" stroke-width="3" fill="none" opacity="0.6" class="animate-pulse"/>
-                    <path d="M100 55 Q75 30 50 55" stroke="currentColor" stroke-width="2" fill="none" opacity="0.4" class="animate-pulse" style="animation-delay: 0.5s"/>
-                    <path d="M100 50 Q70 20 40 50" stroke="currentColor" stroke-width="1" fill="none" opacity="0.3" class="animate-pulse" style="animation-delay: 1s"/>
-                    
-                    <!-- 天线 -->
-                    <rect x="95" y="75" width="2" height="8" fill="currentColor" opacity="0.7"/>
-                    <rect x="103" y="75" width="2" height="8" fill="currentColor" opacity="0.7"/>
-                    
-                    <!-- 指示灯 -->
-                    <circle cx="75" cy="125" r="2" fill="#10B981" class="animate-pulse"/>
-                    <circle cx="85" cy="125" r="2" fill="#3B82F6" class="animate-pulse" style="animation-delay: 0.3s"/>
-                    <circle cx="95" cy="125" r="2" fill="#EF4444" opacity="0.3"/>
-                  </svg>
+                  <img 
+                    src="/assets/logo/5g.svg" 
+                    alt="5G设备" 
+                    class="w-24 h-24 lg:w-32 lg:h-32 transform transition-transform duration-500 group-hover:scale-110 filter drop-shadow-lg"
+                  />
                 </div>
                 
                 <!-- 产品高光效果 -->
@@ -276,23 +248,23 @@ import Qrcode from './Qrcode.astro';
               </div>
             </div>
 
-            <div class="absolute -bottom-3 -left-3 bg-white rounded-xl p-3 lg:p-4 shadow-lg border border-blue-100 z-20 transform transition-all duration-300 hover:scale-105 hover:shadow-xl hover:rotate-[-2deg] group-hover:rotate-[-3deg]">
+            <div class="absolute -bottom-2 -left-2 bg-white rounded-xl p-2.5 lg:p-3.5 shadow-lg border border-blue-100 z-20 transform transition-all duration-300 hover:scale-105 hover:shadow-xl hover:rotate-[-2deg] group-hover:rotate-[-3deg]">
               <div class="flex items-center">
-                <div class="w-8 h-8 lg:w-10 lg:h-10 bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg flex items-center justify-center mr-2.5 lg:mr-3 flex-shrink-0 shadow-sm transition-all duration-300">
-                  <svg class="w-4 h-4 lg:w-5 lg:h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                <div class="w-7 h-7 lg:w-9 lg:h-9 bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg flex items-center justify-center mr-2 lg:mr-2.5 flex-shrink-0 shadow-sm transition-all duration-300">
+                  <svg class="w-3.5 h-3.5 lg:w-4.5 lg:h-4.5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"></path>
                   </svg>
                 </div>
                 <div>
-                  <div class="text-xs font-semibold text-gray-700 flex items-center">
+                  <div class="text-[10px] font-semibold text-gray-700 flex items-center">
                     平均速度
-                    <span class="ml-1.5 bg-green-50 text-green-600 text-[9px] px-1.5 py-0.5 rounded-full">优秀</span>
+                    <span class="ml-1 bg-green-50 text-green-600 text-[8px] px-1 py-0.5 rounded-full">优秀</span>
                   </div>
-                  <div class="text-lg lg:text-xl font-extrabold text-gray-900 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-800 relative">
-                    156<span class="text-xs lg:text-sm">Mbps</span>
+                  <div class="text-base lg:text-lg font-extrabold text-gray-900 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-800 relative">
+                    156<span class="text-[10px] lg:text-xs">Mbps</span>
                     <div class="absolute -bottom-0.5 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500/50 to-transparent rounded-full"></div>
                   </div>
-                  <div class="text-[9px] lg:text-[10px] text-gray-500">峰值可达 300Mbps</div>
+                  <div class="text-[8px] lg:text-[9px] text-gray-500">峰值可达 300Mbps</div>
                 </div>
               </div>
             </div>
