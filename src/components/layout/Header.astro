@@ -165,7 +165,7 @@ const menuitems = [
         <a href="/" class="flex items-center gap-2 sm:gap-3 py-2 group">
           <div class="flex items-center gap-2 sm:gap-3">
             <!-- Logo图标 -->
-            <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center overflow-hidden bg-blue-50 dark:bg-blue-900/20 group-hover:scale-105 transition-transform duration-200">
+            <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform duration-200">
               <img 
                 src="/assets/logo/172.png" 
                 alt="172号卡 Logo" 
@@ -176,8 +176,12 @@ const menuitems = [
             </div>
             <!-- 品牌名称 -->
             <div class="flex flex-col min-w-0">
-              <span class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white truncate">172号卡</span>
-              <span class="text-xs text-gray-500 dark:text-gray-400 hidden sm:block truncate">智能通信专家</span>
+              <div class="flex items-center gap-2">
+                <span class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white truncate">172号卡</span>
+                <!-- 官网标签 -->
+                <span class="px-2 py-1 text-xs font-normal bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-full leading-none">官网</span>
+              </div>
+              <span class="text-xs text-gray-500 dark:text-gray-400 hidden sm:block truncate">分销管理平台</span>
             </div>
           </div>
         </a>

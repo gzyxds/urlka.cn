@@ -1,226 +1,611 @@
-<!-- ====== 飞利猫专业Header菜单 Start -->
-  <header x-data="
-        {
-          navbarOpen: false,
-          showProductMenu: false,
-          showServiceMenu: false
-        }
-      " class="relative z-50">
-    <div class="bg-white dark:bg-dark shadow-sm">
-      <div class="container mx-auto">
-        <div class="relative -mx-4 flex items-center justify-between">
-          <!-- 飞利猫Logo区域 -->
-          <div class="w-60 max-w-full px-4">
-            <a href="/feilimao" class="block w-full py-5">
-              <div class="flex items-center gap-3">
-                <!-- 飞利猫Logo图标 -->
-                <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"></path>
-                  </svg>
-                </div>
-                <!-- 飞利猫品牌名称 -->
-                <div class="flex flex-col">
-                  <span class="text-xl font-bold text-gray-900 dark:text-white">飞利猫</span>
-                  <span class="text-xs text-gray-500 dark:text-gray-400">随身WiFi专家</span>
-                </div>
-              </div>
-            </a>
+---
+// 现代化简约风格的菜单分类结构
+// 优化移动端响应式设计，确保内容不溢出屏幕
+const menuitems = [
+  {
+    title: "首页",
+    path: "/#home",
+  },
+  {
+    title: "飞利猫",
+    path: "/feilimao",
+  },
+  {
+    title: "产品服务",
+    path: "javascript:void(0)",
+    children: [
+      { 
+        title: "热门产品", 
+        path: "/Product", 
+        external: false,
+        description: "精选热门产品，满足您的各种需求"
+      },
+      { 
+        title: "知识库", 
+        path: "/base", 
+        external: false,
+        description: "丰富的知识资源，助您快速上手"
+      },
+      { 
+        title: "APP下载", 
+        path: "/app", 
+        external: false,
+        description: "便捷的移动应用，随时随地使用"
+      },
+      { 
+        title: "在线领卡", 
+        path: "/card", 
+        external: false,
+        description: "快速在线办理，即时生效使用"
+      },
+      { 
+        title: "飞利猫", 
+        path: "/caict", 
+        external: false,
+        description: "专业的随身WiFi解决方案"
+      },
+    ],
+  },
+  {
+    title: "服务中心",
+    path: "javascript:void(0)",
+    children: [
+      { 
+        title: "代理登入", 
+        path: "/signup", 
+        external: false,
+        description: "代理商专用登录入口"
+      },
+      { 
+        title: "订单查询", 
+        path: "/OrderInquiry", 
+        external: false,
+        description: "快速查询订单状态和物流信息"
+      },
+      { 
+        title: "在线客服", 
+        path: "/online", 
+        external: false,
+        description: "7×24小时在线客服支持"
+      },
+      { 
+        title: "常见问题", 
+        path: "/fqa", 
+        external: false,
+        description: "常见问题解答，自助服务"
+      },
+      { 
+        title: "在线留言", 
+        path: "/message", 
+        external: false,
+        description: "在线留言反馈，及时响应"
+      },
+    ],
+  },
+  {
+    title: "关于我们",
+    path: "javascript:void(0)",
+    children: [
+      { 
+        title: "公司介绍", 
+        path: "/about", 
+        external: false,
+        description: "了解公司发展历程和企业文化"
+      },
+      { 
+        title: "联系我们", 
+        path: "/contact", 
+        external: false,
+        description: "多种联系方式，随时为您服务"
+      },
+      { 
+        title: "加入我们", 
+        path: "/join", 
+        external: false,
+        description: "优秀人才招聘，共创美好未来"
+      },
+      { 
+        title: "合作伙伴", 
+        path: "/partners", 
+        external: false,
+        description: "优质合作伙伴，共同发展"
+      },
+    ],
+  },
+  {
+    title: "新闻资讯",
+    path: "/blog",
+  },
+  {
+    title: "合作产品",
+    path: "javascript:void(0)",
+    children: [
+      { 
+        title: "艺创官网", 
+        path: "https://urlnet.cn", 
+        external: true,
+        description: "专业的网络服务提供商"
+      },
+      { 
+        title: "数字分身", 
+        path: "https://v.cnai.art", 
+        external: true,
+        description: "AI数字人技术领先平台"
+      },
+      { 
+        title: "艺创AI", 
+        path: "https://www.cnai.art", 
+        external: true,
+        description: "人工智能创新应用平台"
+      },
+      { 
+        title: "优刻云", 
+        path: "https://www.cloudcvm.com/", 
+        external: true,
+        description: "高性能云计算服务商"
+      },
+    ],
+  },
+];
+---
+
+<header x-data="
+  {
+    navbarOpen: false,
+    showProductMenu: false,
+    showServiceMenu: false,
+    showAboutMenu: false,
+    showPartnerMenu: false
+  }
+" class="sticky top-0 z-50 w-full bg-white/95 dark:bg-black/95 backdrop-blur-lg transition-all duration-300 border-b border-gray-100/50 dark:border-blue-900/20 shadow-sm">
+  <div class="container mx-auto px-3 sm:px-4 lg:px-8 xl:px-12">
+    <div class="flex h-16 sm:h-20 items-center justify-between">
+      <!-- Logo -->
+      <div class="flex items-center min-w-0 flex-shrink-0">
+        <a href="/" class="flex items-center gap-2 sm:gap-3 py-2 group">
+          <div class="flex items-center gap-2 sm:gap-3">
+            <!-- Logo图标 -->
+            <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center overflow-hidden bg-blue-50 dark:bg-blue-900/20 group-hover:scale-105 transition-transform duration-200">
+              <img 
+                src="/public/assets/logo/flmlg.png"
+                alt="172号卡 Logo" 
+                class="w-full h-full object-cover"
+                width="40"
+                height="40"
+              />
+            </div>
+            <!-- 品牌名称 -->
+            <div class="flex flex-col min-w-0">
+              <span class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white truncate">飞利猫</span>
+              <span class="text-xs text-gray-500 dark:text-gray-400 hidden sm:block truncate">智能通信专家</span>
+            </div>
           </div>
+        </a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden lg:flex lg:items-center lg:space-x-1 xl:space-x-4 flex-1 justify-center max-w-4xl">
+        {
+          menuitems.map((item, index) => {
+            if(!item.children) {
+              return (
+                <a 
+                  href={item.path}
+                  class="nav-link whitespace-nowrap"
+                >
+                  {item.title}
+                </a>
+              )
+            }
           
-          <div class="flex w-full items-center justify-between px-4">
-            <div>
-              <!-- 移动端菜单按钮 -->
-              <button @click="navbarOpen = !navbarOpen" :class="navbarOpen && 'navbarTogglerActive' " id="navbarToggler"
-                class="absolute right-4 top-1/2 block -translate-y-1/2 rounded-lg px-3 py-[6px] ring-primary focus:ring-2 lg:hidden">
-                <span class="relative my-[6px] block h-[2px] w-[30px] bg-body-color dark:bg-white"></span>
-                <span class="relative my-[6px] block h-[2px] w-[30px] bg-body-color dark:bg-white"></span>
-                <span class="relative my-[6px] block h-[2px] w-[30px] bg-body-color dark:bg-white"></span>
-              </button>
+            if(item.children) {
+              const menuKey = item.title === "产品服务" ? "showProductMenu" : 
+                             item.title === "服务中心" ? "showServiceMenu" :
+                             item.title === "关于我们" ? "showAboutMenu" :
+                             item.title === "合作产品" ? "showPartnerMenu" : "showMenu";
               
-              <!-- 主导航菜单 -->
-              <nav :class="!navbarOpen && 'hidden' " id="navbarCollapse"
-                class="absolute right-4 top-full w-full max-w-[350px] rounded-lg bg-white px-6 py-5 shadow lg:static lg:block lg:w-full lg:max-w-full lg:shadow-none dark:bg-dark-2 lg:dark:bg-transparent">
-                <ul class="block lg:flex lg:items-center">
+              return (
+                <div class="relative group" 
+                     @mouseenter={`${menuKey} = true`} 
+                     @mouseleave={`${menuKey} = false`}
+                     @click.outside={`${menuKey} = false`}>
+                  <button @click={`${menuKey} = !${menuKey}`}
+                    class="nav-link flex items-center whitespace-nowrap">
+                    {item.title}
+                    <svg class="ml-1 h-3 w-3 transition-transform duration-200" 
+                         :class={`${menuKey} ? 'rotate-180' : ''`}
+                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
                   
-                  <!-- 首页 -->
-                  <li>
-                    <a href="/feilimao"
-                      class="flex py-2 text-base font-medium text-body-color hover:text-primary lg:ml-8 lg:inline-flex dark:text-dark-6 dark:hover:text-white transition-colors">
-                      首页
-                    </a>
-                  </li>
-
-                  <!-- 产品中心 - 下拉菜单 -->
-                  <li class="relative group" 
-                      @mouseenter="showProductMenu = true" 
-                      @mouseleave="showProductMenu = false"
-                      @click.outside="showProductMenu = false">
-                    <button @click="showProductMenu = !showProductMenu"
-                      class="flex w-full items-center justify-between gap-2 py-2 text-base font-medium text-body-color hover:text-primary lg:ml-8 lg:inline-flex lg:w-auto lg:justify-center dark:text-dark-6 dark:hover:text-white transition-colors">
-                      产品中心
-                      <span :class="showProductMenu ? 'rotate-180' : '' " class="duration-200 transition-transform">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path
-                            d="M10 14.25C9.8125 14.25 9.65625 14.1875 9.5 14.0625L2.3125 7C2.03125 6.71875 2.03125 6.28125 2.3125 6C2.59375 5.71875 3.03125 5.71875 3.3125 6L10 12.5312L16.6875 5.9375C16.9688 5.65625 17.4062 5.65625 17.6875 5.9375C17.9688 6.21875 17.9688 6.65625 17.6875 6.9375L10.5 14C10.3437 14.1562 10.1875 14.25 10 14.25Z"
-                            fill="currentColor" />
-                        </svg>
-                      </span>
-                    </button>
-                    <!-- 二级菜单容器 - 简化显示逻辑 -->
-                    <div x-show="showProductMenu" 
-                         x-transition:enter="transition ease-out duration-200"
-                         x-transition:enter-start="opacity-0 scale-95"
-                         x-transition:enter-end="opacity-100 scale-100"
-                         x-transition:leave="transition ease-in duration-150"
-                         x-transition:leave-start="opacity-100 scale-100"
-                         x-transition:leave-end="opacity-0 scale-95"
-                         class="w-full lg:absolute lg:left-0 lg:top-full lg:w-[850px] lg:rounded-xl lg:shadow-lg lg:z-50"
-                         style="display: none;">
-                      <div class="rounded-t-xl bg-white p-2 lg:p-8 dark:bg-dark border border-gray-200 dark:border-gray-700 lg:border-0">
-                        <div class="mb-8">
-                          <h4 class="mb-1 text-base font-medium text-dark dark:text-white">
-                            飞利猫产品中心
-                          </h4>
-                          <p class="text-sm text-body-color dark:text-dark-6">
-                            探索飞利猫的全系列产品，为您的生活带来便利与品质。
-                          </p>
-                        </div>
-
-                        <div class="grid gap-y-2 lg:grid-cols-2 lg:gap-x-5">
-                          <a href="javascript:void(0)"
-                            class="group flex flex-col gap-4 rounded-lg p-4 duration-200 hover:bg-gray-1 lg:flex-row dark:hover:bg-white/5">
-                            <div class="text-primary">
-                              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
-                                  fill="currentColor" />
-                              </svg>
-                            </div>
-                            <div>
-                              <h3
-                                class="mb-1 text-base font-semibold text-dark duration-200 group-hover:text-primary dark:text-white dark:group-hover:text-primary">
-                                智能家居系列
-                              </h3>
-                              <p class="text-sm text-body-color dark:text-dark-6">
-                                智能控制，让您的家居生活更加便捷舒适，体验科技带来的美好生活。
-                              </p>
-                            </div>
-                          </a>
-                          <a href="javascript:void(0)"
-                            class="group flex flex-col gap-4 rounded-lg p-4 duration-200 hover:bg-gray-1 lg:flex-row dark:hover:bg-white/5">
-                            <div class="text-primary">
-                              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                  d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"
-                                  fill="currentColor" />
-                              </svg>
-                            </div>
-                            <div>
-                              <h3
-                                class="mb-1 text-base font-semibold text-dark duration-200 group-hover:text-primary dark:text-white dark:group-hover:text-primary">
-                                数码配件
-                              </h3>
-                              <p class="text-sm text-body-color dark:text-dark-6">
-                                精选数码配件，提升您的数字生活体验，品质保证，性能卓越。
-                              </p>
-                            </div>
-                          </a>
-                          <a href="javascript:void(0)"
-                            class="group flex flex-col gap-4 rounded-lg p-4 duration-200 hover:bg-gray-1 lg:flex-row dark:hover:bg-white/5">
-                            <div class="text-primary">
-                              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                  d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
-                                  fill="currentColor" />
-                              </svg>
-                            </div>
-                            <div>
-                              <h3
-                                class="mb-1 text-base font-semibold text-dark duration-200 group-hover:text-primary dark:text-white dark:group-hover:text-primary">
-                                精品推荐
-                              </h3>
-                              <p class="text-sm text-body-color dark:text-dark-6">
-                                每月精选推荐产品，为您带来最新最优质的产品体验和服务。
-                              </p>
-                            </div>
-                          </a>
-                          <a href="javascript:void(0)"
-                            class="group flex flex-col gap-4 rounded-lg p-4 duration-200 hover:bg-gray-1 lg:flex-row dark:hover:bg-white/5">
-                            <div class="text-primary">
-                              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.5 6L12 10.5 8.5 8 12 5.5 15.5 8zM8.5 16L12 13.5 15.5 16 12 18.5 8.5 16z"
-                                  fill="currentColor" />
-                              </svg>
-                            </div>
-                            <div>
-                              <h3
-                                class="mb-1 text-base font-semibold text-dark duration-200 group-hover:text-primary dark:text-white dark:group-hover:text-primary">
-                                定制服务
-                              </h3>
-                              <p class="text-sm text-body-color dark:text-dark-6">
-                                专业定制服务，根据您的需求量身打造，满足个性化需求。
-                              </p>
-                            </div>
-                          </a>
-                        </div>
+                  <!-- Mega Menu Container -->
+                  <div x-show={menuKey}
+                       x-transition:enter="transition ease-out duration-300"
+                       x-transition:enter-start="opacity-0 scale-95 translate-y-2"
+                       x-transition:enter-end="opacity-100 scale-100 translate-y-0"
+                       x-transition:leave="transition ease-in duration-200"
+                       x-transition:leave-start="opacity-100 scale-100 translate-y-0"
+                       x-transition:leave-end="opacity-0 scale-95 translate-y-2"
+                       class="absolute left-1/2 transform -translate-x-1/2 mt-3 w-[90vw] max-w-2xl rounded-2xl bg-white dark:bg-gray-900 backdrop-blur-xl shadow-2xl shadow-blue-500/10 dark:shadow-blue-500/5 ring-1 ring-gray-200/50 dark:ring-blue-800/30 border border-gray-100/80 dark:border-blue-900/40 overflow-hidden"
+                       style="display: none;">
+                    
+                    <!-- Menu Header -->
+                    <div class="rounded-t-2xl bg-white dark:bg-gray-900 p-5 border-b border-gray-200/60 dark:border-blue-800/40">
+                      <div class="mb-4">
+                        <h4 class="text-base font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-2">
+                          <div class="w-2 h-2 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full"></div>
+                          {item.title}
+                        </h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                          {item.title === "产品服务" ? "探索我们的产品和服务，为您提供全方位的解决方案" :
+                           item.title === "服务中心" ? "专业的客户服务支持，随时为您提供帮助" :
+                           item.title === "关于我们" ? "了解我们的公司文化和发展历程" :
+                           item.title === "合作产品" ? "精选合作伙伴产品，为您提供更多选择" : ""}
+                        </p>
                       </div>
-
-                      <div class="rounded-b-xl bg-primary/5 px-8 py-[18px] border-t border-gray-100 dark:border-gray-700 dark:bg-primary/10">
-                        <a href="javascript:void(0)"
-                          class="flex w-full items-center justify-center gap-2 text-base font-medium text-primary hover:text-primary/80 transition-colors">
-                          查看全部产品
-                          <span class="transition-transform group-hover:translate-x-1">
-                            <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
-                              xmlns="http://www.w3.org/2000/svg">
-                              <path
-                                d="M18.5 9.5L12.0312 2.9375C11.75 2.65625 11.3125 2.65625 11.0312 2.9375C10.75 3.21875 10.75 3.65625 11.0312 3.9375L16.2812 9.28125H3C2.625 9.28125 2.3125 9.59375 2.3125 9.96875C2.3125 10.3438 2.625 10.6875 3 10.6875H16.3437L11.0312 16.0938C10.75 16.375 10.75 16.8125 11.0312 17.0938C11.1562 17.2188 11.3437 17.2812 11.5312 17.2812C11.7187 17.2812 11.9062 17.2188 12.0312 17.0625L18.5 10.5C18.7812 10.2187 18.7812 9.78125 18.5 9.5Z"
-                                fill="currentColor" />
-                            </svg>
-                          </span>
-                        </a>
+                      
+                      <!-- Menu Items Grid -->
+                      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        {item.children.map(childItem => (
+                          <a 
+                            href={childItem.path}
+                            target={childItem.external ? "_blank" : "_self"}
+                            rel={childItem.external ? "noopener noreferrer" : undefined}
+                            class="group flex items-start space-x-4 p-4 rounded-xl hover:bg-white dark:hover:bg-white/5 transition-all duration-300 border border-gray-100/50 dark:border-blue-900/20 hover:border-blue-200 dark:hover:border-blue-700/40 hover:shadow-lg hover:shadow-blue-500/10 dark:hover:shadow-blue-500/5 hover:-translate-y-0.5 bg-white dark:bg-blue-950/20"
+                          >
+                            <div class="flex-shrink-0 w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-600 dark:from-blue-400 dark:to-blue-500 rounded-xl flex items-center justify-center shadow-sm group-hover:shadow-md group-hover:scale-110 transition-all duration-300">
+                              {childItem.external ? (
+                                <svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                </svg>
+                              ) : (
+                                <svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                </svg>
+                              )}
+                            </div>
+                            <div class="flex-1 min-w-0">
+                              <div class="text-sm font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300 truncate mb-1">
+                                {childItem.title}
+                              </div>
+                              <div class="text-xs text-gray-600 dark:text-gray-400 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors duration-300 line-clamp-2 leading-relaxed">
+                                {childItem.description}
+                              </div>
+                            </div>
+                          </a>
+                        ))}
                       </div>
                     </div>
-                  </li>
-                  <li>
-                    <a href="javascript:void(0)"
-                      class="flex py-2 text-base font-medium text-body-color hover:text-primary lg:ml-12 lg:inline-flex dark:text-dark-6 dark:hover:text-white transition-colors">
-                      关于我们
-                    </a>
-                  </li>
-                  <li>
-                    <a href="javascript:void(0)"
-                      class="flex py-2 text-base font-medium text-body-color hover:text-primary lg:ml-12 lg:inline-flex dark:text-dark-6 dark:hover:text-white transition-colors">
-                      服务支持
-                    </a>
-                  </li>
-                  <li>
-                    <a href="javascript:void(0)"
-                      class="flex py-2 text-base font-medium text-body-color hover:text-primary lg:ml-12 lg:inline-flex dark:text-dark-6 dark:hover:text-white transition-colors">
-                      联系我们
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-            <div class="hidden justify-end gap-3 pr-16 sm:flex lg:pr-0">
-              <a href="javascript:void(0)"
-                class="rounded-lg bg-gray-2 px-5 py-2.5 text-base font-medium text-dark hover:text-primary dark:bg-white/5 dark:text-white transition-colors">
-                登录
+                    
+                    <!-- Menu Footer -->
+                    <div class="rounded-b-2xl bg-white dark:bg-gray-900 px-5 py-4 border-t border-gray-200/60 dark:border-blue-800/40">
+                      <a href={item.title === "产品服务" ? "/Product" : 
+                               item.title === "服务中心" ? "/online" :
+                               item.title === "关于我们" ? "/about" :
+                               item.title === "合作产品" ? "#" : "#"}
+                         class="group flex w-full items-center justify-center gap-3 px-6 py-3 text-sm font-bold text-blue-600 dark:text-blue-400 hover:text-white dark:hover:text-white bg-white dark:bg-gray-800 hover:bg-gradient-to-r hover:from-blue-500 hover:to-blue-600 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/30 hover:scale-105 border border-blue-100/50 dark:border-blue-800/30 hover:border-transparent">
+                        查看全部{item.title}
+                        <svg class="w-4 h-4 transition-all duration-300 group-hover:translate-x-1 group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              )
+            }
+          })
+        }
+      </nav>
+
+      <!-- Right Side Actions -->
+      <div class="flex items-center space-x-2 sm:space-x-3 flex-shrink-0">
+        <!-- Dark Mode Toggle -->
+        <button 
+          id="themeSwitcher"
+          class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-blue-900/20 transition-all duration-200 group"
+          aria-label="切换暗黑模式"
+        >
+          <span class="hidden dark:block">
+            <svg class="h-4 w-4 sm:h-5 sm:w-5 text-blue-400 group-hover:text-blue-300 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+          </span>
+          <span class="block dark:hidden">
+            <svg class="h-4 w-4 sm:h-5 sm:w-5 text-blue-500 group-hover:text-blue-600 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+          </span>
+        </button>
+
+        <!-- Auth Buttons -->
+        <div class="hidden sm:flex items-center gap-2">
+          <a 
+            href="https://haoka.lot-ml.com/plugreg.html?agentid=90925"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group inline-flex items-center gap-2 px-4 lg:px-5 py-2.5 bg-[#015bfe] hover:bg-[#0147be] text-white font-medium rounded-xl shadow-sm hover:shadow-md transition-all text-base lg:text-lg whitespace-nowrap hover:-translate-y-0.5"
+          >
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+            </svg>
+            <span>注册</span>
+          </a>
+          
+          <a 
+            href="https://haoka.lot-ml.com/login.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group inline-flex items-center gap-2 px-4 lg:px-5 py-2.5 bg-white/80 dark:bg-blue-900/20 text-gray-900 dark:text-white font-medium rounded-xl shadow-sm hover:shadow-md transition-all text-base lg:text-lg border border-gray-200/50 dark:border-blue-900/30 hover:bg-gray-50 dark:hover:bg-blue-900/30 whitespace-nowrap hover:-translate-y-0.5"
+          >
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+            </svg>
+            <span>登入</span>
+          </a>
+        </div>
+        
+        <!-- Mobile Menu Button -->
+        <button 
+          @click="navbarOpen = !navbarOpen"
+          :class="navbarOpen && 'navbarTogglerActive'"
+          class="lg:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-blue-900/20 transition-all duration-200 group"
+          aria-label="切换菜单"
+        >
+          <span class="relative my-[5px] block h-[2px] w-[20px] sm:w-[24px] bg-gray-700 dark:bg-gray-200 transition-all duration-200"></span>
+          <span class="relative my-[5px] block h-[2px] w-[20px] sm:w-[24px] bg-gray-700 dark:bg-gray-200 transition-all duration-200"></span>
+          <span class="relative my-[5px] block h-[2px] w-[20px] sm:w-[24px] bg-gray-700 dark:bg-gray-200 transition-all duration-200"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div 
+    x-show="navbarOpen" 
+    x-transition:enter="transition ease-out duration-300"
+    x-transition:enter-start="opacity-0 transform -translate-y-4"
+    x-transition:enter-end="opacity-100 transform translate-y-0"
+    x-transition:leave="transition ease-in duration-200"
+    x-transition:leave-start="opacity-100 transform translate-y-0"
+    x-transition:leave-end="opacity-0 transform -translate-y-4"
+    class="lg:hidden absolute top-full left-0 right-0 bg-white/95 dark:bg-blue-950/95 backdrop-blur-md border-t border-gray-200/50 dark:border-blue-900/30 shadow-xl z-50"
+    style="display: none;"
+  >
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 max-h-[calc(100vh-96px)] overflow-y-auto">
+      <!-- Mobile Navigation Items -->
+      <nav class="space-y-2">
+        {menuitems.map((item) => (
+          <div class="mobile-nav-item">
+            {item.children ? (
+              <div x-data="{ open: false }">
+                <button 
+                  @click="open = !open"
+                  class="mobile-menu-item w-full flex items-center justify-between py-3 px-4 text-gray-900 dark:text-white hover:bg-blue-50 dark:hover:bg-blue-900/30 rounded-lg transition-all duration-200 group"
+                >
+                  <span class="font-medium text-base sm:text-lg">{item.title}</span>
+                  <svg 
+                    :class="open ? 'rotate-180' : ''"
+                    class="h-4 w-4 text-gray-400 group-hover:text-blue-500 transition-all duration-200 flex-shrink-0"
+                    fill="none" 
+                    viewBox="0 0 24 24" 
+                    stroke="currentColor"
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                
+                <div 
+                  x-show="open"
+                  x-transition:enter="transition ease-out duration-200"
+                  x-transition:enter-start="opacity-0 max-h-0"
+                  x-transition:enter-end="opacity-100 max-h-96"
+                  x-transition:leave="transition ease-in duration-150"
+                  x-transition:leave-start="opacity-100 max-h-96"
+                  x-transition:leave-end="opacity-0 max-h-0"
+                  class="overflow-hidden"
+                  style="display: none;"
+                >
+                  <div class="pl-4 space-y-1 mt-2 border-l-2 border-blue-100 dark:border-blue-900/50 ml-4">
+                    {item.children.map((child) => (
+                      <a 
+                        href={child.path}
+                        target={child.path.startsWith('http') ? '_blank' : '_self'}
+                        rel={child.path.startsWith('http') ? 'noopener noreferrer' : ''}
+                        class="block py-2.5 px-3 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50/50 dark:hover:bg-blue-900/20 rounded-lg transition-all duration-200"
+                      >
+                        <div class="font-medium text-sm">{child.title}</div>
+                        {child.description && (
+                          <div class="text-xs text-gray-500 dark:text-gray-400 mt-1 line-clamp-2 leading-relaxed">
+                            {child.description}
+                          </div>
+                        )}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <a 
+                href={item.path}
+                target={item.path.startsWith('http') ? '_blank' : '_self'}
+                rel={item.path.startsWith('http') ? 'noopener noreferrer' : ''}
+                class="mobile-menu-item block py-3 px-4 text-gray-900 dark:text-white hover:bg-blue-50 dark:hover:bg-blue-900/30 rounded-lg transition-all duration-200 font-medium text-base sm:text-lg"
+              >
+                {item.title}
               </a>
-              <a href="javascript:void(0)"
-                class="rounded-lg bg-primary px-5 py-2.5 text-base font-medium text-white hover:bg-primary/90 transition-colors">
-                注册
-              </a>
-            </div>
+            )}
           </div>
+        ))}
+      </nav>
+      
+      <!-- Mobile Auth Buttons -->
+      <div class="mt-6 pt-4 border-t border-gray-200/50 dark:border-blue-900/30">
+        <div class="flex flex-col space-y-3">
+          <a 
+            href="https://haoka.lot-ml.com/plugreg.html?agentid=90925"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full inline-flex items-center justify-center px-4 py-3 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-lg shadow-sm hover:shadow-md transition-all duration-200 text-base lg:text-lg"
+          >
+            <span>注册</span>
+          </a>
+          
+          <a 
+            href="https://haoka.lot-ml.com/login.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full inline-flex items-center justify-center px-4 py-3 bg-white/80 dark:bg-blue-900/30 text-gray-900 dark:text-white font-medium rounded-lg shadow-sm hover:shadow-md transition-all duration-200 text-base lg:text-lg border border-gray-200/50 dark:border-blue-900/30 hover:bg-gray-50 dark:hover:bg-blue-900/40"
+          >
+            <span>登入</span>
+          </a>
         </div>
       </div>
     </div>
-  </header>
-  <!-- ====== Mega Menu End -->
+  </div>
+</header>
+
+<style>
+    /* Navigation Link Styles */
+    .nav-link {
+      @apply relative text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 font-medium px-3 py-2 rounded-lg text-base lg:text-lg;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 50%;
+      background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transform: translateX(-50%);
+      border-radius: 1px;
+    }
+    
+    .nav-link:hover::after {
+      width: 80%;
+    }
+
+    .nav-link:hover {
+      @apply bg-blue-50/50 dark:bg-blue-900/20;
+    }
+
+    /* Menu Item Styles */
+    .menu-item {
+      @apply block px-4 py-3 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-all duration-200;
+    }
+
+    .menu-item:hover {
+      @apply transform translate-x-1;
+    }
+
+    /* Mobile Navigation Styles */
+    .mobile-nav-item {
+      @apply block w-full text-left text-gray-900 dark:text-white transition-all duration-200;
+    }
+
+    .mobile-menu-item {
+      @apply block w-full text-left text-gray-700 dark:text-gray-300 transition-all duration-200;
+    }
+
+    /* Hamburger Menu Animation */
+    .navbarTogglerActive > span:nth-child(1) {
+      top: 6px;
+      transform: rotate(45deg);
+      background-color: #3b82f6;
+    }
+    .navbarTogglerActive > span:nth-child(2) {
+      opacity: 0;
+      transform: scale(0);
+    }
+    .navbarTogglerActive > span:nth-child(3) {
+      top: -6px;
+      transform: rotate(-45deg);
+      background-color: #3b82f6;
+    }
+
+    /* Text Truncation */
+    .line-clamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Smooth Scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Focus Styles for Accessibility */
+    .nav-link:focus,
+    .menu-item:focus,
+    .mobile-menu-item:focus {
+      @apply outline-none ring-2 ring-blue-500 ring-offset-2 ring-offset-white dark:ring-offset-blue-950;
+    }
+
+    /* Backdrop Blur Support */
+    @supports (backdrop-filter: blur(12px)) {
+      .backdrop-blur-md {
+        backdrop-filter: blur(12px);
+      }
+    }
+  </style>
+
+<script is:inline>
+  // 使用防抖函数优化滚动事件处理
+  function debounce(func, wait) {
+    let timeout;
+    return function(...args) {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => func.apply(this, args), wait);
+    };
+  }
+
+  // 初始化变量
+  let header;
+  let lastScrollY = window.scrollY;
+  let ticking = false;
+
+  // 滚动处理函数
+  function handleScroll() {
+    if (!header) header = document.querySelector('header');
+    if (!header) return;
+    
+    const currentScrollY = window.scrollY;
+    
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        if (currentScrollY > 20) {
+          header.classList.add('shadow-sm');
+        } else {
+          header.classList.remove('shadow-sm');
+        }
+        
+        lastScrollY = currentScrollY;
+        ticking = false;
+      });
+      
+      ticking = true;
+    }
+  }
+
+  // 使用防抖优化滚动事件
+  const debouncedScroll = debounce(handleScroll, 10);
+  
+  // 添加滚动事件监听
+  window.addEventListener('scroll', debouncedScroll, { passive: true });
+  
+  // DOM加载完成后初始化
+  document.addEventListener('DOMContentLoaded', () => {
+    header = document.querySelector('header');
+    handleScroll();
+  });
+  
+  // 初始检查滚动位置
+  handleScroll();
+</script>
