@@ -17,13 +17,24 @@ import Accordion from '../components/Accordion.astro';
 import Product   from '../components/Product.astro';
 import Modalwith from '../components/Modalwith.astro';
 import Spread from '../components/Spread.astro';
+import SEOSchema from '../components/SEOSchema.astro';
 ---
 
 <Layout
   description="172号卡官网！我们提供最新的电信、移动、联通和广电流量卡及物联卡的在线申请和办理服务,加入我们的分销管理平台,成为代理合伙人,轻松管理您的流量卡业务,获取丰厚收益"
   title="172号卡分销系统官网_手机流量卡分销管理平台"
   keywords="172号卡官网,号卡代理加盟,号卡分销系统,流量卡在线申请,流量卡申请平台,流量卡分销平台"
+  image="/assets/logo/logo.png"
 >
+  <!-- SEO结构化数据 -->
+  <SEOSchema 
+    type="website"
+    title="172号卡分销系统官网_手机流量卡分销管理平台"
+    description="172号卡官网！我们提供最新的电信、移动、联通和广电流量卡及物联卡的在线申请和办理服务,加入我们的分销管理平台,成为代理合伙人,轻松管理您的流量卡业务,获取丰厚收益"
+    url="https://urlka.cn"
+    image="/assets/logo/logo.png"
+    organizationName="172号卡官网"
+  />
   <Hero /> 
   <Features />  
   <About />  

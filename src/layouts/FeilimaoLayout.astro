@@ -16,10 +16,10 @@ const { description, title, image, keywords } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -27,8 +27,29 @@ const { description, title, image, keywords } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     <meta name="keywords" content={keywords} />
-    <meta property="og:image" content={image} />
-    <meta property="twitter:image" content={image} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image || "/assets/logo/flmlogo.png"} />
+    <meta property="og:site_name" content="飞利猫随身WiFi官网" />
+    <meta property="og:locale" content="zh_CN" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={image || "/assets/logo/flmlogo.png"} />
+    
+    <!-- 其他SEO相关meta标签 -->
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="飞利猫官网" />
+    <meta name="theme-color" content="#3b82f6" />
+    <link rel="canonical" href={Astro.url} />
+    
     <title>{title}</title>
     <!-- 本地 Material Icons -->
     <link href="/assets/icons/material-icons.css" rel="stylesheet">

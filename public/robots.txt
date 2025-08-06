@@ -1,0 +1,17 @@
+# 172号卡官网 robots.txt
+# 允许所有搜索引擎爬取网站内容
+
+User-agent: *
+Allow: /
+
+# 禁止爬取管理后台和私有目录
+Disallow: /admin/
+Disallow: /private/
+Disallow: /_astro/
+Disallow: /api/
+
+# 指定网站地图位置
+Sitemap: https://urlka.cn/sitemap.xml
+
+# 爬取延迟设置（可选）
+Crawl-delay: 1
