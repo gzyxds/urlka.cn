@@ -15,7 +15,7 @@ export default defineConfig({
       priority: 0.7,
       lastmod: new Date(),
       // 排除某些页面
-      filter: (page) => !page.includes('/admin/') && !page.includes('/private/')
+      filter: (page) => !page.includes('/admin/') && !page.includes('/private/') && !page.includes('copy')
     })
   ]
 });
