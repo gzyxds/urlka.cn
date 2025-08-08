@@ -1,5 +1,6 @@
 ---
-import Product from '../components/Product.astro';
+// 使用别名导入来避免与页面文件名的命名冲突
+import ProductComponent from '../components/Product.astro';
 import Breadcrumb from '../components/layout/Breadcrumb.astro';
 import Layout from '../layouts/Layout.astro';
 import Contactsection from '../components/Contactsection.astro'; // 添加导入
@@ -13,7 +14,7 @@ import Contactsection from '../components/Contactsection.astro'; // 添加导入
   <Breadcrumb>
     <Fragment slot="title">产品展示</Fragment>
   </Breadcrumb>
-  <Product 
+  <ProductComponent 
     title="为您精选优质流量套餐" 
     subtitle="热门产品推荐" 
   />

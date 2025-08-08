@@ -1,0 +1,43 @@
+---
+// Astro 组件脚本部分
+// 导入类型定义
+import type { AstroFuzzyTextProps } from './types';
+
+// 定义组件的 props 接口
+export interface Props extends AstroFuzzyTextProps {}
+
+// 从 props 中解构参数，设置默认值
+const {
+  text = "172号卡官网",
+  fontSize = "clamp(2rem, 8vw, 8rem)",
+  fontWeight = 900,
+  fontFamily = "inherit",
+  color = "#fff",
+  enableHover = true,
+  baseIntensity = 0.2,
+  hoverIntensity = 0.5,
+  className = "",
+} = Astro.props;
+
+// 获取 slot 内容
+const slotContent = await Astro.slots.render('default');
+// 提取纯文本内容
+const displayText = slotContent ? slotContent.replace(/<[^>]*>/g, '').trim() : text;
+
+// 导入 React 组件
+import FuzzyText from './FuzzyText';
+---
+
+<!-- 使用 React 组件，client:load 指令确保在客户端加载 -->
+<FuzzyText 
+  client:load
+  fontSize={fontSize}
+  fontWeight={fontWeight}
+  fontFamily={fontFamily}
+  color={color}
+  baseIntensity={baseIntensity} 
+  hoverIntensity={hoverIntensity} 
+  enableHover={enableHover}
+  className={className}
+  text={displayText}
+/>

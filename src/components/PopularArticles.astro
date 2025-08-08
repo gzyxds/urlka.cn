@@ -5,7 +5,7 @@ import { getCollection } from 'astro:content';
 // 获取所有博客文章并按发布日期排序，取前4篇作为热门文章
 const allPosts = await getCollection('blog');
 const popularPosts = allPosts
-  .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
+  .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime())
   .slice(0, 4);
 
 // 如果没有足够的文章，使用默认数据作为后备
@@ -47,7 +47,7 @@ const articles = popularPosts.length > 0
       title: post.data.title,
       author: post.data.author || "匿名作者",
       slug: `/blog/${post.slug}`,
-      pubDate: post.data.pubDate
+      pubDate: post.data.publishDate // 使用正确的 publishDate 属性
     }))
   : fallbackArticles;
 

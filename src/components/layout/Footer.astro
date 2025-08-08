@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import FuzzyText from '../Fuzzytext/Fuzzytext.astro';
 
 // 过滤出 'draft: false' 且发布日期早于当前日期的博客条目
 const publishedBlogEntries = await getCollection("blog", ({ data }) => {
@@ -125,6 +126,21 @@ const footerLinks = [
   class="wow fadeInUp relative z-10 bg-[#111928] pt-20 lg:pt-[100px]"
   data-wow-delay=".15s"
 >
+  <!-- 主标题 - 现代化动感排版 -->
+         </span>
+        <div class="flex justify-center py-12">
+<FuzzyText 
+  text="172号卡"
+  enableHover={false}
+  baseIntensity={0.3}
+  color="#FFFFFF"
+  fontSize="35rem"
+/>
+        </div>
+      </span>
+
+    </h1>
+  </div>
   <div class="container">
     <div class="-mx-4 flex flex-wrap">
       <!-- Logo和公司信息区域 - 移动端占满宽度，平板及以上保持原有布局 -->

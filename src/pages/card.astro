@@ -74,16 +74,22 @@ import Layout from '../layouts/Layout.astro';
   <script>
     // 动态调整iframe高度以适应内容
     document.addEventListener('DOMContentLoaded', () => {
-      const adjustFrameHeight = () => {
-        const frame = document.getElementById('customerServiceFrame');
+      const adjustFrameHeight = (): void => {
+        const frame = document.getElementById('customerServiceFrame') as HTMLIFrameElement;
         if (frame) {
           // 设置最小高度，确保在小屏幕上也有足够的显示空间
           const minHeight = 500;
           // 计算可用高度（视口高度减去其他元素高度的估计值）
           const availableHeight = window.innerHeight - 150; // 减少头部和面包屑导航的高度估计值，使iframe更高
           const frameHeight = Math.max(minHeight, availableHeight);
+          
+          // 设置iframe高度
           frame.style.height = `${frameHeight}px`;
-          frame.parentElement.style.minHeight = `${frameHeight}px`;
+          
+          // 检查父元素是否存在，避免空值错误
+          if (frame.parentElement) {
+            frame.parentElement.style.minHeight = `${frameHeight}px`;
+          }
         }
       };
       

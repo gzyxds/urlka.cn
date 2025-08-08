@@ -1,0 +1,168 @@
+---
+// 导入布局和组件
+import Layout from '../layouts/Layout.astro';
+import FuzzyText from '../components/Fuzzytext/Fuzzytext.astro';
+---
+
+<Layout title="Fuzzy Text 组件演示">
+  <main class="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 flex flex-col items-center justify-center p-8">
+    
+    <!-- 页面标题 -->
+    <div class="text-center mb-16">
+      <h1 class="text-4xl font-bold text-white mb-4">Fuzzy Text 组件演示</h1>
+      <p class="text-gray-300 text-lg">基于 React Bits 的模糊文字效果组件</p>
+    </div>
+
+    <!-- 演示区域 -->
+    <div class="space-y-16 text-center">
+      
+      <!-- 默认效果 -->
+      <div class="space-y-4">
+        <h2 class="text-2xl font-semibold text-white">默认效果</h2>
+        <FuzzyText />
+      </div>
+
+      <!-- 自定义文字 -->
+      <div class="space-y-4">
+        <h2 class="text-2xl font-semibold text-white">自定义文字</h2>
+        <FuzzyText 
+          text="React Bits"
+          color="#00ff88"
+          baseIntensity={0.3}
+          hoverIntensity={0.7}
+        />
+      </div>
+
+      <!-- 不同颜色效果 -->
+      <div class="space-y-4">
+        <h2 class="text-2xl font-semibold text-white">不同颜色效果</h2>
+        <div class="space-y-8">
+          <FuzzyText 
+            text="蓝色模糊"
+            color="#3b82f6"
+            fontSize="3rem"
+            baseIntensity={0.25}
+            hoverIntensity={0.6}
+          />
+          <FuzzyText 
+            text="红色模糊"
+            color="#ef4444"
+            fontSize="3rem"
+            baseIntensity={0.25}
+            hoverIntensity={0.6}
+          />
+          <FuzzyText 
+            text="紫色模糊"
+            color="#a855f7"
+            fontSize="3rem"
+            baseIntensity={0.25}
+            hoverIntensity={0.6}
+          />
+        </div>
+      </div>
+
+      <!-- 不同强度效果 -->
+      <div class="space-y-4">
+        <h2 class="text-2xl font-semibold text-white">不同强度效果</h2>
+        <div class="space-y-8">
+          <div class="space-y-2">
+            <p class="text-gray-400">低强度 (baseIntensity: 0.1)</p>
+            <FuzzyText 
+              text="轻微模糊"
+              baseIntensity={0.1}
+              hoverIntensity={0.3}
+              fontSize="2.5rem"
+            />
+          </div>
+          <div class="space-y-2">
+            <p class="text-gray-400">中等强度 (baseIntensity: 0.3)</p>
+            <FuzzyText 
+              text="中等模糊"
+              baseIntensity={0.3}
+              hoverIntensity={0.6}
+              fontSize="2.5rem"
+            />
+          </div>
+          <div class="space-y-2">
+            <p class="text-gray-400">高强度 (baseIntensity: 0.5)</p>
+            <FuzzyText 
+              text="强烈模糊"
+              baseIntensity={0.5}
+              hoverIntensity={0.8}
+              fontSize="2.5rem"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- 禁用悬停效果 -->
+      <div class="space-y-4">
+        <h2 class="text-2xl font-semibold text-white">禁用悬停效果</h2>
+        <FuzzyText 
+          text="静态模糊效果"
+          enableHover={false}
+          baseIntensity={0.3}
+          color="#fbbf24"
+          fontSize="2.5rem"
+        />
+      </div>
+
+    </div>
+
+    <!-- 使用说明 -->
+    <div class="mt-16 max-w-4xl text-center">
+      <h2 class="text-2xl font-semibold text-white mb-6">使用说明</h2>
+      <div class="bg-gray-800/50 rounded-lg p-6 text-left">
+        <pre class="text-green-400 text-sm overflow-x-auto"><code>{`<!-- 基本使用 -->
+<FuzzyText />
+
+<!-- 自定义参数 -->
+<FuzzyText 
+  text="自定义文字"
+  color="#00ff88"
+  fontSize="3rem"
+  baseIntensity={0.3}
+  hoverIntensity={0.7}
+  enableHover={true}
+  fontWeight={900}
+  fontFamily="Arial"
+  className="custom-class"
+/>`}</code></pre>
+      </div>
+    </div>
+
+    <!-- 返回首页链接 -->
+    <div class="mt-12">
+      <a 
+        href="/" 
+        class="inline-flex items-center px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-colors duration-200"
+      >
+        ← 返回首页
+      </a>
+    </div>
+
+  </main>
+</Layout>
+
+<style>
+  /* 添加一些自定义样式 */
+  .fuzzy-text {
+    transition: all 0.3s ease;
+  }
+  
+  /* 为演示页面添加一些动画效果 */
+  main > div {
+    animation: fadeInUp 0.6s ease-out;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

@@ -2,7 +2,11 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="知识库 - 172号卡">
+<Layout 
+  title="知识库 - 172号卡" 
+  description="172号卡知识库，提供最新的电信、移动、联通和广电流量卡及物联卡的在线申请和办理服务,加入我们的分销管理平台,成为代理合伙人,轻松管理您的流量卡业务,获取丰厚收益"
+  keywords="172号卡知识库,172号卡使用指南,172号卡操作教程,172号卡常见问题,172号卡流量卡,172号卡物联卡,172号卡流量卡申请,172号卡流量卡办理,172号卡流量卡查询,172号卡流量卡续费"
+>
   <!-- ====== 知识库页面 ====== -->
   <section class="py-20 bg-gray-50 dark:bg-dark-2 min-h-screen">
     <div class="container mx-auto px-4">
@@ -257,11 +261,11 @@ import Layout from '../layouts/Layout.astro';
   ];
 
   // 获取分类颜色样式
-  function getCategoryStyle(category) {
+  function getCategoryStyle(category: string): string {
     const categoryConfig = categories.find(cat => cat.id === category);
     const color = categoryConfig ? categoryConfig.color : 'gray';
     
-    const colorMap = {
+    const colorMap: Record<string, string> = {
       blue: 'bg-blue-100 dark:bg-blue-900/30 text-primary',
       green: 'bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400',
       red: 'bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400',
@@ -273,8 +277,10 @@ import Layout from '../layouts/Layout.astro';
   }
 
   // 渲染分类导航
-  function renderCategories() {
+  function renderCategories(): void {
     const categoryNav = document.getElementById('categoryNav');
+    if (!categoryNav) return;
+    
     const categoriesHtml = categories.map(category => `
       <button 
         class="category-btn w-full text-left px-4 py-3 rounded-lg transition-all duration-200 hover:bg-gray-50 dark:hover:bg-dark-3 ${category.id === 'all' ? 'bg-primary text-white' : 'text-gray-600 dark:text-gray-400'}"
@@ -296,8 +302,9 @@ import Layout from '../layouts/Layout.astro';
   }
 
   // 渲染文章列表
-  function renderArticles(filteredArticles) {
+  function renderArticles(filteredArticles: any[]): void {
     const articlesList = document.getElementById('articlesList');
+    if (!articlesList) return;
     
     if (filteredArticles.length === 0) {
       articlesList.innerHTML = `
@@ -351,17 +358,20 @@ import Layout from '../layouts/Layout.astro';
   }
 
   // 绑定文章点击事件
-  function bindArticleEvents() {
+  function bindArticleEvents(): void {
     const articles = document.querySelectorAll('.collapsible-article');
     articles.forEach(article => {
       const content = article.querySelector('.article-content');
       const chevron = article.querySelector('.article-chevron');
 
-      article.addEventListener('click', (e) => {
-        if (e.target.tagName === 'A') {
+      article.addEventListener('click', (e: Event) => {
+        const target = e.target as HTMLElement;
+        if (target && target.tagName === 'A') {
           return;
         }
 
+        if (!content) return;
+        
         const isHidden = content.classList.contains('hidden');
         
         if (isHidden) {
@@ -380,7 +390,7 @@ import Layout from '../layouts/Layout.astro';
   }
 
   // 分类筛选
-  function filterByCategory(categoryId) {
+  function filterByCategory(categoryId: string): void {
     const filteredArticles = categoryId === 'all' 
       ? articles 
       : articles.filter(article => article.category === categoryId);
@@ -401,7 +411,7 @@ import Layout from '../layouts/Layout.astro';
   }
 
   // 搜索功能
-  function searchArticles(query) {
+  function searchArticles(query: string): void {
     const filteredArticles = articles.filter(article => 
       article.title.toLowerCase().includes(query.toLowerCase()) ||
       article.content.toLowerCase().includes(query.toLowerCase()) ||
@@ -417,23 +427,30 @@ import Layout from '../layouts/Layout.astro';
     renderCategories();
     
     // 绑定分类点击事件
-    document.addEventListener('click', (e) => {
-      if (e.target.closest('.category-btn')) {
-        const categoryId = e.target.closest('.category-btn').dataset.category;
-        filterByCategory(categoryId);
+    document.addEventListener('click', (e: Event) => {
+      const target = e.target as HTMLElement;
+      if (target && target.closest('.category-btn')) {
+        const categoryBtn = target.closest('.category-btn') as HTMLElement;
+        const categoryId = categoryBtn.dataset.category;
+        if (categoryId) {
+          filterByCategory(categoryId);
+        }
       }
     });
     
     // 绑定搜索事件
-    const searchInput = document.getElementById('searchInput');
-    searchInput.addEventListener('input', (e) => {
-      const query = e.target.value.trim();
-      if (query) {
-        searchArticles(query);
-      } else {
-        filterByCategory('all');
-      }
-    });
+    const searchInput = document.getElementById('searchInput') as HTMLInputElement;
+    if (searchInput) {
+      searchInput.addEventListener('input', (e: Event) => {
+        const target = e.target as HTMLInputElement;
+        const query = target.value.trim();
+        if (query) {
+          searchArticles(query);
+        } else {
+          filterByCategory('all');
+        }
+      });
+    }
     
     // Initial render
     filterByCategory('all');

@@ -2,6 +2,7 @@
 // 172号卡Hero组件 - 2023版现代化设计，采用渐变蓝色调与几何元素
 // 优化视觉层次感、响应式布局和用户体验
 import Qrcode from './Qrcode.astro';
+import FuzzyText from '../components/Fuzzytext/Fuzzytext.astro';
 ---
 
 <!-- ====== 172号卡Hero Section Start - 2023版设计 -->
@@ -51,7 +52,19 @@ import Qrcode from './Qrcode.astro';
 
           <!-- 主标题 - 现代化动感排版 -->
           <h1 class="mb-4 lg:mb-6 text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold leading-tight">
-            <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-500 inline-block transform transition-all duration-500 hover:scale-105">172号卡</span>
+            <span class="inline-block transform transition-all duration-500 hover:scale-105">
+              <FuzzyText 
+                text="172号卡"
+                color="#05f"
+                fontSize="8rem"
+                baseIntensity={0.1}
+                hoverIntensity={0.35}
+                enableHover={true}
+                fontWeight={900}
+                fontFamily="Arial"
+                className="custom-class"
+              >
+              </span>
             <br class="hidden sm:block">
             <span class="text-gray-800 relative inline-block text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl">
               运营商官方合作伙伴
