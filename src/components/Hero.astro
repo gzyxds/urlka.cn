@@ -244,22 +244,22 @@ import FuzzyText from '../components/Fuzzytext/Fuzzytext.astro';
               </div>
             </div>
             
-            <!-- 实时数据卡片 - 重新设计布局 -->
+            <!-- 实时数据卡片 - 重新设计布局，使用客户端动态数据 -->
             <div class="absolute -top-4 -right-4 bg-white rounded-2xl p-4 lg:p-5 shadow-xl border border-blue-100 z-20 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:rotate-2 group-hover:rotate-3">
               <div class="flex items-center mb-2">
                 <div class="w-3 h-3 lg:w-4 lg:h-4 bg-green-500 rounded-full mr-2.5 animate-pulse flex-shrink-0"></div>
                 <span class="text-xs lg:text-sm font-semibold text-gray-700">今日订单</span>
               </div>
-              {/* 使用随机数据 */}
+              {/* 使用客户端动态生成的随机数据 */}
               <div class="text-xl lg:text-3xl font-extrabold text-gray-900 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-800 relative">
-                {Math.floor(Math.random() * (11500 - 5350) + 5350)}<span class="text-sm lg:text-lg">人申请</span>
+                <span id="daily-orders">8650</span><span class="text-sm lg:text-lg">人申请</span>
                 <div class="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500/50 to-transparent rounded-full"></div>
               </div>
               <div class="text-[10px] lg:text-xs text-gray-500 mt-1 flex items-center">
                 <svg class="w-3 h-3 mr-1 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
                 </svg>
-                较昨日 +{(Math.random() * (15 - 8) + 8).toFixed(1)}%
+                较昨日 +<span id="growth-rate">12.3</span>%
               </div>
             </div>
 
@@ -387,3 +387,93 @@ import FuzzyText from '../components/Fuzzytext/Fuzzytext.astro';
   </div>
 </section>
 <!-- ====== 172号卡Hero Section End -->
+
+<script>
+  // 页面加载完成后执行动态数据更新
+  document.addEventListener('DOMContentLoaded', function() {
+    // 生成今日订单数量 (5350-11500之间的随机数)
+    const dailyOrders = Math.floor(Math.random() * (11500 - 5350) + 5350);
+    
+    // 生成增长率 (8%-15%之间的随机数，保留一位小数)
+    const growthRate = (Math.random() * (15 - 8) + 8).toFixed(1);
+    
+    // 更新DOM元素
+    const dailyOrdersElement = document.getElementById('daily-orders');
+    const growthRateElement = document.getElementById('growth-rate');
+    
+    if (dailyOrdersElement) {
+      // 使用递增模式动画效果 - 每次+1
+      animateNumber(dailyOrdersElement, 0, dailyOrders, 1500, 0, true);
+    }
+    
+    if (growthRateElement) {
+      // 延迟显示增长率，使用缓动模式增加视觉层次感
+      setTimeout(() => {
+        animateNumber(growthRateElement, 0, parseFloat(growthRate), 1000, 1, false);
+      }, 800);
+    }
+  });
+  
+  // 数字动画函数 - 支持递增模式和缓动模式
+  function animateNumber(element, start, end, duration, decimals = 0, useIncrement = false) {
+    if (useIncrement) {
+      // 递增模式：每次+1，直到达到目标值
+      animateNumberIncrement(element, start, end, duration, decimals);
+    } else {
+      // 缓动模式：使用平滑的缓动函数
+      animateNumberSmooth(element, start, end, duration, decimals);
+    }
+  }
+  
+  // 递增模式动画函数 - 每次+1
+  function animateNumberIncrement(element, start, end, duration, decimals = 0) {
+    const totalSteps = end - start;
+    const stepDuration = duration / totalSteps; // 每一步的时间间隔
+    let currentValue = start;
+    
+    function incrementStep() {
+      if (currentValue < end) {
+        currentValue += 1;
+        
+        if (decimals > 0) {
+          element.textContent = currentValue.toFixed(decimals);
+        } else {
+          element.textContent = currentValue;
+        }
+        
+        // 设置下一次递增的时间
+        setTimeout(incrementStep, stepDuration);
+      }
+    }
+    
+    // 开始递增动画
+    incrementStep();
+  }
+  
+  // 缓动模式动画函数 - 平滑过渡
+  function animateNumberSmooth(element, start, end, duration, decimals = 0) {
+    const startTime = performance.now();
+    const difference = end - start;
+    
+    function updateNumber(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      
+      // 使用缓动函数让动画更自然
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      const current = start + (difference * easeOutQuart);
+      
+      if (decimals > 0) {
+        element.textContent = current.toFixed(decimals);
+      } else {
+        element.textContent = Math.floor(current);
+      }
+      
+      if (progress < 1) {
+        requestAnimationFrame(updateNumber);
+      }
+    }
+    
+    requestAnimationFrame(updateNumber);
+  }
+</script>
