@@ -55,8 +55,8 @@ const { description, title, image, keywords } = Astro.props;
     <link href="/assets/icons/material-icons.css" rel="stylesheet">
     <!-- 本地 Inter 字体 -->
     <link href="/assets/fonts/inter.css" rel="stylesheet">
-    <!-- Alpine.js CDN - 用于交互式组件 -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- Alpine.js CDN - 用于交互式组件，使用 unpkg 作为备用 CDN -->
+    <script defer src="https://unpkg.com/alpinejs@3.14.1/dist/cdn.min.js"></script>
   </head>
   <body>
     <Header />
