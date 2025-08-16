@@ -187,100 +187,79 @@ const footerLinks = [
           </div>
         </div>
       </div>
-      <!-- 链接区域容器 - 移动端两列布局 -->
+      <!-- 链接区域容器 - 移动端手风琴布局，桌面端网格布局 -->
       <div class="w-full px-4 sm:w-full md:w-1/2 lg:w-8/12 xl:w-9/12">
-        <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <!-- 产品服务链接组 -->
-          <div class="mb-10 w-full">
-            <h4 class="mb-6 text-lg font-semibold text-white">{footerLinks[0].header}</h4>
-            <ul>
-              {footerLinks[0].links.map(link => {
-                if('name' in link) {
-                  return (
-                    <li>
-                      <a
-                        href={link.href}
-                        class="mb-3 inline-block text-base text-gray-7 hover:text-primary transition-colors duration-200"
-                        target={link.isExternal ? '_blank' : undefined}
-                        rel={link.isExternal ? 'noopener' : undefined}
-                      >
-                        {link.name}
-                      </a>
-                    </li>
-                  );
-                }
-              })}
-            </ul>
-          </div>
-          
-          <!-- 服务中心链接组 -->
-          <div class="mb-10 w-full">
-            <h4 class="mb-6 text-lg font-semibold text-white">{footerLinks[1].header}</h4>
-            <ul>
-              {footerLinks[1].links.map(link => {
-                if('name' in link) {
-                  return (
-                    <li>
-                      <a
-                        href={link.href}
-                        class="mb-3 inline-block text-base text-gray-7 hover:text-primary transition-colors duration-200"
-                        target={link.isExternal ? '_blank' : undefined}
-                        rel={link.isExternal ? 'noopener' : undefined}
-                      >
-                        {link.name}
-                      </a>
-                    </li>
-                  );
-                }
-              })}
-            </ul>
-          </div>
-          
-          <!-- 关于我们链接组 -->
-          <div class="mb-10 w-full">
-            <h4 class="mb-6 text-lg font-semibold text-white">{footerLinks[2].header}</h4>
-            <ul>
-              {footerLinks[2].links.map(link => {
-                if('name' in link) {
-                  return (
-                    <li>
-                      <a
-                        href={link.href}
-                        class="mb-3 inline-block text-base text-gray-7 hover:text-primary transition-colors duration-200"
-                        target={link.isExternal ? '_blank' : undefined}
-                        rel={link.isExternal ? 'noopener' : undefined}
-                      >
-                        {link.name}
-                      </a>
-                    </li>
-                  );
-                }
-              })}
-            </ul>
-          </div>
-          
-          <!-- 合作产品链接组 -->
-          <div class="mb-10 w-full">
-            <h4 class="mb-6 text-lg font-semibold text-white">{footerLinks[3].header}</h4>
-            <ul>
-              {footerLinks[3].links.map(link => {
-                if('name' in link) {
-                  return (
-                    <li>
-                      <a
-                        href={link.href}
-                        class="mb-3 inline-block text-base text-gray-7 hover:text-primary transition-colors duration-200"
-                        target={link.isExternal ? '_blank' : undefined}
-                        rel={link.isExternal ? 'noopener' : undefined}
-                      >
-                        {link.name}
-                      </a>
-                    </li>
-                  );
-                }
-              })}
-            </ul>
-          </div>
+        <!-- 移动端手风琴布局 -->
+        <div class="block md:hidden space-y-4">
+          {footerLinks.map((section, index) => (
+            <div class="border-b border-gray-600 pb-4">
+              <button 
+                class="footer-accordion-btn w-full flex justify-between items-center text-left py-2 text-lg font-semibold text-white hover:text-primary transition-colors duration-200"
+                data-target={`footer-section-${index}`}
+                aria-expanded="false"
+              >
+                <span>{section.header}</span>
+                <svg 
+                  class="footer-accordion-icon w-5 h-5 transform transition-transform duration-200" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div 
+                id={`footer-section-${index}`}
+                class="footer-accordion-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
+              >
+                <ul class="pt-4 space-y-2">
+                  {section.links.map(link => {
+                    if('name' in link) {
+                      return (
+                        <li>
+                          <a
+                            href={link.href}
+                            class="block text-base text-gray-7 hover:text-primary transition-colors duration-200 py-1"
+                            target={link.isExternal ? '_blank' : undefined}
+                            rel={link.isExternal ? 'noopener' : undefined}
+                          >
+                            {link.name}
+                          </a>
+                        </li>
+                      );
+                    }
+                  })}
+                </ul>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        <!-- 桌面端网格布局 -->
+        <div class="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-6">
+          {footerLinks.map((section) => (
+            <div class="mb-10 w-full">
+              <h4 class="mb-6 text-lg font-semibold text-white">{section.header}</h4>
+              <ul>
+                {section.links.map(link => {
+                  if('name' in link) {
+                    return (
+                      <li>
+                        <a
+                          href={link.href}
+                          class="mb-3 inline-block text-base text-gray-7 hover:text-primary transition-colors duration-200"
+                          target={link.isExternal ? '_blank' : undefined}
+                          rel={link.isExternal ? 'noopener' : undefined}
+                        >
+                          {link.name}
+                        </a>
+                      </li>
+                    );
+                  }
+                })}
+              </ul>
+            </div>
+          ))}
         </div>
       </div>
     </div>
@@ -346,5 +325,42 @@ const footerLinks = [
     </div>
   </div>
 </footer>
+
+<!-- 手风琴交互脚本 -->
+<script>
+  /**
+   * 初始化Footer手风琴功能
+   * 为移动端Footer链接区域添加展开/收缩交互
+   */
+  function initFooterAccordion() {
+    // 获取所有手风琴按钮
+    const accordionButtons = document.querySelectorAll('.footer-accordion-btn');
+    
+    accordionButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const targetId = this.getAttribute('data-target');
+        const content = document.getElementById(targetId);
+        const icon = this.querySelector('.footer-accordion-icon');
+        const isExpanded = this.getAttribute('aria-expanded') === 'true';
+        
+        if (isExpanded) {
+          // 收缩内容
+          content.style.maxHeight = '0px';
+          this.setAttribute('aria-expanded', 'false');
+          icon.style.transform = 'rotate(0deg)';
+        } else {
+          // 展开内容
+          content.style.maxHeight = content.scrollHeight + 'px';
+          this.setAttribute('aria-expanded', 'true');
+          icon.style.transform = 'rotate(180deg)';
+        }
+      });
+    });
+  }
+  
+  // DOM加载完成后初始化
+  document.addEventListener('DOMContentLoaded', initFooterAccordion);
+</script>
+
 <br /><br />
 <!-- ====== Footer Section End -->
