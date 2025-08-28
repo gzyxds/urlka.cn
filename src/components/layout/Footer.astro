@@ -337,18 +337,18 @@ const footerLinks = [
     const accordionButtons = document.querySelectorAll('.footer-accordion-btn');
     
     accordionButtons.forEach(button => {
-      button.addEventListener('click', function() {
-        const targetId = this.getAttribute('data-target');
+      button.addEventListener('click', function(this: HTMLElement) {
+        const targetId = this.getAttribute('data-target') || '';
         const content = document.getElementById(targetId);
-        const icon = this.querySelector('.footer-accordion-icon');
+        const icon = this.querySelector('.footer-accordion-icon') as HTMLElement;
         const isExpanded = this.getAttribute('aria-expanded') === 'true';
         
-        if (isExpanded) {
+        if (isExpanded && content) {
           // 收缩内容
           content.style.maxHeight = '0px';
           this.setAttribute('aria-expanded', 'false');
           icon.style.transform = 'rotate(0deg)';
-        } else {
+        } else if (content) {
           // 展开内容
           content.style.maxHeight = content.scrollHeight + 'px';
           this.setAttribute('aria-expanded', 'true');
