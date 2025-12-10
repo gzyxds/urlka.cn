@@ -21,7 +21,7 @@ const clients = [
     </div>
     
     <!-- 卡片网格布局 -->
-    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+    <div class="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
       {
         clients.map(client => (
           <div class="group">
@@ -32,7 +32,7 @@ const clients = [
               class="block"
             >
               <!-- 卡片容器 -->
-              <div class="relative overflow-hidden rounded-lg bg-white p-8 shadow-md transition-all duration-300 hover:shadow-xl dark:bg-dark-2 dark:shadow-card">
+              <div class="relative overflow-hidden rounded-lg bg-white p-4 shadow-md transition-all duration-300 hover:shadow-xl sm:p-8 dark:bg-dark-2 dark:shadow-card">
                 <!-- 装饰性背景图案 -->
                 <div class="absolute -right-4 -top-4 h-16 w-16 rounded-full bg-primary/5 transition-all duration-300 group-hover:scale-110"></div>
                 
