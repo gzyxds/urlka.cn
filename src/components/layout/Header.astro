@@ -165,7 +165,10 @@ function getMenuKey(title: string): string {
             >
               <button @click={`${menuKey} = !${menuKey}`} class="nav-link flex items-center whitespace-nowrap">
                 {item.title}
-                <Icon client:load icon="heroicons:chevron-down" className="ml-1 h-3 w-3 transition-transform duration-200" :class={`${menuKey} ? 'rotate-180' : ''}`} />
+                {menuKey === 'showProductMenu' && <Icon client:load icon="heroicons:chevron-down" className="ml-1 h-3 w-3 transition-transform duration-200" :class="showProductMenu ? 'rotate-180' : ''" />}
+                {menuKey === 'showServiceMenu' && <Icon client:load icon="heroicons:chevron-down" className="ml-1 h-3 w-3 transition-transform duration-200" :class="showServiceMenu ? 'rotate-180' : ''" />}
+                {menuKey === 'showAboutMenu' && <Icon client:load icon="heroicons:chevron-down" className="ml-1 h-3 w-3 transition-transform duration-200" :class="showAboutMenu ? 'rotate-180' : ''" />}
+                {menuKey === 'showPartnerMenu' && <Icon client:load icon="heroicons:chevron-down" className="ml-1 h-3 w-3 transition-transform duration-200" :class="showPartnerMenu ? 'rotate-180' : ''" />}
               </button>
               
               <!-- Mega Menu Container -->
