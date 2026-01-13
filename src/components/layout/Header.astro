@@ -199,13 +199,13 @@ function getMenuKey(title: string): string {
                         href={childItem.path}
                         target={childItem.external ? "_blank" : "_self"}
                         rel={childItem.external ? "noopener noreferrer" : undefined}
-                        class="group flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-dark-2 transition-colors duration-200 border border-transparent hover:border-gray-200 dark:hover:border-dark-3"
+                        class="group flex items-start space-x-3 p-3 rounded-lg border border-transparent transition-all duration-200 hover:bg-gray-50 hover:border-gray-200 dark:hover:bg-dark-2 dark:hover:border-dark-3 focus-visible:bg-gray-50 focus-visible:border-gray-200 dark:focus-visible:bg-dark-2 dark:focus-visible:border-dark-3"
                       >
-                        <div class="flex-shrink-0 w-8 h-8 bg-primary/10 text-primary rounded-lg flex items-center justify-center">
+                        <div class="flex-shrink-0 w-8 h-8 bg-primary/10 text-primary rounded-lg flex items-center justify-center transition-transform duration-200 group-hover:scale-110">
                           <Icon client:load icon={getMenuIcon(childItem.title)} className="w-4 h-4" />
                         </div>
                         <div class="flex-1 min-w-0">
-                          <div class="text-sm font-semibold text-dark dark:text-white group-hover:text-primary transition-colors truncate mb-0.5">
+                          <div class="text-sm font-semibold text-dark dark:text-white transition-colors truncate mb-0.5 group-hover:text-primary">
                             {childItem.title}
                           </div>
                           <div class="text-xs text-body-color dark:text-dark-6 line-clamp-1">{childItem.description}</div>
@@ -219,7 +219,7 @@ function getMenuKey(title: string): string {
                 <div class="px-5 py-3 border-t border-gray-100 dark:border-dark-3">
                   <a 
                     href={menuLinks[item.title] || "#"}
-                    class="flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-primary hover:bg-primary/5 rounded-lg transition-colors"
+                    class="flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-primary rounded-lg transition-all duration-200 hover:bg-primary/5 focus-visible:bg-primary/5"
                   >
                     查看全部{item.title}
                     <Icon client:load icon="heroicons:chevron-right" className="w-4 h-4" />
@@ -239,7 +239,7 @@ function getMenuKey(title: string): string {
             href="https://haoka.lot-ml.com/plugreg.html?agentid=90925"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-1.5 px-5 py-2.5 bg-primary text-white text-sm font-medium rounded-lg hover:bg-primary/90 transition-colors"
+            class="inline-flex items-center gap-1.5 px-5 py-2.5 bg-primary text-white text-sm font-medium rounded-lg transition-all duration-200 hover:bg-primary/90 focus-visible:bg-primary/90"
           >
             <Icon client:load icon="heroicons:user-plus" className="w-4 h-4" />
             <span>注册</span>
@@ -249,7 +249,7 @@ function getMenuKey(title: string): string {
             href="https://haoka.lot-ml.com/login.html"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-1.5 px-5 py-2.5 bg-white text-dark text-sm font-medium rounded-lg border border-gray-200 hover:bg-gray-50 hover:border-gray-300 transition-colors dark:bg-dark-2 dark:text-white dark:border-dark-3 dark:hover:bg-dark-3"
+            class="inline-flex items-center gap-1.5 px-5 py-2.5 bg-white text-dark text-sm font-medium rounded-lg border border-gray-200 transition-all duration-200 hover:bg-gray-50 hover:border-gray-300 dark:bg-dark-2 dark:text-white dark:border-dark-3 dark:hover:bg-dark-3 focus-visible:bg-gray-50 focus-visible:border-gray-300 dark:focus-visible:bg-dark-3"
           >
             <Icon client:load icon="heroicons:arrow-left-on-rectangle" className="w-4 h-4" />
             <span>登入</span>
@@ -301,10 +301,10 @@ function getMenuKey(title: string): string {
               <div x-data="{ open: false }" class="rounded-xl bg-gray-50 dark:bg-gray-800 p-2 dark:border dark:border-gray-700">
                 <button 
                   @click="open = !open"
-                  class="flex items-center justify-between w-full py-2 px-2.5 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/50 transition-all duration-200"
+                  class="flex items-center justify-between w-full py-2 px-2.5 rounded-lg transition-all duration-200 hover:bg-blue-50 dark:hover:bg-blue-900/50 focus-visible:bg-blue-50 dark:focus-visible:bg-blue-900/50"
                 >
                   <div class="flex items-center">
-                    <div class="w-8 h-8 rounded-lg bg-blue-500 dark:bg-blue-600 flex items-center justify-center mr-2.5">
+                    <div class="w-8 h-8 rounded-lg bg-blue-500 dark:bg-blue-600 flex items-center justify-center mr-2.5 transition-transform duration-200 group-hover:scale-110">
                       <Icon client:load icon="heroicons:bars-3" className="h-4 w-4 text-white" />
                     </div>
                     <div class="flex flex-col items-start">
@@ -338,13 +338,13 @@ function getMenuKey(title: string): string {
                           href={child.path}
                           target={child.path.startsWith('http') ? '_blank' : '_self'}
                           rel={child.path.startsWith('http') ? 'noopener noreferrer' : ''}
-                          class="flex flex-col items-center p-2 rounded-lg bg-gray-50 dark:bg-gray-800 hover:bg-blue-50 dark:hover:bg-blue-900/50 transition-all duration-200"
+                          class="flex flex-col items-center p-2 rounded-lg bg-gray-50 dark:bg-gray-800 border border-transparent transition-all duration-200 hover:bg-blue-50 dark:hover:bg-blue-900/50 focus-visible:bg-blue-50 dark:focus-visible:bg-blue-900/50"
                         >
-                          <div class="w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-900 flex items-center justify-center mb-1">
+                          <div class="w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-900 flex items-center justify-center mb-1 transition-transform duration-200 group-hover:scale-110">
                             <Icon client:load icon={getMenuIcon(child.title)} className="w-4 h-4 text-blue-600 dark:text-blue-400" />
                           </div>
                           <div class="flex flex-col items-center text-center">
-                            <span class="font-semibold text-gray-800 dark:text-gray-200 text-xs mb-0.5">{child.title}</span>
+                            <span class="font-semibold text-gray-800 dark:text-gray-200 text-xs mb-0.5 transition-colors group-hover:text-blue-600 dark:group-hover:text-blue-400">{child.title}</span>
                             <span class="text-[10px] text-gray-500 dark:text-gray-400 leading-snug line-clamp-2">{child.description}</span>
                           </div>
                         </a>
@@ -358,13 +358,13 @@ function getMenuKey(title: string): string {
                 href={item.path}
                 target={item.path.startsWith('http') ? '_blank' : '_self'}
                 rel={item.path.startsWith('http') ? 'noopener noreferrer' : ''}
-                class="flex items-center p-2 rounded-lg bg-gray-50 dark:bg-gray-800 hover:bg-blue-50 dark:hover:bg-blue-900/50 transition-all duration-200"
+                class="flex items-center p-2 rounded-lg bg-gray-50 dark:bg-gray-800 border border-transparent transition-all duration-200 hover:bg-blue-50 dark:hover:bg-blue-900/50 focus-visible:bg-blue-50 dark:focus-visible:bg-blue-900/50"
               >
-                <div class="w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-900 flex items-center justify-center mr-2.5">
+                <div class="w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-900 flex items-center justify-center mr-2.5 transition-transform duration-200 group-hover:scale-110">
                   <Icon client:load icon="heroicons:chevron-right" className="h-4 w-4 text-blue-600 dark:text-blue-400" />
                 </div>
                 <div class="flex flex-col">
-                  <span class="font-semibold text-gray-800 dark:text-gray-200 text-sm">{item.title}</span>
+                  <span class="font-semibold text-gray-800 dark:text-gray-200 text-sm transition-colors group-hover:text-blue-600 dark:group-hover:text-blue-400">{item.title}</span>
                   <span class="text-[10px] text-gray-500 dark:text-gray-400">{quickLinkDesc[item.title] || ""}</span>
                 </div>
               </a>
@@ -387,7 +387,7 @@ function getMenuKey(title: string): string {
               href="https://haoka.lot-ml.com/login.html"
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center justify-center px-3 py-2 bg-white dark:bg-blue-900 text-gray-900 dark:text-white font-semibold rounded-lg border border-gray-200 dark:border-blue-900 hover:bg-gray-50 dark:hover:bg-blue-800 transition-all duration-200 text-xs"
+              class="inline-flex items-center justify-center px-3 py-2 bg-white dark:bg-blue-900 text-gray-900 dark:text-white font-semibold rounded-lg border border-gray-200 transition-all duration-200 hover:bg-gray-50 hover:border-gray-300 dark:hover:bg-blue-800 focus-visible:bg-gray-50 focus-visible:border-gray-300 dark:focus-visible:bg-blue-800"
             >
               <Icon client:load icon="heroicons:arrow-left-on-rectangle" className="w-3.5 h-3.5 mr-1" />
               <span>登入</span>
@@ -397,7 +397,7 @@ function getMenuKey(title: string): string {
               href="https://haoka.lot-ml.com/plugreg.html?agentid=90925"
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center justify-center px-3 py-2 bg-blue-500 dark:bg-blue-600 hover:bg-blue-600 dark:hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-200 text-xs"
+              class="inline-flex items-center justify-center px-3 py-2 bg-blue-500 dark:bg-blue-600 text-white font-semibold rounded-lg transition-all duration-200 hover:bg-blue-600 dark:hover:bg-blue-700 focus-visible:bg-blue-600 dark:focus-visible:bg-blue-700"
             >
               <Icon client:load icon="heroicons:user-plus" className="w-3.5 h-3.5 mr-1" />
               <span>注册</span>

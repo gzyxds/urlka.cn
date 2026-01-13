@@ -1,4 +1,48 @@
 ---
+// 导入 @iconify/react 组件库
+import { Icon } from '@iconify/react';
+
+// 图标缓存，避免重复创建
+const iconCache = new Map();
+
+// 根据 Material Icons 名称返回对应的 iconify 图标名称
+function getMaterialIcon(name: string): string {
+  if (iconCache.has(name)) {
+    return iconCache.get(name) as string;
+  }
+  
+  const iconMap: Record<string, string> = {
+    'phone': 'mdi:phone',
+    'satellite_alt': 'mdi:satellite-variant',
+    'cell_tower': 'mdi:signal',
+    'tv': 'mdi:television',
+    'payments': 'mdi:cash',
+    'sim_card': 'mdi:sim-card',
+    'data_usage': 'mdi:chart-line',
+    'inventory_2': 'mdi:package-variant',
+    'local_shipping': 'mdi:truck',
+    'support_agent': 'mdi:headset',
+    'smartphone': 'mdi:cellphone',
+    'verified': 'mdi:check-circle',
+    'rocket_launch': 'mdi:rocket',
+    'analytics': 'mdi:chart-bar',
+    'upgrade': 'mdi:arrow-up-circle',
+    'public': 'mdi:earth',
+    'groups': 'mdi:account-group',
+    'security': 'mdi:shield-check',
+    'visibility': 'mdi:eye',
+    'star': 'mdi:star',
+    'business_center': 'mdi:office-building',
+    'desktop_windows': 'mdi:desktop-mac',
+    'build': 'mdi:tools',
+    'support': 'mdi:help-circle',
+  };
+  
+  const icon = iconMap[name] || 'mdi:help-circle';
+  iconCache.set(name, icon);
+  return icon;
+}
+
 const features = [
   {
     icon: 'phone',
@@ -6,7 +50,6 @@ const features = [
     description: '中国移动官方合作，提供优质网络服务',
     ref: '#',
     refTitle: '查看移动套餐',
-    iconColor: 'md-white', // 蓝色 - 中国移动品牌色
   },
   {
     icon: 'satellite_alt',
@@ -14,7 +57,6 @@ const features = [
     description: '中国电信官方合作，稳定可靠',
     ref: '#',
     refTitle: '浏览电信套餐',
-    iconColor: 'md-white', // 蓝色 - 中国电信品牌色
   },
   {
     icon: 'cell_tower',
@@ -22,7 +64,6 @@ const features = [
     description: '中国联通官方合作，全面覆盖的网络',
     ref: '#',
     refTitle: '了解联通套餐',
-    iconColor: 'md-white', // 红色 - 中国联通品牌色
   },
   {
     icon: 'tv',
@@ -30,7 +71,6 @@ const features = [
     description: '中国广电官方合作，创新的通信解决方案',
     ref: '#',
     refTitle: '探索广电套餐',
-    iconColor: 'md-white', // 绿色 - 中国广电品牌色
   },
   {
     icon: 'payments',
@@ -38,7 +78,6 @@ const features = [
     description: '全网最高的佣金，快速实现流量变现',
     ref: '#',
     refTitle: '了解佣金方案',
-    iconColor: 'md-white',
   },
   {
     icon: 'sim_card',
@@ -46,7 +85,6 @@ const features = [
     description: '全网最全的卡池，满足您的所有需求',
     ref: '#',
     refTitle: '查看卡池详情',
-    iconColor: 'md-white',
   },
   {
     icon: 'data_usage',
@@ -54,7 +92,6 @@ const features = [
     description: '全网优质的流量，满足您的所有需求',
     ref: '#',
     refTitle: '浏览流量套餐',
-    iconColor: 'md-white',
   },
   {
     icon: 'inventory_2',
@@ -62,7 +99,6 @@ const features = [
     description: '零库存压力，无需担心库存问题',
     ref: '#',
     refTitle: '了解库存管理',
-    iconColor: 'md-white',
   },
   {
     icon: 'local_shipping',
@@ -70,7 +106,6 @@ const features = [
     description: '全自动发货，无需人工干预',
     ref: '#',
     refTitle: '查看发货流程',
-    iconColor: 'md-white',
   },
   {
     icon: 'support_agent',
@@ -78,7 +113,6 @@ const features = [
     description: '我们提供全天候的客户支持，随时解答您的疑问',
     ref: '#',
     refTitle: '联系客服',
-    iconColor: 'md-white',
   },
   {
     icon: 'smartphone',
@@ -86,7 +120,6 @@ const features = [
     description: '提供多种套餐选择，满足不同用户的需求',
     ref: '#',
     refTitle: '查看套餐选项',
-    iconColor: 'md-white',
   },
   {
     icon: 'verified',
@@ -94,7 +127,6 @@ const features = [
     description: '我们承诺提供高质量的服务，确保客户满意度',
     ref: '#',
     refTitle: '服务承诺',
-    iconColor: 'md-white',
   },
   {
     icon: 'rocket_launch',
@@ -102,15 +134,13 @@ const features = [
     description: '简化的激活流程，让您快速开始使用我们的服务',
     ref: '#',
     refTitle: '激活指南',
-    iconColor: 'md-white',
   },
   {
-    icon: 'analytics', // 更换为更具代表性的图标
-    title: '实时数据洞察', // 修改标题使其更具吸引力
-    description: '实时追踪、精准分析，数据动态尽在掌握', // 优化描述文案
+    icon: 'analytics',
+    title: '实时数据洞察',
+    description: '实时追踪、精准分析，数据动态尽在掌握',
     ref: '#',
-    refTitle: '开启数据洞察', // 修改跳转标题
-    iconColor: 'md-white', // 更换图标颜色为蓝色
+    refTitle: '开启数据洞察',
   },
   {
     icon: 'upgrade',
@@ -118,7 +148,6 @@ const features = [
     description: '提供灵活的升级选项，随时调整以满足您不断变化的需求',
     ref: '#',
     refTitle: '升级方案',
-    iconColor: 'md-white',
   },
   {
     icon: 'public',
@@ -126,7 +155,6 @@ const features = [
     description: '我们的服务覆盖全国各地，无论您在哪里都能享受到优质服务',
     ref: '#',
     refTitle: '查看覆盖范围',
-    iconColor: 'md-white',
   },
   {
     icon: 'groups',
@@ -134,7 +162,6 @@ const features = [
     description: '拥有专业的技术和客服团队，为您提供全方位的支持',
     ref: '#',
     refTitle: '认识我们的团队',
-    iconColor: 'md-white',
   },
   {
     icon: 'security',
@@ -142,7 +169,6 @@ const features = [
     description: '采用先进的安全技术，保护您的个人信息和数据安全',
     ref: '#',
     refTitle: '安全保障',
-    iconColor: 'md-white',
   },
   {
     icon: 'visibility',
@@ -150,7 +176,6 @@ const features = [
     description: '我们的定价透明公开，没有隐藏费用，让您放心使用',
     ref: '#',
     refTitle: '查看价格详情',
-    iconColor: 'md-white',
   },
   {
     icon: 'star',
@@ -158,7 +183,6 @@ const features = [
     description: '我们致力于提供卓越的客户体验，确保每位用户都满意',
     ref: '#',
     refTitle: '172号卡产品资料汇总',
-    iconColor: 'md-white',
   },
   {
     icon: 'business_center',
@@ -166,7 +190,6 @@ const features = [
     description: '代理商无需支付任何代理费用即可开启流量卡推广业务，实现零成本创业，轻创业，享未来',
     ref: '#',
     refTitle: '了解加盟详情',
-    iconColor: 'md-white',
   },
   {
     icon: 'desktop_windows',
@@ -174,7 +197,6 @@ const features = [
     description: '通过独立后台，代理商可以清晰直观管理订单和一键式操作，大大提高了工作效率',
     ref: '#',
     refTitle: '查看后台演示',
-    iconColor: 'md-white',
   },
   {
     icon: 'build',
@@ -182,7 +204,6 @@ const features = [
     description: '客户完成首冲后，可以直接享受运营商官方的客服支持，代理商无需承担售后服务压力',
     ref: '#',
     refTitle: '了解售后政策',
-    iconColor: 'md-white',
   },
   {
     icon: 'support',
@@ -190,7 +211,6 @@ const features = [
     description: '直属本站的代理和订单都可以享受到本站官方的客服服务，有任何问题都可以迅速得到解决',
     ref: '#',
     refTitle: '联系客服',
-    iconColor: 'md-white',
   },
 ];
 ---
@@ -219,7 +239,7 @@ const features = [
           <div class="w-1/2 px-2 md:w-1/2 lg:w-1/4">
             <div class="mb-4 rounded-lg border border-gray-300 bg-white p-4 shadow-sm hover:shadow-md md:p-6 md:px-7 xl:px-10 dark:bg-dark-2">
               <h4 class="mb-[10px] text-lg font-semibold text-dark dark:text-white flex items-center">
-                <span class={`material-icons ${feature.iconColor} mr-2 bg-primary p-1 rounded-md`} style="font-size: 1rem;">{feature.icon}</span>
+                <Icon client:load icon={getMaterialIcon(feature.icon)} className="mr-2 bg-primary p-1 rounded-md text-white w-6 h-6" />
                 {feature.title}
               </h4>
               <p class="text-sm text-body-color dark:text-dark-6">

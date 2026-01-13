@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Icon } from '@iconify/react';
 ---
 
 <Layout 
@@ -30,7 +31,7 @@ import Layout from '../layouts/Layout.astro';
                   placeholder="搜索知识库..." 
                   class="w-full pl-10 pr-4 py-3 border border-gray-200 dark:border-dark-3 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-dark-2 text-dark dark:text-white"
                 >
-                <span class="material-icons absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">search</span>
+                <Icon client:load icon="mdi:magnify" className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-6 h-6" />
               </div>
             </div>
 
@@ -309,7 +310,7 @@ import Layout from '../layouts/Layout.astro';
     if (filteredArticles.length === 0) {
       articlesList.innerHTML = `
         <div class="text-center py-12">
-          <span class="material-icons text-6xl text-gray-300 dark:text-gray-600 mb-4">search_off</span>
+          <Icon client:load icon="mdi:file-search-outline" className="text-7xl text-gray-300 dark:text-gray-600 mb-4" />
           <h3 class="text-xl font-semibold text-gray-500 dark:text-gray-400 mb-2">未找到相关文章</h3>
           <p class="text-gray-400 dark:text-gray-500">请尝试其他关键词或选择不同的分类</p>
         </div>
@@ -335,17 +336,17 @@ import Layout from '../layouts/Layout.astro';
             </div>
             <div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
               <span class="flex items-center">
-                <span class="material-icons text-xs mr-1">visibility</span>
+                <Icon client:load icon="mdi:eye" className="w-5 h-5 mr-1" />
                 ${article.views} 阅读
               </span>
               <span class="flex items-center">
-                <span class="material-icons text-xs mr-1">thumb_up</span>
+                <Icon client:load icon="mdi:thumb-up" className="w-5 h-5 mr-1" />
                 ${article.rating} 有用
               </span>
             </div>
           </div>
           <div class="ml-4">
-            <span class="material-icons text-gray-300 dark:text-gray-600 article-chevron">chevron_right</span>
+            <Icon client:load icon="mdi:chevron-right" className="w-6 h-6 text-gray-300 dark:text-gray-600 article-chevron" />
           </div>
         </div>
       </article>
@@ -377,12 +378,13 @@ import Layout from '../layouts/Layout.astro';
         if (isHidden) {
           content.classList.remove('hidden');
           if (chevron) {
-            chevron.textContent = 'expand_more';
+            chevron.classList.remove('rotate-90');
+            chevron.classList.add('rotate-90');
           }
         } else {
           content.classList.add('hidden');
           if (chevron) {
-            chevron.textContent = 'chevron_right';
+            chevron.classList.remove('rotate-90');
           }
         }
       });
