@@ -3,7 +3,7 @@
 import Footer from '../components/layout/Footer.astro';
 import BackToTop from '../components/layout/BackToTop.astro';
 import MadeWithButton from '../components/layout/MadeWithButton.astro';
-import BottomBar from '../components/layout/BottomBar.astro';
+
 
 interface Props {
   description: string;
@@ -67,7 +67,7 @@ const { description, title, image, keywords } = Astro.props;
     <Footer />
     <BackToTop />
     <MadeWithButton />
-    <BottomBar />
+
 
     <!-- 百度统计代码 -->
     <script is:inline>

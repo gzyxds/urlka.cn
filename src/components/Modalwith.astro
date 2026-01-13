@@ -1,108 +1,91 @@
 <!-- ====== 弹窗组件开始 -->
 <div id="modal-container">
-
-
   <!-- 弹窗遮罩层 -->
   <div 
     id="modal-overlay" 
-    class="fixed inset-0 z-50 hidden items-center justify-center bg-black bg-opacity-50 px-4 py-5">
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 px-4 py-5">
     
     <!-- 弹窗内容 -->
     <div 
       id="modal-content"
-      class="relative w-full max-w-[570px] rounded-[20px] bg-white px-8 py-12 text-center shadow-2xl transform transition-all duration-300 scale-95 md:px-[70px] md:py-[60px] dark:bg-dark-2">
+      class="relative w-full max-w-[600px] rounded-lg bg-white shadow-xl transform transition-all duration-300 scale-95 dark:bg-dark-2 overflow-hidden">
       
-      <!-- 右上角关闭按钮 -->
-      <button 
-        id="close-modal-x"
-        class="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full text-2xl text-gray-500 hover:bg-gray-100 hover:text-gray-700 transition-colors dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-200"
-        title="关闭弹窗">
-        ×
-      </button>
+      <!-- 顶部公告条 -->
+      <div class="bg-blue-50 dark:bg-blue-900/30 px-5 py-3 flex items-center justify-between">
+        <div class="flex items-center text-sm">
+          <span class="flex items-center mr-1">
+            <span class="w-2 h-2 bg-red-500 rounded-full mr-1.5 animate-pulse"></span>
+            <span class="text-gray-600 dark:text-gray-300">公告：</span>
+          </span>
+          <a href="/contact" class="text-primary font-medium mx-1">联系客服</a>
+          <span class="text-gray-600 dark:text-gray-300">咨询产品/代理，关注公众号可以了解</span>
+          <a href="#" class="text-primary font-medium mx-1">优惠活动</a>
+          <span class="text-gray-600 dark:text-gray-300">和</span>
+          <a href="#" class="text-primary font-medium ml-1">产品更新</a>
+        </div>
+        <!-- 关闭按钮 -->
+        <button 
+          id="close-modal-x"
+          class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-xl leading-none"
+          title="关闭弹窗">
+          ×
+        </button>
+      </div>
 
-      <!-- 弹窗标题 -->
-      <h3 class="pb-[18px] text-xl font-semibold text-dark sm:text-2xl dark:text-white">
-        立即申请代理
-      </h3>
-      
-      <!-- 装饰线 -->
-      <div class="decorative-line mx-auto mb-6 h-1 w-[90px] rounded-sm bg-gradient-to-r from-primary to-blue-600"></div>
-      
-      <!-- 弹窗内容 -->
-      <p class="mb-8 text-base leading-relaxed text-body-color dark:text-dark-6">
-        扫码立即加入我们
-      </p>
-      
-      <!-- 二维码区域 -->
-      <div class="mb-8 grid grid-cols-2 gap-3 sm:gap-6">
-        <!-- 第一个二维码 -->
-        <div class="flex flex-col items-center">
-          <div class="qr-container group relative rounded-xl bg-gradient-to-br from-blue-50 to-blue-100 p-3 sm:p-6 shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 dark:from-blue-900/30 dark:to-blue-800/30">
-            <div class="absolute inset-0 rounded-xl bg-gradient-to-br from-blue-400/10 to-blue-500/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
-            <img 
-              src="/assets/team/wx.png" 
-              alt="微信客服二维码" 
-              class="relative mx-auto h-20 w-20 sm:h-32 sm:w-32 rounded-lg shadow-md transition-transform duration-300 group-hover:scale-110" 
-              loading="lazy"
-            />
-            <p class="mt-2 sm:mt-3 text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300">
-              微信客服
-            </p>
+      <!-- 主内容区域 -->
+      <div class="px-6 py-8 sm:px-10 sm:py-10">
+        <!-- 标题区域 -->
+        <div class="mb-6">
+          <div class="flex items-center mb-3">
+            <span class="w-6 h-[2px] bg-primary mr-3"></span>
+            <span class="text-xs tracking-widest text-primary font-medium">CONNECT SUPPORT</span>
           </div>
+          <h3 class="text-2xl font-bold text-dark dark:text-white mb-2">联系客服</h3>
+          <p class="text-sm text-body-color dark:text-dark-6">扫描二维码添加客服微信，专业代理指导和优质服务支持</p>
         </div>
         
-        <!-- 第二个二维码 -->
-        <div class="flex flex-col items-center">
-          <div class="qr-container group relative rounded-xl bg-gradient-to-br from-blue-50 to-blue-100 p-3 sm:p-6 shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 dark:from-blue-900/30 dark:to-blue-800/30">
-            <div class="absolute inset-0 rounded-xl bg-gradient-to-br from-blue-400/10 to-blue-500/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
-            <img 
-              src="/assets/team/weixin.png" 
-              alt="微信群二维码" 
-              class="relative mx-auto h-20 w-20 sm:h-32 sm:w-32 rounded-lg shadow-md transition-transform duration-300 group-hover:scale-110" 
-              loading="lazy"
-            />
-            <p class="mt-2 sm:mt-3 text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300">
-              微信群聊
-            </p>
+        <!-- 二维码区域 -->
+        <div class="grid grid-cols-2 gap-6 sm:gap-8">
+          <!-- 微信客服 -->
+          <div class="text-center">
+            <div class="bg-white border border-gray-200 dark:border-dark-3 rounded-lg p-4 sm:p-6 mb-4">
+              <img 
+                src="/assets/team/wx.png" 
+                alt="微信客服二维码" 
+                class="w-full max-w-[180px] mx-auto" 
+                loading="lazy"
+              />
+            </div>
+            <h4 class="text-base font-semibold text-dark dark:text-white mb-1">添加客服微信</h4>
+            <p class="text-xs text-body-color dark:text-dark-6">产品咨询 / 代理加密</p>
+          </div>
+          
+          <!-- 公众号 -->
+          <div class="text-center">
+            <div class="bg-white border border-gray-200 dark:border-dark-3 rounded-lg p-4 sm:p-6 mb-4">
+              <img 
+                src="/assets/team/weixin.png" 
+                alt="微信公众号二维码" 
+                class="w-full max-w-[180px] mx-auto" 
+                loading="lazy"
+              />
+            </div>
+            <h4 class="text-base font-semibold text-dark dark:text-white mb-1">关注公众号</h4>
+            <p class="text-xs text-body-color dark:text-dark-6">优惠活动 / 产品更新</p>
           </div>
         </div>
-      </div>
-      
-      <!-- 提示文字 -->
-      <div class="tip-box mb-6 rounded-lg bg-blue-50 p-4 dark:bg-blue-900/20">
-        <p class="text-sm text-blue-700 dark:text-blue-300">
-        扫描任意二维码，即可获得专业代理指导和优质服务支持
-        </p>
-      </div>
-      
-      <!-- 按钮组 -->
-      <div class="flex flex-col sm:flex-row gap-3 justify-center">
-        <button 
-          id="cancel-btn"
-          type="button" 
-          class="w-full sm:w-auto min-w-[120px] rounded-md border-2 border-gray-300 bg-white px-6 py-3 text-base font-medium text-gray-700 transition-all duration-200 hover:border-red-500 hover:bg-red-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300">
-          关闭弹窗
-        </button>
-        <a 
-          href="/"
-          class="w-full sm:w-auto min-w-[120px] rounded-md border-2 border-primary bg-primary px-6 py-3 text-base font-medium text-white transition-all duration-200 hover:bg-blue-700 hover:border-blue-700 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">
-         立即申请
-        </a>
       </div>
     </div>
   </div>
 </div>
 
 <script>
-  // 弹窗控制脚本
   document.addEventListener('DOMContentLoaded', function() {
     const modalOverlay = document.getElementById('modal-overlay');
     const modalContent = document.getElementById('modal-content');
-    const openBtn = document.getElementById('open-modal-btn');
     const closeXBtn = document.getElementById('close-modal-x');
-    const cancelBtn = document.getElementById('cancel-btn');
+    const openBtn = document.getElementById('open-modal-btn');
 
-    // 显示弹窗的函数
     function showModal() {
       if (modalOverlay) {
         modalOverlay.classList.remove('hidden');
@@ -110,17 +93,16 @@
         setTimeout(() => {
           if (modalContent) {
             modalContent.classList.remove('scale-95');
-            modalContent.classList.add('scale-100', 'show');
+            modalContent.classList.add('scale-100');
           }
         }, 10);
-        document.body.style.overflow = 'hidden'; // 防止背景滚动
+        document.body.style.overflow = 'hidden';
       }
     }
 
-    // 隐藏弹窗的函数
     function hideModal() {
       if (modalContent) {
-        modalContent.classList.remove('scale-100', 'show');
+        modalContent.classList.remove('scale-100');
         modalContent.classList.add('scale-95');
       }
       setTimeout(() => {
@@ -128,16 +110,11 @@
           modalOverlay.classList.remove('flex');
           modalOverlay.classList.add('hidden');
         }
-      }, 300);
-      document.body.style.overflow = ''; // 恢复背景滚动
+      }, 200);
+      document.body.style.overflow = '';
     }
 
-    // 页面加载5秒后自动显示弹窗
-    setTimeout(() => {
-      showModal();
-    }, 20000);
-
-    // 点击打开按钮显示弹窗（如果存在的话）
+    // 点击按钮打开弹窗
     if (openBtn) {
       openBtn.addEventListener('click', function(e) {
         e.preventDefault();
@@ -145,27 +122,19 @@
       });
     }
 
-    // 点击右上角X按钮关闭弹窗
+    // 页面加载20秒后自动显示弹窗
+    setTimeout(() => {
+      showModal();
+    }, 20000);
+
     if (closeXBtn) {
       closeXBtn.addEventListener('click', function(e) {
         e.preventDefault();
         e.stopPropagation();
-        console.log('关闭按钮被点击'); // 调试用
         hideModal();
       });
     }
 
-    // 点击取消按钮关闭弹窗
-    if (cancelBtn) {
-      cancelBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        console.log('取消按钮被点击'); // 调试用
-        hideModal();
-      });
-    }
-
-    // 点击遮罩层关闭弹窗
     if (modalOverlay) {
       modalOverlay.addEventListener('click', function(e) {
         if (e.target === modalOverlay) {
@@ -174,157 +143,42 @@
       });
     }
 
-    // 按ESC键关闭弹窗
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape' && modalOverlay && !modalOverlay.classList.contains('hidden')) {
         hideModal();
       }
     });
 
-    // 防止弹窗内容区域的点击事件冒泡
     if (modalContent) {
       modalContent.addEventListener('click', function(e) {
         e.stopPropagation();
       });
     }
 
-    // 全局函数，供外部调用
     window.showModal = showModal;
     window.hideModal = hideModal;
   });
 </script>
 
 <style>
-  /* 弹窗动画样式 */
   #modal-content {
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
   }
   
-  /* 确保弹窗在最顶层 */
   #modal-overlay {
     z-index: 9999;
-    backdrop-filter: blur(8px);
-    animation: fadeIn 0.3s ease-out;
   }
   
-  /* 弹窗背景渐变动画 */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
-  /* 弹窗内容进入动画 */
-  @keyframes slideInUp {
-    from {
-      transform: translateY(30px) scale(0.95);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0) scale(1);
-      opacity: 1;
-    }
-  }
-  
-  #modal-content.show {
-    animation: slideInUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
-  /* 按钮悬停效果增强 */
-  #cancel-btn {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
-  #cancel-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(239, 68, 68, 0.3);
-  }
-  
-  #close-modal-x {
-    transition: all 0.2s ease-in-out;
-  }
-  
-  #close-modal-x:hover {
-    transform: scale(1.2) rotate(90deg);
-    background-color: rgba(239, 68, 68, 0.1);
-  }
-  
-  /* 二维码容器悬停效果 */
-  .qr-container {
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .qr-container::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-    transform: rotate(45deg);
-    transition: all 0.6s;
-    opacity: 0;
-  }
-  
-  .qr-container:hover::before {
-    animation: shimmer 1.5s ease-in-out;
-  }
-  
-  @keyframes shimmer {
-    0% {
-      transform: translateX(-100%) translateY(-100%) rotate(45deg);
-      opacity: 0;
-    }
-    50% {
-      opacity: 1;
-    }
-    100% {
-      transform: translateX(100%) translateY(100%) rotate(45deg);
-      opacity: 0;
-    }
-  }
-  
-  /* 装饰线动画 */
-  .decorative-line {
-    background-size: 200% 100%;
-    animation: gradientShift 3s ease-in-out infinite;
-  }
-  
-  @keyframes gradientShift {
-    0%, 100% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-  }
-  
-  /* 提示框脉冲效果 */
-  .tip-box {
-    animation: pulse 2s ease-in-out infinite;
-  }
-  
-  @keyframes pulse {
-    0%, 100% {
-      box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
-    }
-    50% {
-      box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
-    }
-  }
-  
-  /* 响应式优化 */
   @media (max-width: 640px) {
     #modal-content {
       margin: 1rem;
       max-height: 90vh;
       overflow-y: auto;
+    }
+    
+    /* 移动端公告条文字换行 */
+    #modal-content > div:first-child > div:first-child {
+      flex-wrap: wrap;
     }
   }
 </style>
