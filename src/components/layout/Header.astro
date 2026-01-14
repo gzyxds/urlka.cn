@@ -13,29 +13,29 @@ function getMenuIcon(title: string): string {
   if (iconCache.has(title)) {
     return iconCache.get(title);
   }
-  
+
   const icons: Record<string, string> = {
-    "热门产品": "heroicons:fire",
-    "172知识库": "heroicons:book-open",
-    "APP下载": "heroicons:device-phone-mobile",
-    "在线领卡": "heroicons:credit-card",
-    "飞利猫": "heroicons:wifi",
-    "代理登入": "heroicons:user",
-    "订单查询": "heroicons:clipboard-document-list",
-    "在线客服": "heroicons:chat-bubble-left-right",
-    "常见问题": "heroicons:question-mark-circle",
-    "在线留言": "heroicons:pencil-square",
-    "公司介绍": "heroicons:building-office",
-    "联系我们": "heroicons:phone",
-    "加入我们": "heroicons:user-group",
-    "合作伙伴": "heroicons:briefcase",
-    "艺创官网": "heroicons:globe-alt",
-    "数字分身": "heroicons:user-circle",
-    "艺创AI": "heroicons:light-bulb",
-    "优刻云": "heroicons:cloud-arrow-up",
+    "热门产品": "lucide:flame",
+    "172知识库": "lucide:book-open",
+    "APP下载": "lucide:smartphone",
+    "在线领卡": "lucide:credit-card",
+    "飞利猫": "lucide:wifi",
+    "代理登入": "lucide:user",
+    "订单查询": "lucide:clipboard-list",
+    "在线客服": "lucide:message-circle",
+    "常见问题": "lucide:help-circle",
+    "在线留言": "lucide:pen-square",
+    "公司介绍": "lucide:building-2",
+    "联系我们": "lucide:phone",
+    "加入我们": "lucide:users",
+    "合作伙伴": "lucide:briefcase",
+    "艺创官网": "lucide:globe",
+    "数字分身": "lucide:user-circle-2",
+    "艺创AI": "lucide:brain-circuit",
+    "优刻云": "lucide:cloud",
   };
-  
-  const icon = icons[title] || "heroicons:chevron-right";
+
+  const icon = icons[title] || "lucide:chevron-right";
   iconCache.set(title, icon);
   return icon;
 }
@@ -123,7 +123,7 @@ function getMenuKey(title: string): string {
 }
 ---
 
-<header 
+<header
   x-data="{ navbarOpen: false, showProductMenu: false, showServiceMenu: false, showAboutMenu: false, showPartnerMenu: false }"
   class="sticky top-0 z-50 w-full bg-white dark:bg-black backdrop-blur-lg transition-all duration-300 border-b border-gray-100 dark:border-blue-900/20 shadow-sm"
 >
@@ -153,26 +153,26 @@ function getMenuKey(title: string): string {
           if (!item.children) {
             return <a href={item.path} class="nav-link whitespace-nowrap">{item.title}</a>;
           }
-          
+
           const menuKey = getMenuKey(item.title);
-          
+
           return (
-            <div 
-              class="relative group" 
-              @mouseenter={`${menuKey} = true`} 
+            <div
+              class="relative group"
+              @mouseenter={`${menuKey} = true`}
               @mouseleave={`${menuKey} = false`}
               @click.outside={`${menuKey} = false`}
             >
               <button @click={`${menuKey} = !${menuKey}`} class="nav-link flex items-center whitespace-nowrap">
                 {item.title}
-                {menuKey === 'showProductMenu' && <Icon client:load icon="heroicons:chevron-down" className="ml-1 h-3 w-3 transition-transform duration-200" :class="showProductMenu ? 'rotate-180' : ''" />}
-                {menuKey === 'showServiceMenu' && <Icon client:load icon="heroicons:chevron-down" className="ml-1 h-3 w-3 transition-transform duration-200" :class="showServiceMenu ? 'rotate-180' : ''" />}
-                {menuKey === 'showAboutMenu' && <Icon client:load icon="heroicons:chevron-down" className="ml-1 h-3 w-3 transition-transform duration-200" :class="showAboutMenu ? 'rotate-180' : ''" />}
-                {menuKey === 'showPartnerMenu' && <Icon client:load icon="heroicons:chevron-down" className="ml-1 h-3 w-3 transition-transform duration-200" :class="showPartnerMenu ? 'rotate-180' : ''" />}
+                {menuKey === 'showProductMenu' && <Icon client:load icon="lucide:chevron-down" className="ml-1 h-3 w-3 transition-transform duration-200" :class="showProductMenu ? 'rotate-180' : ''" />}
+                {menuKey === 'showServiceMenu' && <Icon client:load icon="lucide:chevron-down" className="ml-1 h-3 w-3 transition-transform duration-200" :class="showServiceMenu ? 'rotate-180' : ''" />}
+                {menuKey === 'showAboutMenu' && <Icon client:load icon="lucide:chevron-down" className="ml-1 h-3 w-3 transition-transform duration-200" :class="showAboutMenu ? 'rotate-180' : ''" />}
+                {menuKey === 'showPartnerMenu' && <Icon client:load icon="lucide:chevron-down" className="ml-1 h-3 w-3 transition-transform duration-200" :class="showPartnerMenu ? 'rotate-180' : ''" />}
               </button>
-              
+
               <!-- Mega Menu Container -->
-              <div 
+              <div
                 x-show={menuKey}
                 x-transition:enter="transition ease-out duration-200"
                 x-transition:enter-start="opacity-0 translate-y-2"
@@ -184,7 +184,7 @@ function getMenuKey(title: string): string {
                 style="display: none;"
               >
                 <div class="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white dark:bg-dark-2 rotate-45 border-l border-t border-gray-200 dark:border-dark-3"></div>
-                
+
                 <!-- Menu Header -->
                 <div class="p-4 border-b border-gray-100 dark:border-dark-3">
                   <div class="mb-3">
@@ -194,11 +194,11 @@ function getMenuKey(title: string): string {
                     </h4>
                     <p class="text-xs text-body-color dark:text-dark-6">{menuDescriptions[item.title] || ""}</p>
                   </div>
-                  
+
                   <!-- Menu Items Grid -->
                   <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {item.children.map((childItem) => (
-                      <a 
+                      <a
                         href={childItem.path}
                         target={childItem.external ? "_blank" : "_self"}
                         rel={childItem.external ? "noopener noreferrer" : undefined}
@@ -217,15 +217,15 @@ function getMenuKey(title: string): string {
                     ))}
                   </div>
                 </div>
-                
+
                 <!-- Menu Footer -->
                 <div class="px-5 py-3 border-t border-gray-100 dark:border-dark-3">
-                  <a 
+                  <a
                     href={menuLinks[item.title] || "#"}
                     class="flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-primary rounded-lg transition-all duration-200 hover:bg-primary/5 focus-visible:bg-primary/5"
                   >
                     查看全部{item.title}
-                    <Icon client:load icon="heroicons:chevron-right" className="w-4 h-4" />
+                    <Icon client:load icon="lucide:chevron-right" className="w-4 h-4" />
                   </a>
                 </div>
               </div>
@@ -238,45 +238,45 @@ function getMenuKey(title: string): string {
       <div class="flex items-center space-x-2 sm:space-x-3 flex-shrink-0">
         <!-- Auth Buttons -->
         <div class="hidden sm:flex items-center gap-2">
-          <a 
+          <a
             href="https://haoka.lot-ml.com/plugreg.html?agentid=90925"
             target="_blank"
             rel="noopener noreferrer"
             class="inline-flex items-center gap-1.5 px-5 py-2.5 bg-primary text-white text-sm font-medium rounded-lg transition-all duration-200 hover:bg-primary/90 focus-visible:bg-primary/90"
           >
-            <Icon client:load icon="heroicons:user-plus" className="w-4 h-4" />
+            <Icon client:load icon="lucide:user-plus" className="w-4 h-4" />
             <span>注册</span>
           </a>
-          
-          <a 
+
+          <a
             href="https://haoka.lot-ml.com/login.html"
             target="_blank"
             rel="noopener noreferrer"
             class="inline-flex items-center gap-1.5 px-5 py-2.5 bg-white text-dark text-sm font-medium rounded-lg border border-gray-200 transition-all duration-200 hover:bg-gray-50 hover:border-gray-300 dark:bg-dark-2 dark:text-white dark:border-dark-3 dark:hover:bg-dark-3 focus-visible:bg-gray-50 focus-visible:border-gray-300 dark:focus-visible:bg-dark-3"
           >
-            <Icon client:load icon="heroicons:arrow-left-on-rectangle" className="w-4 h-4" />
+            <Icon client:load icon="lucide:log-in" className="w-4 h-4" />
             <span>登入</span>
           </a>
         </div>
-        
+
         <!-- Mobile Menu Button -->
-        <button 
+        <button
           @click="navbarOpen = !navbarOpen"
           :class="navbarOpen && 'navbarTogglerActive'"
           class="lg:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-blue-900/20 transition-all duration-200 group"
           aria-label="切换菜单"
         >
-          <Icon 
+          <Icon
             client:load
             x-show="!navbarOpen"
-            icon="heroicons:bars-3" 
-            className="h-6 w-6 text-gray-700 dark:text-gray-200 transition-all duration-200" 
+            icon="lucide:menu"
+            className="h-6 w-6 text-gray-700 dark:text-gray-200 transition-all duration-200"
           />
-          <Icon 
+          <Icon
             client:load
             x-show="navbarOpen"
-            icon="heroicons:x-mark" 
-            className="h-6 w-6 text-gray-700 dark:text-gray-200 transition-all duration-200" 
+            icon="lucide:x"
+            className="h-6 w-6 text-gray-700 dark:text-gray-200 transition-all duration-200"
           />
         </button>
       </div>
@@ -284,8 +284,8 @@ function getMenuKey(title: string): string {
   </div>
 
   <!-- Mobile Menu -->
-  <div 
-    x-show="navbarOpen" 
+  <div
+    x-show="navbarOpen"
     x-transition:enter="transition ease-out duration-300"
     x-transition:enter-start="opacity-0 transform -translate-y-4"
     x-transition:enter-end="opacity-100 transform translate-y-0"
@@ -302,28 +302,28 @@ function getMenuKey(title: string): string {
           <div class="mobile-nav-item">
             {item.children ? (
               <div x-data="{ open: false }" class="rounded-xl bg-gray-50 dark:bg-gray-800 p-2 dark:border dark:border-gray-700">
-                <button 
+                <button
                   @click="open = !open"
                   class="flex items-center justify-between w-full py-2 px-2.5 rounded-lg transition-all duration-200 hover:bg-blue-50 dark:hover:bg-blue-900/50 focus-visible:bg-blue-50 dark:focus-visible:bg-blue-900/50"
                 >
                   <div class="flex items-center">
-                    <div class="w-8 h-8 rounded-lg bg-blue-500 dark:bg-blue-600 flex items-center justify-center mr-2.5 transition-transform duration-200 group-hover:scale-110">
-                      <Icon client:load icon="heroicons:bars-3" className="h-4 w-4 text-white" />
+                    <div class="w-8 h-8 rounded-lg bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center mr-2.5 transition-transform duration-200 group-hover:scale-110">
+                      <Icon client:load icon="lucide:list" className="h-4 w-4 text-blue-600 dark:text-blue-400" />
                     </div>
                     <div class="flex flex-col items-start">
                       <span class="text-sm font-semibold text-gray-900 dark:text-white">{item.title}</span>
                       <span class="text-[10px] text-gray-500 dark:text-gray-400">{menuDescriptions[item.title] || ""}</span>
                     </div>
                   </div>
-                  <Icon 
+                  <Icon
                     client:load
-                    icon="heroicons:chevron-down"
+                    icon="lucide:chevron-down"
                     :class="open ? 'rotate-180' : ''"
                     className="h-4 w-4 text-gray-400 dark:text-gray-500 transition-transform duration-200 flex-shrink-0"
                   />
                 </button>
-                
-                <div 
+
+                <div
                   x-show="open"
                   x-transition:enter="transition ease-out duration-200"
                   x-transition:enter-start="opacity-0 max-h-0"
@@ -335,21 +335,16 @@ function getMenuKey(title: string): string {
                   style="display: none;"
                 >
                   <div class="p-2 bg-white dark:bg-gray-900 rounded-lg dark:border dark:border-gray-700">
-                    <div class="grid grid-cols-2 gap-1.5">
+                    <div class="grid grid-cols-2 gap-2">
                       {item.children.map((child) => (
-                        <a 
+                        <a
                           href={child.path}
                           target={child.path.startsWith('http') ? '_blank' : '_self'}
                           rel={child.path.startsWith('http') ? 'noopener noreferrer' : ''}
-                          class="flex flex-col items-center p-2 rounded-lg bg-gray-50 dark:bg-gray-800 border border-transparent transition-all duration-200 hover:bg-blue-50 dark:hover:bg-blue-900/50 focus-visible:bg-blue-50 dark:focus-visible:bg-blue-900/50"
+                          class="flex items-center gap-2 p-2 rounded-lg bg-gray-50 dark:bg-gray-800 border border-transparent transition-all duration-200 hover:bg-blue-50 dark:hover:bg-blue-900/50 group"
                         >
-                          <div class="w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-900 flex items-center justify-center mb-1 transition-transform duration-200 group-hover:scale-110">
-                            <Icon client:load icon={getMenuIcon(child.title)} className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-                          </div>
-                          <div class="flex flex-col items-center text-center">
-                            <span class="font-semibold text-gray-800 dark:text-gray-200 text-xs mb-0.5 transition-colors group-hover:text-blue-600 dark:group-hover:text-blue-400">{child.title}</span>
-                            <span class="text-[10px] text-gray-500 dark:text-gray-400 leading-snug line-clamp-2">{child.description}</span>
-                          </div>
+                          <Icon client:load icon={getMenuIcon(child.title)} className="w-4 h-4 text-gray-500 dark:text-gray-400 flex-shrink-0 transition-colors group-hover:text-blue-600 dark:group-hover:text-blue-400" />
+                          <span class="font-medium text-gray-700 dark:text-gray-200 text-sm truncate group-hover:text-blue-600 dark:group-hover:text-blue-400">{child.title}</span>
                         </a>
                       ))}
                     </div>
@@ -357,14 +352,14 @@ function getMenuKey(title: string): string {
                 </div>
               </div>
             ) : (
-              <a 
+              <a
                 href={item.path}
                 target={item.path.startsWith('http') ? '_blank' : '_self'}
                 rel={item.path.startsWith('http') ? 'noopener noreferrer' : ''}
                 class="flex items-center p-2 rounded-lg bg-gray-50 dark:bg-gray-800 border border-transparent transition-all duration-200 hover:bg-blue-50 dark:hover:bg-blue-900/50 focus-visible:bg-blue-50 dark:focus-visible:bg-blue-900/50"
               >
-                <div class="w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-900 flex items-center justify-center mr-2.5 transition-transform duration-200 group-hover:scale-110">
-                  <Icon client:load icon="heroicons:chevron-right" className="h-4 w-4 text-blue-600 dark:text-blue-400" />
+                <div class="w-8 h-8 rounded-lg bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center mr-2.5 transition-transform duration-200 group-hover:scale-110">
+                  <Icon client:load icon="lucide:chevron-right" className="h-4 w-4 text-blue-600 dark:text-blue-400" />
                 </div>
                 <div class="flex flex-col">
                   <span class="font-semibold text-gray-800 dark:text-gray-200 text-sm transition-colors group-hover:text-blue-600 dark:group-hover:text-blue-400">{item.title}</span>
@@ -375,18 +370,18 @@ function getMenuKey(title: string): string {
           </div>
         ))}
       </nav>
-      
+
       <!-- Mobile Auth Buttons -->
       <div class="mt-4 pt-3 space-y-2">
         <div class="p-3 bg-blue-50 dark:bg-blue-950 rounded-xl dark:border dark:border-blue-900">
           <div class="flex items-center mb-2">
             <div class="w-6 h-6 rounded-full bg-blue-500 dark:bg-blue-600 flex items-center justify-center mr-2">
-              <Icon client:load icon="heroicons:user" className="h-3 w-3 text-white" />
+              <Icon client:load icon="lucide:user" className="h-3 w-3 text-white" />
             </div>
             <span class="text-xs font-semibold text-gray-700 dark:text-gray-300">账户中心</span>
           </div>
           <div class="grid grid-cols-2 gap-1.5">
-            <a 
+            <a
               href="https://haoka.lot-ml.com/login.html"
               target="_blank"
               rel="noopener noreferrer"
@@ -395,8 +390,8 @@ function getMenuKey(title: string): string {
               <Icon client:load icon="heroicons:arrow-left-on-rectangle" className="w-3.5 h-3.5 mr-1" />
               <span>登入</span>
             </a>
-            
-            <a 
+
+            <a
               href="https://haoka.lot-ml.com/plugreg.html?agentid=90925"
               target="_blank"
               rel="noopener noreferrer"
@@ -425,7 +420,7 @@ function getMenuKey(title: string): string {
     @apply relative text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 font-medium px-3 py-2 rounded-lg text-base lg:text-lg;
     will-change: transform, opacity;
   }
-  
+
   .nav-link::after {
     content: '';
     position: absolute;
@@ -438,7 +433,7 @@ function getMenuKey(title: string): string {
     transform: translateX(-50%);
     border-radius: 1px;
   }
-  
+
   .nav-link:hover::after {
     width: 80%;
   }
@@ -493,7 +488,7 @@ function getMenuKey(title: string): string {
   function handleScroll() {
     if (!header) header = document.querySelector('header');
     if (!header) return;
-    
+
     if (!ticking) {
       requestAnimationFrame(() => {
         header.classList.toggle('shadow-sm', window.scrollY > 20);
@@ -505,7 +500,7 @@ function getMenuKey(title: string): string {
 
   // 使用 passive 监听器优化滚动性能
   window.addEventListener('scroll', handleScroll, { passive: true });
-  
+
   // DOM 加载完成后初始化
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
